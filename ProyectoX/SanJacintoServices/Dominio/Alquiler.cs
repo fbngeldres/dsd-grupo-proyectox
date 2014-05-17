@@ -19,5 +19,6 @@ namespace SanJacintoServices.Dominio
         public decimal Igv { get; set; }
         [DataMember]
         public decimal MontoTotal { get; set; }
+
     }
 }
