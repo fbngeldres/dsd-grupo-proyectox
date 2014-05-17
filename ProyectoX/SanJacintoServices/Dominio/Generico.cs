@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 namespace SanJacintoServices.Dominio
 {
     [DataContract]
-    public class Auto
+    public class Devoluciones
     {
         [DataMember]
         public int Codigo { get; set; }

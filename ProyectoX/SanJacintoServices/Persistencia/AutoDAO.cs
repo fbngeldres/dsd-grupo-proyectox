@@ -6,7 +6,7 @@ using SanJacintoServices.Dominio;
 
 namespace SanJacintoServices.Persistencia
 {
-    public class AutoDAO : BaseDAO<Auto, int>
+    public class AutoDAO : BaseDAO<Devoluciones, int>
     {
     }
 }
