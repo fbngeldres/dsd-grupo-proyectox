@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="SanJacintoServices"
+                   namespace="SanJacintoServices.Dominio"
+                   default-lazy="false">
+  <class name="Generico" table="tb_generico">
+    <id name="Codigo" column="codigo">
+      <generator class="increment" />
+    </id>
+    <property name="Descripcion" column="descripcion" />
+    <property name="Entidad" column="entidad" />
+    <property name="Field1" column="field1" />
+    <property name="Field2" column="field2" />
+  </class>
+</hibernate-mapping>

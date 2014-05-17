@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="SanJacintoServices"
+                   namespace="SanJacintoServices.Dominio"
+                   default-lazy="false">
+  <class name="Alquiler" table="tb_alquier">
+    <id name="Codigo" column="codigo">
+      <generator class="increment" />
+    </id>
+    <property name="Costo" column="costo" />
+    <property name="CostoAdicional" column="costo_adicional" />
+    <property name="Igv" column="igv" />
+    <property name="MontoTotal" column="monto_total" />
+  </class>
+</hibernate-mapping>

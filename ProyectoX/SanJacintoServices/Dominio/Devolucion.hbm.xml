@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="SanJacintoServices"
+                   namespace="SanJacintoServices.Dominio"
+                   default-lazy="false">
+  <class name="Devolucion" table="tb_devolucion">
+    <id name="Codigo" column="codigo">
+      <generator class="increment" />
+    </id>
+    <property name="FechaDevolucion" column="fecha_devolucion" />
+    <property name="Penalidad" column="penalidad" />
+    <property name="Igv" column="igv" />
+    <property name="MontoTotal" column="monto_total" />
+  </class>
+</hibernate-mapping>

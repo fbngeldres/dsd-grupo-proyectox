@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="SanJacintoServices"
+                   namespace="SanJacintoServices.Dominio"
+                   default-lazy="false">
+  <class name="Usuario" table="tb_usuario">
+    <id name="Codigo" column="codigo">
+      <generator class="increment" />
+    </id>
+    <property name="Apellidos" column="apellidos" />
+    <property name="Nombres" column="nombres" />
+    <property name="Telefono" column="telefono" />
+    <property name="Licencia" column="licencia" />
+    <property name="Dni" column="dni" />
+    <property name="Correo" column="correo" />
+  </class>
+</hibernate-mapping>
