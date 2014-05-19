@@ -69,7 +69,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AlquilerController.cs" />
     <Compile Include="Controllers\AutoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -109,6 +108,7 @@
     <Content Include="js\scripts.js" />
     <Content Include="Views\Alquiler\CrearAlquiler.aspx" />
     <Content Include="Views\Auto\BuscarAutoAlquilar.aspx" />
+    <Content Include="Views\Auto\ResultadoBusquedaAuto.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

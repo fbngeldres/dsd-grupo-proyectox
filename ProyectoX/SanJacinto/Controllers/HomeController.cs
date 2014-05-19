@@ -11,8 +11,6 @@ namespace SanJacinto.Controllers
     {
         public ActionResult Index()
         {
-            ViewData["Message"] = "ASP.NET MVC";
-
             return View();
         }
 

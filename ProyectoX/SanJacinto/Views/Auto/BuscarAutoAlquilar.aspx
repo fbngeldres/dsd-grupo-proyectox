@@ -9,7 +9,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-4">
-                <form class="form-horizontal" role="form" action="seleccionar.html">
                 <fieldset>
                     <!-- Form Name -->
                     <legend>Busquedad de Automoviles</legend>
@@ -101,13 +100,11 @@
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <div class="pull-right">
-                                <button type="submit" class="btn btn-primary">
-                                    Buscar</button>
+                                <%: Html.ActionLink("Buscar", "ResultadoBusquedaAuto", "Auto", new { @class = "btn btn-primary" })%>
                             </div>
                         </div>
                     </div>
                 </fieldset>
-                </form>
             </div>
         </div>
     </div>
