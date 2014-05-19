@@ -109,7 +109,9 @@
     <Content Include="Views\Alquiler\CrearAlquiler.aspx" />
     <Content Include="Views\Auto\BuscarAutoAlquilar.aspx" />
     <Content Include="Views\Auto\ResultadoBusquedaAuto.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
