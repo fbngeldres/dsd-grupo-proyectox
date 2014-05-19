@@ -7,12 +7,12 @@
     <id name="Codigo" column="codigo">
       <generator class="increment" />
     </id>
-    <property name="Categoria" column="categoria" />
     <property name="Marca" column="marca" />
     <property name="Modelo" column="modelo" />
     <property name="Precio" column="precio" />
     <property name="Tipo" column="tipo" />
     <property name="Estado" column="estado" />
     <property name="Placa" column="placa" />
+    <property name="Imagen" column="imagen" />
   </class>
 </hibernate-mapping>

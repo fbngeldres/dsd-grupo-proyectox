@@ -11,5 +11,11 @@
     <property name="CostoAdicional" column="costo_adicional" />
     <property name="Igv" column="igv" />
     <property name="MontoTotal" column="monto_total" />
+    <many-to-one name="Auto" column="codigo_auto" />
+    <many-to-one name="Usuario" column="codigo_usuario" />
+    <property name="FechaInicio" column="fecha_inicio" />
+    <property name="FechaFin" column="fecha_fin" />
+    <property name="CantidadDias" column="cant_dias" />
+    <property name="Accesorios" column="accesorios" />
   </class>
 </hibernate-mapping>

@@ -19,6 +19,17 @@ namespace SanJacintoServices.Dominio
         public decimal Igv { get; set; }
         [DataMember]
         public decimal MontoTotal { get; set; }
-
+        [DataMember]
+        public Auto Auto { get; set; }
+        [DataMember]
+        public Usuario Usuario { get; set; }
+        [DataMember]
+        public DateTime FechaInicio { get; set; }
+        [DataMember]
+        public DateTime FechaFin { get; set; }
+        [DataMember]
+        public int CantidadDias { get; set; }
+        [DataMember]
+        public string Accesorios { get; set; }
     }
 }

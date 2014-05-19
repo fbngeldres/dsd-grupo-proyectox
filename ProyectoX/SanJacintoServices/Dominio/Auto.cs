@@ -12,8 +12,6 @@ namespace SanJacintoServices.Dominio
         [DataMember]
         public int Codigo { get; set; }
         [DataMember]
-        public string Categoria { get; set; }
-        [DataMember]
         public string Marca { get; set; }
         [DataMember]
         public string Modelo { get; set; }
@@ -25,5 +23,7 @@ namespace SanJacintoServices.Dominio
         public int Estado { get; set; }
         [DataMember]
         public string Placa { get; set; }
+        [DataMember]
+        public string Imagen { get; set; }
     }
 }
