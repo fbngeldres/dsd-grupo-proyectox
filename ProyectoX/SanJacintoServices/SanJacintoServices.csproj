@@ -58,6 +58,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AlquilerService.svc" />
     <Content Include="Dominio\Auto.hbm.xml" />
     <Content Include="Dominio\Alquiler.hbm.xml" />
     <Content Include="Dominio\Generico.hbm.xml" />
@@ -73,11 +74,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlquilerService.svc.cs">
+      <DependentUpon>AlquilerService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Dominio\Auto.cs" />
     <Compile Include="Dominio\Alquiler.cs" />
     <Compile Include="Dominio\Generico.cs" />
     <Compile Include="Dominio\Devolucion.cs" />
     <Compile Include="Dominio\Usuario.cs" />
+    <Compile Include="IAlquilerService.cs" />
     <Compile Include="IUsuarioService.cs" />
     <Compile Include="Persistencia\AutoDAO.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
