@@ -34,8 +34,9 @@
 						<li class="active">
 							<a href="#">Home</a>
 						</li>
+                            
 						<li>
-							<a href="buscar.html">Reserva</a>
+							<%: Html.ActionLink("Alquilar", "BuscarAutoAlquilar", "Auto")%>
 						</li>
 						<li>
 							<a href="#">Contactenos</a>
