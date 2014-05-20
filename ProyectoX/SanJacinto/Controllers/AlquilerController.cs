@@ -56,8 +56,11 @@ namespace SanJacinto.Controllers
             List<AlquilerModel> listaAlquilerModel = new List<AlquilerModel>();
             foreach (var item in listaAlquileres)
             {
+                AutoModel auto = new AutoModel();
+                auto.Marca = "Audi R8";
+
                 alquilerModel = new AlquilerModel();
-                alquilerModel.Auto.Marca = retornarMarca(item.Auto.Marca);
+                alquilerModel.Auto = auto;
                 alquilerModel.Costo = item.Costo;
                 alquilerModel.CostoAdicional = item.CostoAdicional;
                 alquilerModel.Accesorios = item.Accesorios;
