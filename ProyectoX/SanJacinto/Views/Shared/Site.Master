@@ -56,8 +56,8 @@
 					    <li>
 							<a id="modal-469447" href="#modal-container-469447" data-toggle="modal">Iniciar Sesion</a>
 						</li>
-                        <!--
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Account
+                        
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Mi cuenta
                             <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -67,7 +67,7 @@
                                                 <img src="http://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/twDq00QDud4/s120-c/photo.jpg"
                                                     alt="Alternate Text" class="img-responsive" />
                                                 <p class="text-center small">
-                                                    <a href="#">Change Photo</a></p>
+                                                    <a href="#">Cambiar Foto</a></p>
                                             </div>
                                             <div class="col-md-7">
                                                 <span>Bhaumik Patel</span>
@@ -75,7 +75,7 @@
                                                     mail@gmail.com</p>
                                                 <div class="divider">
                                                 </div>
-                                                <a href="#" class="btn btn-primary btn-sm active">View Profile</a>
+                                                <a href="#" class="btn btn-primary btn-sm active">Editar Perfil</a>
                                             </div>
                                         </div>
                                     </div>
@@ -94,7 +94,7 @@
                                 </li>
                             </ul>
                         </li>
-                        -->
+                       
                      </ul>
 				</div>
 			</nav>
@@ -140,12 +140,13 @@
                     <div class="row">
                         <div class="col-xs-6 col-md-6">
                             <div class="left-section">
-                                <!-- <a href="#">Forgot your password?</a> <a href="#">Sign up now</a>-->
+                                <%: Html.ActionLink("Registrese Ahora!", "RegistarUsuario", "Usuario")%>
                             </div>
                         </div>
                         <div class="col-xs-6 col-md-6 pull-right">
                             <button type="submit" class="btn btn-large btn-danger pull-right">
-                                Login</button>
+                                Iniciar sesión
+                            </button>
                         </div>
                     </div>
                 </div>
