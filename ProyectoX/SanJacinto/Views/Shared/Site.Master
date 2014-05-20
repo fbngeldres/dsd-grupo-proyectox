@@ -42,6 +42,10 @@
 						<li>
 							<a href="#">Contactenos</a>
 						</li>
+
+                        <li>
+                            <%: Html.ActionLink("Auto", "MantenimientoAuto", "Auto")%>
+                        </li>
 					</ul>
                         <!-- 
 						<div class="form-group">

@@ -109,6 +109,8 @@
     <Content Include="js\scripts.js" />
     <Content Include="Views\Alquiler\CrearAlquiler.aspx" />
     <Content Include="Views\Auto\BuscarAutoAlquilar.aspx" />
+    <Content Include="Views\Auto\MantenimientoAuto.aspx" />
+    <Content Include="Views\Auto\RegistrarAuto.aspx" />
     <Content Include="Views\Auto\ResultadoBusquedaAuto.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

@@ -15,6 +15,15 @@ namespace SanJacinto.Controllers
         public ActionResult ResultadoBusquedaAuto() {
             return View();
         }
-        
+
+        public ActionResult RegistrarAuto()
+        {
+            return View();
+        }
+
+        public ActionResult MantenimientoAuto()
+        {
+            return View();
+        }
     }
 }
