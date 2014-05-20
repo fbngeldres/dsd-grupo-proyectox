@@ -101,6 +101,12 @@
     <Content Include="css\style.css" />
     <Content Include="DBScript\DB_SanJacinto.sql" />
     <Content Include="Global.asax" />
+    <Content Include="html\buscar.html" />
+    <Content Include="html\formaPago.html" />
+    <Content Include="html\index.html" />
+    <Content Include="html\mantenimientoAutomovil.html" />
+    <Content Include="html\registrarUsuario.html" />
+    <Content Include="html\seleccionar.html" />
     <Content Include="images\grad-box-bot-active.gif" />
     <Content Include="images\grad-box-bot.gif" />
     <Content Include="images\listing-bg.gif" />
