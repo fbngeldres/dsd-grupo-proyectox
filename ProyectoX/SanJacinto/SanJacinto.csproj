@@ -129,7 +129,6 @@
     <Content Include="Views\Alquiler\RegistrarAlquiler.aspx" />
     <Content Include="Views\Auto\BuscarAutoAlquilar.aspx" />
     <Content Include="Views\Auto\MantenimientoAuto.aspx" />
-    <Content Include="Views\Usuario\RegistarUsuario.aspx" />
     <Content Include="Views\Auto\RegistrarAuto.aspx" />
     <Content Include="Views\Auto\ResultadoBusquedaAuto.aspx" />
     <Content Include="Web.config">
@@ -166,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="fonts\glyphicons-halflings-regular.eot" />
