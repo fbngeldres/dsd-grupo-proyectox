@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>San Jacinto S.A.C / Reserva</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+	<!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+	<!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+	<!--script src="js/less-1.3.3.min.js"></script-->
+	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="img/favicon.png">
+  
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+
+</head>
+
+<body>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+				<div class="navbar-header">
+					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">San Jacinto</a>
+				</div>
+				
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li >
+							<a href="index.html">Home</a>
+						</li>
+						<li class="active">
+							<a href="buscar.html">Reserva</a>
+						</li>
+						<li>
+							<a href="#">Contactenos</a>
+						</li>
+				
+					</ul>
+					<form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control">
+						</div> <button type="search" class="btn btn-default ">  <span class="glyphicon glyphicon-search"></span> Buscar</button>
+						
+						
+					</form>
+					
+					<ul class="nav navbar-nav navbar-right">
+					<li>
+							<a id="modal-469447" href="#modal-container-469447" data-toggle="modal">Iniciar Sesion</a>
+							
+							
+						</li>
+                                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Account
+                                        <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="navbar-content">
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <img src="http://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/twDq00QDud4/s120-c/photo.jpg"
+                                                                alt="Alternate Text" class="img-responsive" />
+                                                            <p class="text-center small">
+                                                                <a href="#">Change Photo</a></p>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <span>Bhaumik Patel</span>
+                                                            <p class="text-muted small">
+                                                                mail@gmail.com</p>
+                                                            <div class="divider">
+                                                            </div>
+                                                            <a href="#" class="btn btn-primary btn-sm active">View Profile</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="navbar-footer">
+                                                    <div class="navbar-footer-content">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <a href="#" class="btn btn-default btn-sm">Change Passowrd</a>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <a href="http://www.jquery2dotnet.com" class="btn btn-default btn-sm pull-right">Sign Out</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+				</div>
+				
+			</nav>
+			<br/><br/><br/><br/>
+	
+			
+				<div class="stepwizard">
+				<div class="stepwizard-row">
+					<div class="stepwizard-step">
+						<button type="button" class="btn btn-default btn-circle" disabled="disabled">1</button>
+						<p>Busqueda</p>
+					</div>
+					<div class="stepwizard-step">
+						<button type="button" class="btn btn-default btn-circle" disabled="disabled">2</button>
+						<p>Seleccionar</p>
+					</div>
+					<div class="stepwizard-step">
+						<button type="button" class="btn btn-primary btn-circle" >3</button>
+						<p>Forma de Pago</p>
+					</div> 
+				</div>
+			</div>
+			
+			<br/>
+			<br/>
+	
+<div class="panel panel-default">
+  <div class="panel-body">
+<!---PAGO-->
+
+						  <form class="form-horizontal" role="form">
+							<fieldset>
+							  <legend>Pago</legend>
+							  <div class="form-group">
+								<label class="col-sm-3 control-label" for="card-holder-name">Name on Card</label>
+								<div class="col-sm-9">
+								  <input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder's Name">
+								</div>
+							  </div>
+							  <div class="form-group">
+								<label class="col-sm-3 control-label" for="card-number">Card Number</label>
+								<div class="col-sm-9">
+								  <input type="text" class="form-control" name="card-number" id="card-number" placeholder="Debit/Credit Card Number">
+								</div>
+							  </div>
+							  <div class="form-group">
+								<label class="col-sm-3 control-label" for="expiry-month">Expiration Date</label>
+								<div class="col-sm-9">
+								  <div class="row">
+									<div class="col-xs-3">
+									  <select class="form-control col-sm-2" name="expiry-month" id="expiry-month">
+										<option>Mes</option>
+										<option value="01">Jan (01)</option>
+										<option value="02">Feb (02)</option>
+										<option value="03">Mar (03)</option>
+										<option value="04">Apr (04)</option>
+										<option value="05">May (05)</option>
+										<option value="06">June (06)</option>
+										<option value="07">July (07)</option>
+										<option value="08">Aug (08)</option>
+										<option value="09">Sep (09)</option>
+										<option value="10">Oct (10)</option>
+										<option value="11">Nov (11)</option>
+										<option value="12">Dec (12)</option>
+									  </select>
+									</div>
+									<div class="col-xs-3">
+									  <select class="form-control" name="expiry-year">
+										<option value="13">2013</option>
+										<option value="14">2014</option>
+										<option value="15">2015</option>
+										<option value="16">2016</option>
+										<option value="17">2017</option>
+										<option value="18">2018</option>
+										<option value="19">2019</option>
+										<option value="20">2020</option>
+										<option value="21">2021</option>
+										<option value="22">2022</option>
+										<option value="23">2023</option>
+									  </select>
+									</div>
+								  </div>
+								</div>
+							  </div>
+							  <div class="form-group">
+								<label class="col-sm-3 control-label" for="cvv">Card CVV</label>
+								<div class="col-sm-3">
+								  <input type="text" class="form-control" name="cvv" id="cvv" placeholder="Security Code">
+								</div>
+							  </div>
+							
+							</fieldset>
+						  </form>
+
+
+
+
+<!--PAGO FIN-->
+
+<!---dettale-->
+ <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+					 <th> </th>
+                        <th>Auto</th>
+                        <th> D&iacute;as</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center">Total</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+					<td class="col-sm-1 col-md-1">               </td>
+                        <td class="col-sm-8 col-md-6">
+                        <div class="media">
+                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+                            <div class="media-body">
+                                <h4 class="media-heading"><a href="#">Audi R8</a></h4>
+                             
+                                <span>Status: </span><span class="text-success"><strong>en cochera</strong></span>
+                            </div>
+                        </div></td>
+                        <td class="col-sm-1 col-md-1" style="text-align: center">
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="7">
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>$100</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>$700</strong></td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td><h5>Subtotal</h5></td>
+                        <td class="text-right"><h5><strong>$700</strong></h5></td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td><h5>IGV (18%)</h5></td>
+                        <td class="text-right"><h5><strong>$126</strong></h5></td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td><h3>Total</h3></td>
+                        <td class="text-right"><h3><strong>$826</strong></h3></td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>
+                     <!--   <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                        </button>-->
+						</td>
+                        <td>
+                        <button type="button" class="btn btn-success">
+                            Checkout <span class="glyphicon glyphicon-play"></span>
+                        </button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<!--fin detalle-->
+  </div>
+</div>	
+
+
+			
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="modal-container-469447" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+								<form class="form-signin mg-btm">
+								<h3 class="heading-desc">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								Login to Bootsnipp</h3>
+										<div class="social-box">
+											<div class="row mg-btm">
+											 <div class="col-md-12">
+												<a href="#" class="btn btn-primary btn-block">
+												  <i class="icon-facebook"></i>    Login with Facebook
+												</a>
+											</div>
+											</div>
+											<div class="row">
+											<div class="col-md-12">
+												<a href="#" class="btn btn-info btn-block" >
+												  <i class="icon-twitter"></i>    Login with Twitter
+												</a>
+											</div>
+										  </div>
+										</div>
+										<div class="main">	
+								
+										<input type="text" class="form-control" placeholder="Email" autofocus>
+										<input type="password" class="form-control" placeholder="Password">
+								 
+							   
+										<span class="clearfix"></span>	
+										</div>
+										<div class="login-footer">
+											<div class="row">
+															<div class="col-xs-6 col-md-6">
+																<div class="left-section">
+																
+																	<a href="registrarUsuario.html">Registrese Ahora!</a>
+																</div>
+															</div>
+															<div class="col-xs-6 col-md-6 pull-right">
+																<button type="submit" class="btn btn-large btn-danger pull-right">Login</button>
+															</div>
+												</div>
+								
+										</div>
+							  </form>
+							
+						</div>
+				
+			</div>
+</body>
+</html>
