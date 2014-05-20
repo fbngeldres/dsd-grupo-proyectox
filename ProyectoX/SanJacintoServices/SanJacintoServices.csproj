@@ -66,6 +66,9 @@
     <EmbeddedResource Include="Dominio\Generico.hbm.xml" />
     <EmbeddedResource Include="Dominio\Devolucion.hbm.xml" />
     <EmbeddedResource Include="Dominio\Usuario.hbm.xml" />
+    <Content Include="AutoService.svc" />
+    <EmbeddedResource Include="Dominio\Marca.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Modelo.hbm.xml" />
     <Content Include="UsuarioService.svc" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -79,18 +82,26 @@
     <Compile Include="AlquilerService.svc.cs">
       <DependentUpon>AlquilerService.svc</DependentUpon>
     </Compile>
+    <Compile Include="AutoService.svc.cs">
+      <DependentUpon>AutoService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Dominio\Auto.cs" />
     <Compile Include="Dominio\Alquiler.cs" />
     <Compile Include="Dominio\Generico.cs" />
     <Compile Include="Dominio\Devolucion.cs" />
+    <Compile Include="Dominio\Marca.cs" />
+    <Compile Include="Dominio\Modelo.cs" />
     <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="Dominio\ValidationException.cs" />
     <Compile Include="IAlquilerService.cs" />
+    <Compile Include="IAutoService.cs" />
     <Compile Include="IUsuarioService.cs" />
     <Compile Include="Persistencia\AlquilerDAO.cs" />
     <Compile Include="Persistencia\AutoDAO.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
+    <Compile Include="Persistencia\MarcaDAO.cs" />
+    <Compile Include="Persistencia\ModeloDAO.cs" />
     <Compile Include="Persistencia\UsuarioDAO.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
