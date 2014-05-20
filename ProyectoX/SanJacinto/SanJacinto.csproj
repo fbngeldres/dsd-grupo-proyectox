@@ -131,6 +131,7 @@
     <Content Include="Views\Auto\MantenimientoAuto.aspx" />
     <Content Include="Views\Auto\RegistrarAuto.aspx" />
     <Content Include="Views\Auto\ResultadoBusquedaAuto.aspx" />
+    <Content Include="Views\Usuario\RegistarUsuario.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
