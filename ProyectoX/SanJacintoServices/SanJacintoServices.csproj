@@ -60,7 +60,9 @@
   <ItemGroup>
     <Content Include="AlquilerService.svc" />
     <EmbeddedResource Include="Dominio\Auto.hbm.xml" />
-    <EmbeddedResource Include="Dominio\Alquiler.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Alquiler.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dominio\Generico.hbm.xml" />
     <EmbeddedResource Include="Dominio\Devolucion.hbm.xml" />
     <EmbeddedResource Include="Dominio\Usuario.hbm.xml" />

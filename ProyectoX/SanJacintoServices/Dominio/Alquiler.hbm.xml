@@ -3,7 +3,7 @@
                    assembly="SanJacintoServices"
                    namespace="SanJacintoServices.Dominio"
                    default-lazy="false">
-  <class name="Alquiler" table="tb_alquier">
+  <class name="Alquiler" table="tb_alquiler">
     <id name="Codigo" column="codigo">
       <generator class="increment" />
     </id>

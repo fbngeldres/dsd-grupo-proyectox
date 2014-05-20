@@ -86,6 +86,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\datepicker.css" />
     <Content Include="css\style.css" />
+    <Content Include="DBScript\DB_SanJacinto.sql" />
     <Content Include="Global.asax" />
     <Content Include="images\grad-box-bot-active.gif" />
     <Content Include="images\grad-box-bot.gif" />
