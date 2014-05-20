@@ -12,15 +12,15 @@ namespace SanJacintoServices.Dominio
         [DataMember]
         public int Codigo { get; set; }
         [DataMember]
-        public string Marca { get; set; }
+        public Marca Marca { get; set; }
         [DataMember]
-        public string Modelo { get; set; }
+        public Modelo Modelo { get; set; }
         [DataMember]
         public decimal Precio { get; set; }
         [DataMember]
-        public int Tipo { get; set; }
+        public int Categoria { get; set; }
         [DataMember]
-        public int Estado { get; set; }
+        public Estado Estado { get; set; }
         [DataMember]
         public string Placa { get; set; }
         [DataMember]

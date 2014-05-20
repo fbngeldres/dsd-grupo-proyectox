@@ -49,12 +49,22 @@ namespace SanJacintoServices
         {
             
            try {
+               /*
+               Auto autoAlquilar = new Auto
+               {
+                   Codigo = intCodigoAuto
+               };
+               Usuario usuarioAlquilar = new Usuario {
+                   Codigo = intCodigoUsuario
+               };
+               */
+                /*
                 autoDAO = new AutoDAO();
                 usuarioDAO = new UsuarioDAO();
                 alquilerDAO = new AlquilerDAO();
-
-                Auto objAutoObtenido = autoDAO.Obtener(intCodigoAuto);
-                Usuario objUsuarioObtenido = usuarioDAO.Obtener(intCodigoUsuario);
+                */
+                Auto objAutoObtenido = AutoDAO.Obtener(intCodigoAuto);
+                Usuario objUsuarioObtenido = UsuarioDAO.Obtener(intCodigoUsuario);
 
                 //DateTime myDate = DateTime.ParseExact("2009-05-08 14:40:52", "yyyy-MM-dd HH:mm:ss",
                   //                     System.Globalization.CultureInfo.InvariantCulture);
@@ -70,7 +80,7 @@ namespace SanJacintoServices
                     Accesorios = objAlquiler.Accesorios
                 };
 
-                return alquilerDAO.Crear(alquilerCreado);
+                return AlquilerDAO.Crear(alquilerCreado);
             }
             catch (Exception)
             {
@@ -82,13 +92,13 @@ namespace SanJacintoServices
 
         public Alquiler obtenerAlquiler(int intCodigoAlquiler)
         {
-            return alquilerDAO.Obtener(intCodigoAlquiler);
+            return AlquilerDAO.Obtener(intCodigoAlquiler);
         }
 
         public List<Alquiler> listaAlquileres()
         {
-            alquilerDAO = new AlquilerDAO();
-            return alquilerDAO.ListarTodos().ToList();
+            /*alquilerDAO = new AlquilerDAO();*/
+            return AlquilerDAO.ListarTodos().ToList();
         }
     }
 }
