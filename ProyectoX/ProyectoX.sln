@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SanJacinto", "SanJacinto\SanJacinto.csproj", "{EA940B34-B4DE-4720-B200-6E5D386971A0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{26F375B1-7B7C-4A36-8F77-2E1793912679} = {26F375B1-7B7C-4A36-8F77-2E1793912679}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SanJacintoServices", "SanJacintoServices\SanJacintoServices.csproj", "{26F375B1-7B7C-4A36-8F77-2E1793912679}"
 EndProject

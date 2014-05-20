@@ -56,13 +56,16 @@ namespace SanJacintoServices
                 Auto objAutoObtenido = autoDAO.Obtener(intCodigoAuto);
                 Usuario objUsuarioObtenido = usuarioDAO.Obtener(intCodigoUsuario);
 
+                //DateTime myDate = DateTime.ParseExact("2009-05-08 14:40:52", "yyyy-MM-dd HH:mm:ss",
+                  //                     System.Globalization.CultureInfo.InvariantCulture);
                 Alquiler alquilerCreado = new Alquiler()
                 {
                     Costo = objAlquiler.Costo,
                     CostoAdicional = objAlquiler.CostoAdicional,
                     Auto = objAutoObtenido,
                     Usuario = objUsuarioObtenido,
-                    FechaInicio = new DateTime(),
+                    FechaInicio = DateTime.Now,
+                    FechaFin = DateTime.Now,
                     CantidadDias = objAlquiler.CantidadDias,
                     Accesorios = objAlquiler.Accesorios
                 };
@@ -75,7 +78,6 @@ namespace SanJacintoServices
                 { ValidationError = "Error en el servicio, no se pudo registrar su alquiler" }, 
                 new FaultReason("Validation Failed"));
             }
-
         }
 
         public Alquiler obtenerAlquiler(int intCodigoAlquiler)

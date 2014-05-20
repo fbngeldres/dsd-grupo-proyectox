@@ -186,7 +186,7 @@
                             </td>
                             <td>
                                 <button type="button" class="btn btn-success">
-                                    Checkout <span class="glyphicon glyphicon-play"></span>
+                                    <%: Html.ActionLink("Alquilar", "RegistrarAlquiler", "Alquiler", new { @class = "glyphicon glyphicon-play" })%>
                                 </button>
                             </td>
                         </tr>
