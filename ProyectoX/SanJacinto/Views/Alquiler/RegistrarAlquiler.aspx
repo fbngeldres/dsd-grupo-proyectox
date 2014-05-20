@@ -25,5 +25,10 @@
             </tr>
         </table>
     </fieldset>
+    <div class="col-sm-offset-2 col-sm-10">
+        <div class="pull-left">
+            <%: Html.ActionLink("Regresar", "BuscarAutoAlquilar", "Auto", new object { } , new { @class = "btn btn-primary" })%>
+        </div>
+    </div>
 </asp:Content>
 

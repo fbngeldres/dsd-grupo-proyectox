@@ -46,5 +46,36 @@ namespace SanJacinto.Controllers
 
             return View(alquilerModel);
         }
+
+        public ActionResult ListarAlquileres()
+        {
+            wsAlquiler.AlquilerServiceClient miAlquiler = new wsAlquiler.AlquilerServiceClient();
+            List<wsAlquiler.Alquiler> listaAlquileres = miAlquiler.listaAlquileres().ToList();
+
+            AlquilerModel alquilerModel;
+            List<AlquilerModel> listaAlquilerModel = new List<AlquilerModel>();
+            foreach (var item in listaAlquileres)
+            {
+                alquilerModel = new AlquilerModel();
+                alquilerModel.Auto.Marca = retornarMarca(item.Auto.Marca);
+                alquilerModel.Costo = item.Costo;
+                alquilerModel.CostoAdicional = item.CostoAdicional;
+                alquilerModel.Accesorios = item.Accesorios;
+                alquilerModel.CantidadDias = item.CantidadDias;
+                alquilerModel.FechaInicio = item.FechaInicio;
+                listaAlquilerModel.Add(alquilerModel);
+            }
+
+            return View(listaAlquilerModel);
+        }
+
+        private string retornarMarca(string p)
+        {
+            if(p.Equals("1")){
+                return "Audi R8";
+            } else {
+                return "Kia Rio";
+            }
+        }
     }
 }

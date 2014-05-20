@@ -46,6 +46,10 @@
                         <li>
                             <%: Html.ActionLink("Auto", "MantenimientoAuto", "Auto")%>
                         </li>
+
+                        <li>
+                            <%: Html.ActionLink("Mis Alquileres", "ListarAlquileres", "Alquiler")%>
+                        </li>
 					</ul>
                         <!-- 
 						<div class="form-group">

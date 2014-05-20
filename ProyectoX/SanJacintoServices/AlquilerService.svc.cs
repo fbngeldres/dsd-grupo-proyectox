@@ -87,6 +87,7 @@ namespace SanJacintoServices
 
         public List<Alquiler> listaAlquileres()
         {
+            alquilerDAO = new AlquilerDAO();
             return alquilerDAO.ListarTodos().ToList();
         }
     }
