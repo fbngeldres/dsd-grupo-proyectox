@@ -17,5 +17,8 @@ namespace SanJacintoServices
 
         [OperationContract]
         List<Modelo> listarModelos();
+
+        [OperationContract]
+        List<Auto> listarResultadoAutos(int marca, int modelo, decimal precioMin, decimal precioMax, int categoria);
     }
 }

@@ -55,5 +55,12 @@ namespace SanJacintoServices
         {
             return ModeloDAO.ListarTodos().ToList();
         }
+
+
+        public List<Auto> listarResultadoAutos(int marca, int modelo, decimal precioMin, decimal precioMax, int categoria)
+        {
+
+            return new List<Auto>();
+        }
     }
 }
