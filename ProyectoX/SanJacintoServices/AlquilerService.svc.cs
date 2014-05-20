@@ -48,7 +48,7 @@ namespace SanJacintoServices
         public Alquiler registrarAlquiler(Alquiler objAlquiler, int intCodigoAuto, int intCodigoUsuario)
         {
             
-            {
+           try {
                 autoDAO = new AutoDAO();
                 usuarioDAO = new UsuarioDAO();
                 alquilerDAO = new AlquilerDAO();
