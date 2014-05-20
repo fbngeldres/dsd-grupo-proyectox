@@ -5,9 +5,37 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="stepwizard">
+        <div class="stepwizard-row">
+            <div class="stepwizard-step">
+                <button type="button" class="btn btn-default btn-circle" disabled="disabled">
+                    1</button>
+                <p>
+                    Busqueda</p>
+            </div>
+            <div class="stepwizard-step">
+                <button type="button" class="btn btn-default btn-circle" disabled="disabled">
+                    2</button>
+                <p>
+                    Seleccionar</p>
+            </div>
+            <div class="stepwizard-step">
+                <button type="button" class="btn btn-primary btn-circle">
+                    3</button>
+                <p>
+                    Forma de Pago</p>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
     <div class="panel-body">
         <!---PAGO-->
-        <form class="form-horizontal" role="form">
+        <div class="form-horizontal" role="form">
         <fieldset>
             <legend>Pago</legend>
             <div class="form-group">
@@ -15,7 +43,7 @@
                     Name on Card</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" name="card-holder-name" id="card-holder-name"
-                        placeholder="Card Holder's Name">
+                        placeholder="Card Holder's Name"/>
                 </div>
             </div>
             <div class="form-group">
@@ -73,7 +101,7 @@
                 </div>
             </div>
         </fieldset>
-        </form>
+        </div>
         <!--PAGO FIN-->
         <!---dettale-->
         <div class="row">

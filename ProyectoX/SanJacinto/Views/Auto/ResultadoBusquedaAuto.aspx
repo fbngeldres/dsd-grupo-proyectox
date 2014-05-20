@@ -5,6 +5,33 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <br />
+    <br />
+    <br />
+    <div class="stepwizard">
+        <div class="stepwizard-row">
+            <div class="stepwizard-step">
+                <button type="button" class="btn btn-default btn-circle" disabled="disabled">
+                    1</button>
+                <p>
+                    Busqueda</p>
+            </div>
+            <div class="stepwizard-step">
+                <button type="button" class="btn btn-primary btn-circle">
+                    2</button>
+                <p>
+                    Seleccionar</p>
+            </div>
+            <div class="stepwizard-step">
+                <button type="button" class="btn btn-default btn-circle" disabled="disabled">
+                    3</button>
+                <p>
+                    Forma de Pago</p>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="col-md-12 column">
