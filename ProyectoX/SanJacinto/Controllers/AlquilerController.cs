@@ -11,16 +11,23 @@ namespace SanJacinto.Controllers
     {
         public ActionResult CrearAlquiler() 
         {
-            return View();
+            AlquilerModel nuevoAlquiler = new AlquilerModel();
+
+            AutoModel autoModel = new AutoModel();
+            autoModel.Precio = 230;
+
+            nuevoAlquiler.Auto = autoModel;
+
+            return View(nuevoAlquiler);
         }
 
-        public ActionResult RegistrarAlquiler(AlquilerModel alquiler)
+        public ActionResult RegistrarAlquiler(AlquilerModel aq)
         {
             wsAlquiler.AlquilerServiceClient miAlquiler = new wsAlquiler.AlquilerServiceClient();
             wsAlquiler.Alquiler objAlquiler = new wsAlquiler.Alquiler();
             objAlquiler.Costo = 1000;
             objAlquiler.CostoAdicional = 100;
-            objAlquiler.CantidadDias = 7;
+            objAlquiler.CantidadDias = aq.CantidadDias;
             objAlquiler.Accesorios = "Silla de Bebe";
 
             objAlquiler = miAlquiler.registrarAlquiler(objAlquiler, 1, 1);
@@ -72,6 +79,12 @@ namespace SanJacinto.Controllers
             return View(listaAlquilerModel);
         }
 
+        public ActionResult CrearAlquiler234()
+        {
+            
+            return View();
+        }
+
         private string retornarMarca(string p)
         {
             if(p.Equals("1")){
@@ -80,5 +93,11 @@ namespace SanJacinto.Controllers
                 return "Kia Rio";
             }
         }
+    }
+    
+    public class ParametrosProyecto : MasterParameters
+    {
+        public String id { get; set; }
+        public int txtDias { get; set; }
     }
 }

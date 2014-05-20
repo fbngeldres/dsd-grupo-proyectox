@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    
     <h2>Se registro el alquiler correctamente</h2>
 
     <fieldset>

@@ -1,10 +1,47 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<SanJacinto.Models.AlquilerModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	CrearAlquiler
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript">
+        function onBlurDias() {
+            var dias = document.getElementById("txtDias").value;
+            var precio = document.getElementById("strPrecio").innerHTML + "";
+
+            var montoTotal = 0;
+            limpiaMontos();
+            if (precio.length != 0 && precio != '') {
+                montoTotal = parseInt(dias) * parseInt(precio);
+
+                document.getElementById("strMontoTotal").innerHTML = montoTotal + "";
+                document.getElementById("strSubTotal").innerHTML = montoTotal + "";
+
+                var igv = 0.18 * montoTotal;
+                document.getElementById("strIGV").innerHTML = igv + "";
+
+                document.getElementById("strTotal").innerHTML = (montoTotal + igv) + "";
+            }
+        }
+
+        function limpiaMontos(){
+            document.getElementById("strMontoTotal").innerHTML = 0 + "";
+            document.getElementById("strSubTotal").innerHTML = 0 + "";
+            document.getElementById("strIGV").innerHTML = 0 + "";
+            document.getElementById("strTotal").innerHTML = 0 + "";
+        }
+
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+
+            return true;
+        }
+
+
+    </script>    
     <br />
     <br />
     <br />
@@ -15,7 +52,7 @@
                 <button type="button" class="btn btn-default btn-circle" disabled="disabled">
                     1</button>
                 <p>
-                    Busqueda</p>
+                    Búsqueda</p>
             </div>
             <div class="stepwizard-step">
                 <button type="button" class="btn btn-default btn-circle" disabled="disabled">
@@ -40,43 +77,43 @@
             <legend>Pago</legend>
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="card-holder-name">
-                    Name on Card</label>
+                    Nombre del Titular de la tarjeta</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="card-holder-name" id="card-holder-name"
-                        placeholder="Card Holder's Name"/>
+                    <input type="text" class="form-control" name="card-holder-name" id="txtTitular"
+                        placeholder="Titular de la tarjeta"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="card-number">
-                    Card Number</label>
+                    Número de tarjeta</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="card-number" id="card-number" placeholder="Debit/Credit Card Number"/>
+                    <input type="text" class="form-control" name="card-number" id="txtNumeroTarjeta" placeholder="Número de tarjeta"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="expiry-month">
-                    Expiration Date</label>
+                    Fecha de expiraci&oacute;n</label>
                 <div class="col-sm-9">
                     <div class="row">
                         <div class="col-xs-3">
-                            <select class="form-control col-sm-2" name="expiry-month" id="expiry-month">
+                            <select class="form-control col-sm-2" name="expiry-month" id="cboFechaExpiracion">
                                 <option>Mes</option>
-                                <option value="01">Jan (01)</option>
+                                <option value="01">Ene (01)</option>
                                 <option value="02">Feb (02)</option>
                                 <option value="03">Mar (03)</option>
-                                <option value="04">Apr (04)</option>
+                                <option value="04">Abr (04)</option>
                                 <option value="05">May (05)</option>
-                                <option value="06">June (06)</option>
-                                <option value="07">July (07)</option>
-                                <option value="08">Aug (08)</option>
+                                <option value="06">Jun (06)</option>
+                                <option value="07">Jul (07)</option>
+                                <option value="08">Ago (08)</option>
                                 <option value="09">Sep (09)</option>
                                 <option value="10">Oct (10)</option>
                                 <option value="11">Nov (11)</option>
-                                <option value="12">Dec (12)</option>
+                                <option value="12">Dic (12)</option>
                             </select>
                         </div>
                         <div class="col-xs-3">
-                            <select class="form-control" name="expiry-year">
+                            <select class="form-control" name="expiry-year" id="cboAnio">
                                 <option value="13">2013</option>
                                 <option value="14">2014</option>
                                 <option value="15">2015</option>
@@ -95,9 +132,9 @@
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="cvv">
-                    Card CVV</label>
+                    Código de Seguridad</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control" name="cvv" id="cvv" placeholder="Security Code"/>
+                    <input type="text" class="form-control" name="cvv" id="txtCodigoSeguridad" placeholder="Código de seguridad"/>
                 </div>
             </div>
         </fieldset>
@@ -118,10 +155,10 @@
                                 D&iacute;as
                             </th>
                             <th class="text-center">
-                                Price
+                                Precio
                             </th>
                             <th class="text-center">
-                                Total
+                                Monto Total
                             </th>
                         </tr>
                     </thead>
@@ -138,18 +175,18 @@
                                     <div class="media-body">
                                         <h4 class="media-heading">
                                             <a href="#">Audi R8</a></h4>
-                                        <span>Status: </span><span class="text-success"><strong>en cochera</strong></span>
+                                        <span>Estado: </span><span class="text-success"><strong>En cochera</strong></span>
                                     </div>
                                 </div>
                             </td>
                             <td class="col-sm-1 col-md-1" style="text-align: center">
-                                <input type="email" class="form-control" id="exampleInputEmail1" value="7">
+                                <input type="email" class="form-control" id="txtDias" onkeypress="return isNumberKey(event)" value="0" onblur="onBlurDias();">
                             </td>
                             <td class="col-sm-1 col-md-1 text-center">
-                                <strong>$100</strong>
+                                <strong>$</strong><strong id="strPrecio"><%: Model.Auto.Precio %></strong>
                             </td>
                             <td class="col-sm-1 col-md-1 text-center">
-                                <strong>$700</strong>
+                                <strong>$</strong><strong id="strMontoTotal"></strong>
                             </td>
                         </tr>
                         <tr>
@@ -165,7 +202,7 @@
                             </td>
                             <td class="text-right">
                                 <h5>
-                                    <strong>$700</strong></h5>
+                                    <strong>$</strong><strong id="strSubTotal"></strong></h5>
                             </td>
                         </tr>
                         <tr>
@@ -181,7 +218,7 @@
                             </td>
                             <td class="text-right">
                                 <h5>
-                                    <strong>$126</strong></h5>
+                                    <strong>$</strong><strong id="strIGV"></strong></h5>
                             </td>
                         </tr>
                         <tr>
@@ -197,7 +234,7 @@
                             </td>
                             <td class="text-right">
                                 <h3>
-                                    <strong>$826</strong></h3>
+                                    <strong>$</strong><strong id="strTotal"></strong></h3>
                             </td>
                         </tr>
                         <tr>
@@ -213,8 +250,8 @@
                         </button>-->
                             </td>
                             <td>
-                                <button type="button" class="btn btn-success">
-                                    <%: Html.ActionLink("Alquilar", "RegistrarAlquiler", "Alquiler", new { @class = "glyphicon glyphicon-play" })%>
+                                <button type="button">
+                                    <%: Html.ActionLink("Alquilar", "RegistrarAlquiler", "Alquiler", new object { }, new { @class = "btn btn-primary" })%>
                                 </button>
                             </td>
                         </tr>
