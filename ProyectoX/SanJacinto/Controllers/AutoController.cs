@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SanJacinto.Models;
 
 namespace SanJacinto.Controllers
 {
@@ -13,6 +14,10 @@ namespace SanJacinto.Controllers
         }
 
         public ActionResult ResultadoBusquedaAuto() {
+            //SanJacintoServices
+
+
+            //List<AutoModel> model = 
             return View();
         }
 

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SanJacinto.Models
 {
-    public class MarcaModel
+    public class EstadoModel
     {
         public int Codigo { get; set; }
 

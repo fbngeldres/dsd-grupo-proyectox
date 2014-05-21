@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="Models\AlquilerModel.cs" />
     <Compile Include="Models\AutoModel.cs" />
+    <Compile Include="Models\EstadoModel.cs" />
     <Compile Include="Models\MarcaModel.cs" />
     <Compile Include="Models\MasterParameters.cs" />
     <Compile Include="Models\ModeloModel.cs" />
@@ -139,7 +140,6 @@
     <Content Include="Views\Auto\BuscarAutoAlquilar.aspx" />
     <Content Include="Views\Auto\MantenimientoAuto.aspx" />
     <Content Include="Views\Auto\RegistrarAuto.aspx" />
-    <Content Include="Views\Auto\ResultadoBusquedaAuto.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

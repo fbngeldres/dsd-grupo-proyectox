@@ -9,15 +9,15 @@ namespace SanJacinto.Models
     {
         public int Codigo { get; set; }
 
-        public string Marca { get; set; }
+        public MarcaModel Marca { get; set; }
 
-        public string Modelo { get; set; }
+        public ModeloModel Modelo { get; set; }
  
         public decimal Precio { get; set; }
 
         public int Tipo { get; set; }
 
-        public int Estado { get; set; }
+        public EstadoModel Estado { get; set; }
 
         public string Placa { get; set; }
 
