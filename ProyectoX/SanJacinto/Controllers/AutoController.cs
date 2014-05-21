@@ -14,11 +14,16 @@ namespace SanJacinto.Controllers
         }
 
         public ActionResult ResultadoBusquedaAuto() {
-            //SanJacintoServices
+            wsAutoService.AutoServiceClient proxy = new wsAutoService.AutoServiceClient();
+            List<wsAutoService.Auto> autos = proxy.listarResultadoAutos(0, 0, 0, 0, 0).ToList();
+
+            List<AutoModel> lstAutos = new List<AutoModel>();
+            foreach(wsAutoService.Auto a in autos){
 
 
-            //List<AutoModel> model = 
-            return View();
+                //lstAutos.Add(a);
+            }
+            return View(lstAutos);
         }
 
         public ActionResult RegistrarAuto()

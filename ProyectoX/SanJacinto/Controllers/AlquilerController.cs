@@ -64,7 +64,7 @@ namespace SanJacinto.Controllers
             foreach (var item in listaAlquileres)
             {
                 AutoModel auto = new AutoModel();
-                auto.Marca = "Audi R8";
+                //auto.Marca = "Audi R8";
 
                 alquilerModel = new AlquilerModel();
                 alquilerModel.Auto = auto;

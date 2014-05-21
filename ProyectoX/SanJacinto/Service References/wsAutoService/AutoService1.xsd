@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfMarca">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Marca" nillable="true" type="tns:Marca" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMarca" nillable="true" type="tns:ArrayOfMarca" />
+  <xs:complexType name="Marca">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" type="xs:int" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Marca" nillable="true" type="tns:Marca" />
+  <xs:complexType name="ArrayOfModelo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Modelo" nillable="true" type="tns:Modelo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfModelo" nillable="true" type="tns:ArrayOfModelo" />
+  <xs:complexType name="Modelo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" type="xs:int" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Marca" nillable="true" type="tns:Marca" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Modelo" nillable="true" type="tns:Modelo" />
+  <xs:complexType name="ArrayOfAuto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Auto" nillable="true" type="tns:Auto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAuto" nillable="true" type="tns:ArrayOfAuto" />
+  <xs:complexType name="Auto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Categoria" type="xs:int" />
+      <xs:element minOccurs="0" name="Codigo" type="xs:int" />
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="tns:Estado" />
+      <xs:element minOccurs="0" name="Imagen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Marca" nillable="true" type="tns:Marca" />
+      <xs:element minOccurs="0" name="Modelo" nillable="true" type="tns:Modelo" />
+      <xs:element minOccurs="0" name="Placa" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Auto" nillable="true" type="tns:Auto" />
+  <xs:complexType name="Estado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" type="xs:int" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Estado" nillable="true" type="tns:Estado" />
+</xs:schema>
