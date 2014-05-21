@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<SanJacinto.Models.AutoModel>>" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	ResultadoBusquedaAuto
 </asp:Content>
@@ -35,26 +36,24 @@
         <div class="panel-body">
             <div class="col-md-12 column">
                 <div class="row">
-                    <% for (int i = 1; i < 11; i++)
+                    <% foreach (var item in Model)
                        { %>
                     <div class="col-md-3">
                         <div class="thumbnail">
-                            <img alt="300x200" src="http://lorempixel.com/130/130/transport	" />
+                            <img alt="300x200" src="http://sd.gintelligence.net/imagenesAutos<%: item.Imagen %>" />
                             <div class="caption">
-                                <h4>
-                                    Audi R8 / Deportivo
-                                </h4>
+                                <h4><%: item.Modelo.Descripcion %></h4>
                                 <h5>
                                     Informacion del Vehículo</h5>
                                 <ul>
-                                    <li>Transmicion Manual</li>
-                                    <li>4.0 CC</li>
-                                    <li>2 Asientos</li>
-                                    <li>Aire Acondicionado</li>
+                                    <li><%: item.Estado.Descripcion %></li>
+                                    <li><%: item.Marca.Descripcion %></li>
+                                    <li><%: item.Estado.Descripcion %></li>
+                                    <li><%: item.Placa %></li>
                                 </ul>
                                 <p>
                                     <%: Html.ActionLink("Revervar", "CrearAlquiler", "Alquiler", new object { }, new { @class = "btn btn-primary" })%>
-                                    <a class="btn" href="#">250 USD / Week</a>
+                                    <a class="btn" href="#"><%: item.Precio %></a>
                                 </p>
                             </div>
                         </div>
@@ -65,3 +64,4 @@
         </div>
     </div>
 </asp:Content>
+
