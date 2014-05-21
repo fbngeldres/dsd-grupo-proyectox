@@ -23,7 +23,7 @@ namespace SanJacinto.Controllers
 
                 //lstAutos.Add(a);
             }
-            return View(lstAutos);
+            return View();
         }
 
         public ActionResult RegistrarAuto()
