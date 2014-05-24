@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="23848c6f-9bfe-4db4-a11f-9c814968fcae" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2714/AlquilerService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AlquilerService.xsd" MetadataType="Schema" ID="0d5e3c4f-9509-4b6c-8969-be3e31532c59" SourceId="1" SourceUrl="http://localhost:2714/AlquilerService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AlquilerService1.xsd" MetadataType="Schema" ID="acfb9c32-bb71-4e1f-985e-8aa5fdfe7e3e" SourceId="1" SourceUrl="http://localhost:2714/AlquilerService.svc?xsd=xsd3" />
+    <MetadataFile FileName="AlquilerService2.xsd" MetadataType="Schema" ID="ef758684-0b85-4985-a73e-42107634764a" SourceId="1" SourceUrl="http://localhost:2714/AlquilerService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AlquilerService.wsdl" MetadataType="Wsdl" ID="4e15a10c-b1a0-4fb3-ba81-c28a536de6c2" SourceId="1" SourceUrl="http://localhost:2714/AlquilerService.svc?wsdl" />
+    <MetadataFile FileName="AlquilerService3.xsd" MetadataType="Schema" ID="23bb0d73-1580-433f-8edc-b5bc08551947" SourceId="1" SourceUrl="http://localhost:2714/AlquilerService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AlquilerService.disco" MetadataType="Disco" ID="1e0704d9-3990-4bb9-91b0-b9e3757a806f" SourceId="1" SourceUrl="http://localhost:2714/AlquilerService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

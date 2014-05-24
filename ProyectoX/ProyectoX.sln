@@ -14,10 +14,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Librerias", "Librerias", "{
 		Librerias\NHibernate.dll = Librerias\NHibernate.dll
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SanJacintoTest", "SanJacintoTest\SanJacintoTest.csproj", "{0B1783C6-902E-4634-BE7C-8CCEE7986145}"
+	ProjectSection(ProjectDependencies) = postProject
+		{26F375B1-7B7C-4A36-8F77-2E1793912679} = {26F375B1-7B7C-4A36-8F77-2E1793912679}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{702D383B-2DF9-4DE8-B448-569D5F9E6C2A}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		ProyectoX.vsmdi = ProyectoX.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
 		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ProyectoX.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +47,10 @@ Global
 		{26F375B1-7B7C-4A36-8F77-2E1793912679}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26F375B1-7B7C-4A36-8F77-2E1793912679}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26F375B1-7B7C-4A36-8F77-2E1793912679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B1783C6-902E-4634-BE7C-8CCEE7986145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B1783C6-902E-4634-BE7C-8CCEE7986145}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B1783C6-902E-4634-BE7C-8CCEE7986145}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B1783C6-902E-4634-BE7C-8CCEE7986145}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

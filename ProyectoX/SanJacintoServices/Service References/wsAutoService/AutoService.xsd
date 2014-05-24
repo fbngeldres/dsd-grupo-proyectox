@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:2714/AutoService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio" />
+  <xs:element name="listarMarcas">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listarMarcasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio" minOccurs="0" name="listarMarcasResult" nillable="true" type="q1:ArrayOfMarca" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listarModelos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listarModelosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio" minOccurs="0" name="listarModelosResult" nillable="true" type="q2:ArrayOfModelo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listarResultadoAutos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="marca" type="xs:int" />
+        <xs:element minOccurs="0" name="modelo" type="xs:int" />
+        <xs:element minOccurs="0" name="precioMin" type="xs:decimal" />
+        <xs:element minOccurs="0" name="precioMax" type="xs:decimal" />
+        <xs:element minOccurs="0" name="categoria" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listarResultadoAutosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio" minOccurs="0" name="listarResultadoAutosResult" nillable="true" type="q3:ArrayOfAuto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="obtenerAuto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intCodigoAuto" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="obtenerAutoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio" minOccurs="0" name="obtenerAutoResult" nillable="true" type="q4:Auto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

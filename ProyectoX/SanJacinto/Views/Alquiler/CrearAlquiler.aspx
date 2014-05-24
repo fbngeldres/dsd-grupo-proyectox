@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
         function onBlurDias() {
-            var dias = document.getElementById("txtDias").value;
+            var dias = document.getElementById("CantidadDias").value;
             var precio = document.getElementById("strPrecio").innerHTML + "";
 
             var montoTotal = 0;
@@ -180,7 +180,8 @@
                                 </div>
                             </td>
                             <td class="col-sm-1 col-md-1" style="text-align: center">
-                                <input type="email" class="form-control" id="txtDias" onkeypress="return isNumberKey(event)" value="0" onblur="onBlurDias();">
+                                <%: Html.TextBoxFor(model => model.CantidadDias,
+                                    new { @class = "form-control", @onblur = "onBlurDias();" })%>
                             </td>
                             <td class="col-sm-1 col-md-1 text-center">
                                 <strong>$</strong><strong id="strPrecio"><%: Model.Auto.Precio %></strong>

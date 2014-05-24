@@ -61,5 +61,9 @@ namespace SanJacintoServices
         {
             return AutoDAO.obtenerAutos(marca, modelo, precioMin, precioMax, categoria);
         }
+
+        public Auto obtenerAuto(int intCodigoAuto){
+            return AutoDAO.Obtener(intCodigoAuto);
+        }
     }
 }
