@@ -59,7 +59,9 @@ namespace SanJacintoServices
 
         public List<Auto> listarResultadoAutos(int marca, int modelo, decimal precioMin, decimal precioMax, int categoria)
         {
-            return AutoDAO.obtenerAutos(marca, modelo, precioMin, precioMax, categoria);
+
+           
+            return AutoDAO.obtenerAutos(marca,modelo ,precioMin,precioMax,categoria);
         }
 
         public Auto obtenerAuto(int intCodigoAuto){
