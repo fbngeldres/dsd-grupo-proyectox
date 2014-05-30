@@ -40,7 +40,7 @@
                        { %>
                     <div class="col-md-3">
                         <div class="thumbnail">
-                            <img alt="300x200" src="http://sd.gintelligence.net/imagenesAutos<%: item.Imagen %>" />
+                            <img alt="300x200" src="http://sd.gintelligence.net/imagenesAutos/<%: item.Imagen %>" height="130" width="130"/>
                             <div class="caption">
                                 <h4><%: item.Modelo.Descripcion %></h4>
                                 <h5>
