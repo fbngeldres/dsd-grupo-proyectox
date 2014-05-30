@@ -12,14 +12,21 @@ namespace SanJacintoServices
     public interface IUsuarioService
     {
         [OperationContract]
-        Usuario CrearUsuario(string apellidos, string nombres, string telefono, string licencia, string dni, string correo);
+        Usuario CrearUsuario(string apellidos, string nombres, string telefono, string licencia, string dni, int codigo_rol,
+                             string correo, string clave);
         [OperationContract]
         Usuario ObtenerUsuario(int codigo);
+
         [OperationContract]
-        Usuario ModificarUsuario(int codigo, string telefono, string correo);
+        Usuario ModificarUsuario(int codigo, string apellidos, string nombres, string telefono, string licencia, string dni, int codigo_rol,
+                                 string correo, string clave);
         [OperationContract]
         void EliminarUsuario(int codigo);
+
         [OperationContract]
         List<Usuario> ListarUsuarios();
+
+        [OperationContract]
+        string AutenticarUsuario(int codigo, string correo, string clave);
     }
 }

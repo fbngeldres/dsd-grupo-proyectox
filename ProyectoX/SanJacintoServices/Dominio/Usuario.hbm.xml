@@ -12,6 +12,8 @@
     <property name="Telefono" column="telefono" />
     <property name="Licencia" column="licencia" />
     <property name="Dni" column="dni" />
+    <property name="Codigo_rol" column="codigo_rol" />
     <property name="Correo" column="correo" />
+    <property name="Clave" column="clave" />
   </class>
 </hibernate-mapping>

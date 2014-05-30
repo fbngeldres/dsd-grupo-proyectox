@@ -22,7 +22,7 @@ namespace SanJacintoServices
             }
         }
 
-        public Usuario CrearUsuario(string apellidos, string nombres, string telefono, string licencia, string dni, string correo)
+        public Usuario CrearUsuario(string apellidos, string nombres, string telefono, string licencia, string dni, int codigo_rol, string correo, string clave)
         {
             Usuario usuarioACrear = new Usuario()
             {
@@ -31,7 +31,9 @@ namespace SanJacintoServices
                 Telefono = telefono,
                 Licencia = licencia,
                 Dni = dni,
-                Correo = correo
+                Codigo_rol = codigo_rol,
+                Correo = correo,
+                Clave = clave
             };
             return UsuarioDAO.Crear(usuarioACrear);
         }
@@ -41,13 +43,20 @@ namespace SanJacintoServices
             return UsuarioDAO.Obtener(codigo);
         }
 
-        public Usuario ModificarUsuario(int codigo, string telefono, string correo)
+        public Usuario ModificarUsuario(int codigo, string apellidos, string nombres, string telefono, string licencia, 
+                                        string dni, int codigo_rol, string correo, string clave)
         {
-            Usuario usuarioAModificar = new Usuario()
+            Usuario usuarioAModificar = new Usuario() 
             {
                 Codigo = codigo,
+                Apellidos = apellidos,
+                Nombres = nombres,
                 Telefono = telefono,
-                Correo = correo
+                Licencia = licencia,
+                Dni = dni,
+                Codigo_rol = codigo_rol,
+                Correo = correo,
+                Clave = clave
             };
 
             return UsuarioDAO.Modificar(usuarioAModificar);
@@ -55,13 +64,36 @@ namespace SanJacintoServices
 
         public void EliminarUsuario(int codigo)
         {
-            Usuario usuarioExistente = UsuarioDAO.Obtener(codigo);
+            Usuario usuarioExistente = new Usuario();
+            usuarioExistente = UsuarioDAO.Obtener(codigo);
             UsuarioDAO.Eliminar(usuarioExistente);
         }
 
         public List<Usuario> ListarUsuarios()
         {
             return UsuarioDAO.ListarTodos().ToList();
+        }
+
+
+        public string AutenticarUsuario(int codigo, string correo, string clave)
+        {
+            string mensaje = "";
+            Usuario usuarioObtenido = UsuarioDAO.Obtener(codigo);
+            if (usuarioObtenido.Correo == correo)
+            {
+                if (usuarioObtenido.Clave == clave)
+                { }
+                else
+                {
+                    mensaje = "Clave incorrecta";
+                }
+            }
+            else
+            {
+                mensaje = "Usuario no Existe";
+            }
+
+            return mensaje;
         }
     }
 }

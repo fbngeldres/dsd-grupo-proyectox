@@ -22,6 +22,10 @@ namespace SanJacintoServices.Dominio
         [DataMember]
         public string Dni { get; set; }
         [DataMember]
+        public int Codigo_rol { get; set; }
+        [DataMember]
         public string Correo { get; set; }
+        [DataMember]
+        public string Clave { get; set; }
     }
 }
