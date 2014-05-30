@@ -52,8 +52,11 @@
                                     <li><%: item.Placa %></li>
                                 </ul>
                                 <p>
-                                    <%: Html.ActionLink("Revervar", "CrearAlquiler", "Alquiler", new object { }, new { @class = "btn btn-primary" })%>
-                                    <a class="btn" href="#"><%: item.Precio %></a>
+                                    <%: Html.ActionLink("Revervar", "CrearAlquiler", "Alquiler", 
+                                        new { dcPrecio = item.Precio,intCodAuto = item.Codigo,intCodEstado = item.Estado.Codigo, 
+                                            strEstado = item.Estado.Descripcion,intCodModelo = item.Modelo.Codigo, strModelo = item.Modelo.Descripcion,
+                                            intCodMarca = item.Marca.Codigo, strMarca = item.Marca.Descripcion}, new { @class = "btn btn-primary" })%>
+                                    <a class="btn" href="#"><%: item.Precio %></ac
                                 </p>
                             </div>
                         </div>

@@ -12,6 +12,7 @@
 
             var montoTotal = 0;
             limpiaMontos();
+            console.info(precio);
             if (precio.length != 0 && precio != '') {
                 montoTotal = parseInt(dias) * parseInt(precio);
 
@@ -141,6 +142,7 @@
         </div>
         <!--PAGO FIN-->
         <!---dettale-->
+        <form id="form1" runat="server">
         <div class="row">
             <div class="col-sm-12 col-md-10 col-md-offset-1">
                 <table class="table table-hover">
@@ -174,14 +176,14 @@
                                     </a>
                                     <div class="media-body">
                                         <h4 class="media-heading">
-                                            <a href="#">Audi R8</a></h4>
-                                        <span>Estado: </span><span class="text-success"><strong>En cochera</strong></span>
+                                            <a href="#"><%: Model.Auto.Marca.Descripcion %> - <%: Model.Auto.Modelo.Descripcion %></a></h4>
+                                        <span>Estado: </span><span class="text-success"><strong><%: Model.Auto.Estado.Descripcion %></strong></span>
                                     </div>
                                 </div>
                             </td>
                             <td class="col-sm-1 col-md-1" style="text-align: center">
                                 <%: Html.TextBoxFor(model => model.CantidadDias,
-                                    new { @class = "form-control", @onblur = "onBlurDias();" })%>
+                                    new { @class = "form-control", @onblur = "onBlurDias();", @onkeypress = "return isNumberKey(event);" })%>
                             </td>
                             <td class="col-sm-1 col-md-1 text-center">
                                 <strong>$</strong><strong id="strPrecio"><%: Model.Auto.Precio %></strong>
@@ -252,14 +254,16 @@
                             </td>
                             <td>
                                 <button type="button">
-                                    <%: Html.ActionLink("Alquilar", "RegistrarAlquiler", "Alquiler", new object { }, new { @class = "btn btn-primary" })%>
+                                    <%: Html.ActionLink("Alquilar", "RegistrarAlquiler", "Alquiler", new { intCantidadDias = Model.CantidadDias }, new { @class = "btn btn-primary" })%>
                                 </button>
+                                <input type="submit" value=""/>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+        </form>
         <!--fin detalle-->
     </div>
 </asp:Content>
