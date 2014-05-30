@@ -253,10 +253,9 @@
                         </button>-->
                             </td>
                             <td>
-                                <button type="button">
-                                    <%: Html.ActionLink("Alquilar", "RegistrarAlquiler", "Alquiler", new { intCantidadDias = Model.CantidadDias }, new { @class = "btn btn-primary" })%>
+                                <button type="button" class="btn btn-default">
+                                    <%: Html.ActionLink("Alquilar", "RegistrarAlquiler", "Alquiler", new { intCantidadDias = Model.CantidadDias }, new { @class = "glyphicon glyphicon-shopping-cart" })%>
                                 </button>
-                                <input type="submit" value=""/>
                             </td>
                         </tr>
                     </tbody>
