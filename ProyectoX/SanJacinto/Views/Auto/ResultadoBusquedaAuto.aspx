@@ -40,7 +40,7 @@
                        { %>
                     <div class="col-md-3">
                         <div class="thumbnail">
-                            <img alt="300x200" src="http://sd.gintelligence.net/imagenesAutos/<%: item.Imagen %>" height="130" width="130"/>
+                            <img alt="300x200" src="http://sd.gintelligence.net/imagenesAutos/<%: item.Imagen %>" height="130" width="130" />
                             <div class="caption">
                                 <h4><%: item.Modelo.Descripcion %></h4>
                                 <h5>
@@ -56,7 +56,7 @@
                                         new { dcPrecio = item.Precio,intCodAuto = item.Codigo,intCodEstado = item.Estado.Codigo, 
                                             strEstado = item.Estado.Descripcion,intCodModelo = item.Modelo.Codigo, strModelo = item.Modelo.Descripcion,
                                             intCodMarca = item.Marca.Codigo, strMarca = item.Marca.Descripcion}, new { @class = "btn btn-primary" })%>
-                                    <a class="btn" href="#"><%: item.Precio %></ac
+                                    <a class="btn" href="#"><%: item.Precio %></a>
                                 </p>
                             </div>
                         </div>
