@@ -186,7 +186,7 @@
                                     new { @class = "form-control", @onblur = "onBlurDias();", @onkeypress = "return isNumberKey(event);" })%>
                             </td>
                             <td class="col-sm-1 col-md-1 text-center">
-                                <strong>$</strong><strong id="strPrecio"><%: Model.Auto.Precio %></strong>
+                                <strong>$</strong><strong id="strPrecio"><%: Model.Auto.PrecioMaximo %></strong>
                             </td>
                             <td class="col-sm-1 col-md-1 text-center">
                                 <strong>$</strong><strong id="strMontoTotal"></strong>

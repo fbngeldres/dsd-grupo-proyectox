@@ -12,9 +12,9 @@ namespace SanJacinto.Models
     {
         public int Codigo { get; set; }
 
-        public int Marca { get; set; }
+        public MarcaModel Marca { get; set; }
 
-        public int Modelo { get; set; }
+        public ModeloModel Modelo { get; set; }
 
         public decimal PrecioMinimo { get; set; }
 
@@ -22,7 +22,7 @@ namespace SanJacinto.Models
 
         public int Categoria { get; set; }
 
-        public int Estado { get; set; }
+        public EstadoModel Estado { get; set; }
 
         public string Placa { get; set; }
 
