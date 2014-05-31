@@ -151,6 +151,7 @@
     <Compile Include="Persistencia\AlquilerDAO.cs" />
     <Compile Include="Persistencia\AutoDAO.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
+    <Compile Include="Persistencia\CategoriaDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\MarcaDAO.cs" />
     <Compile Include="Persistencia\ModeloDAO.cs" />

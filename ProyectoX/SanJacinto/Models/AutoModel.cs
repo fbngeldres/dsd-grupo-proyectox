@@ -3,33 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
+using System.Web.Mvc;
 
 namespace SanJacinto.Models
 {
-    [DataContract]
+
     public class AutoModel
     {
-        [DataMember]
         public int Codigo { get; set; }
 
-        [DataMember]
-        public MarcaModel Marca { get; set; }
+        public int Marca { get; set; }
 
-        [DataMember]
-        public ModeloModel Modelo { get; set; }
+        public int Modelo { get; set; }
 
-        [DataMember]
-        public decimal Precio { get; set; }
+        public decimal PrecioMinimo { get; set; }
 
-        [DataMember]
-        public CategoriaModel Categoria { get; set; }
+        public decimal PrecioMaximo { get; set; }
 
-        public EstadoModel Estado { get; set; }
+        public int Categoria { get; set; }
 
-        [DataMember]
+        public int Estado { get; set; }
+
         public string Placa { get; set; }
 
-        [DataMember]
         public string Imagen { get; set; }
+
+        //Listas de categorias, marcas y modelos
+        public List<SelectListItem> lstCategorias { get; set; }
+        public List<SelectListItem> lstMarcas { get; set; }
+        public List<SelectListItem> lstModelos { get; set; }
     }
+
 }

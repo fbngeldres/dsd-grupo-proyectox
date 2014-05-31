@@ -25,7 +25,7 @@ namespace SanJacintoServices.Persistencia
                 }
                 if (categoria != 0)
                 {
-                    //busqueda.Add(Restrictions.Eq("Categoria.Codigo", categoria));
+                    busqueda.Add(Restrictions.Eq("Categoria.Codigo", categoria));
                 }
                 if (precioMin != 0 && precioMax != 0)
                 {

@@ -149,7 +149,6 @@
     </None>
     <Content Include="Views\Alquiler\CrearAlquiler.aspx" />
     <Content Include="Views\Alquiler\ListarAlquileres.aspx" />
-    <Content Include="Views\Alquiler\RegistrarAlquiler.ascx" />
     <Content Include="Views\Alquiler\RegistrarAlquiler.aspx" />
     <Content Include="Views\Auto\BuscarAutoAlquilar.aspx" />
     <Content Include="Views\Auto\MantenimientoAuto.aspx" />

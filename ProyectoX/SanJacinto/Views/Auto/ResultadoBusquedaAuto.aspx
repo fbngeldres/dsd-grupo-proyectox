@@ -46,11 +46,10 @@
                                 <h5>
                                     Informacion del Vehículo</h5>
                                 <ul>
-                                    <li><%: item.Estado.Descripcion %></li>
-                                    <li><%: item.Marca.Descripcion %></li>
-                                    <li><%: item.Estado.Descripcion %></li>
-                                    <li><%: item.Placa %></li>
-                                    <li><%: item.Categoria.Descripcion %></li>
+                                    <li><font style="font-weight:bold;">Estado:</font> <%: item.Estado.Descripcion %></li>
+                                    <li><font style="font-weight:bold;">Marca:</font> <%: item.Marca.Descripcion %></li>
+                                    <li><font style="font-weight:bold;">Placa:</font> <%: item.Placa %></li>
+                                    <li><font style="font-weight:bold;">Categoría:</font> <%: item.Categoria.Descripcion %></li>
                                 </ul>
                                 <p>
                                     <%: Html.ActionLink("Revervar", "CrearAlquiler", "Alquiler", 

@@ -45,6 +45,17 @@ namespace SanJacintoServices
             }
         }
 
+        private CategoriaDAO categoriaDAO = null;
+        private CategoriaDAO CategoriaDAO
+        {
+            get
+            {
+                if (categoriaDAO == null)
+                    categoriaDAO = new CategoriaDAO();
+                return categoriaDAO;
+            }
+        }
+
         public List<Marca> listarMarcas()
         {
             return MarcaDAO.ListarTodos().ToList();
@@ -64,6 +75,13 @@ namespace SanJacintoServices
 
         public Auto obtenerAuto(int intCodigoAuto){
             return AutoDAO.Obtener(intCodigoAuto);
+        }
+
+
+        public List<Categoria> listarCategorias()
+        {
+            return CategoriaDAO.ListarTodos().ToList();
+            //throw new NotImplementedException();
         }
     }
 }
