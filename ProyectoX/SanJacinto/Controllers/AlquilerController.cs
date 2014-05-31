@@ -32,9 +32,9 @@ namespace SanJacinto.Controllers
             AutoModel autoModel = new AutoModel(){
                 Codigo = intCodAuto,
                 PrecioMinimo = dcPrecio,
-                //Estado = estadoModel,
-                //Marca = marcaModel,
-                //Modelo = modeloModel
+                Estado = estadoModel,
+                Marca = marcaModel,
+                Modelo = modeloModel
             };
             
             AlquilerModel nuevoAlquiler = new AlquilerModel(){
