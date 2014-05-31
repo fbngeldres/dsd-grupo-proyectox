@@ -161,7 +161,7 @@ namespace SanJacinto.wsAutoService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CategoriaField;
+        private SanJacinto.wsAutoService.Categoria CategoriaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int CodigoField;
@@ -195,12 +195,12 @@ namespace SanJacinto.wsAutoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Categoria {
+        public SanJacinto.wsAutoService.Categoria Categoria {
             get {
                 return this.CategoriaField;
             }
             set {
-                if ((this.CategoriaField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.CategoriaField, value) != true)) {
                     this.CategoriaField = value;
                     this.RaisePropertyChanged("Categoria");
                 }
@@ -310,6 +310,67 @@ namespace SanJacinto.wsAutoService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Categoria", Namespace="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class Categoria : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CodigoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripcionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Codigo {
+            get {
+                return this.CodigoField;
+            }
+            set {
+                if ((this.CodigoField.Equals(value) != true)) {
+                    this.CodigoField = value;
+                    this.RaisePropertyChanged("Codigo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Descripcion {
+            get {
+                return this.DescripcionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripcionField, value) != true)) {
+                    this.DescripcionField = value;
+                    this.RaisePropertyChanged("Descripcion");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Estado", Namespace="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio")]
     [System.SerializableAttribute()]
     public partial class Estado : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -381,6 +442,9 @@ namespace SanJacinto.wsAutoService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/listarResultadoAutos", ReplyAction="http://tempuri.org/IAutoService/listarResultadoAutosResponse")]
         SanJacinto.wsAutoService.Auto[] listarResultadoAutos(int marca, int modelo, decimal precioMin, decimal precioMax, int categoria);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/obtenerAuto", ReplyAction="http://tempuri.org/IAutoService/obtenerAutoResponse")]
+        SanJacinto.wsAutoService.Auto obtenerAuto(int intCodigoAuto);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -420,6 +484,10 @@ namespace SanJacinto.wsAutoService {
         
         public SanJacinto.wsAutoService.Auto[] listarResultadoAutos(int marca, int modelo, decimal precioMin, decimal precioMax, int categoria) {
             return base.Channel.listarResultadoAutos(marca, modelo, precioMin, precioMax, categoria);
+        }
+        
+        public SanJacinto.wsAutoService.Auto obtenerAuto(int intCodigoAuto) {
+            return base.Channel.obtenerAuto(intCodigoAuto);
         }
     }
 }

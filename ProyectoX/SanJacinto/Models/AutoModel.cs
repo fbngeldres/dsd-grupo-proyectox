@@ -22,7 +22,7 @@ namespace SanJacinto.Models
         public decimal Precio { get; set; }
 
         [DataMember]
-        public int Categoria { get; set; }
+        public CategoriaModel Categoria { get; set; }
 
         public EstadoModel Estado { get; set; }
 

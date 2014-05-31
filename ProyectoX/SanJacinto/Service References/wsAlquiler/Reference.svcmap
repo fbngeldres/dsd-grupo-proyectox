@@ -21,12 +21,12 @@
     <MetadataSource Address="http://localhost:2714/AlquilerService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="AlquilerService.xsd" MetadataType="Schema" ID="58ed94bb-60b2-416f-88d0-c2c97412f4d9" SourceId="1" SourceUrl="http://localhost:2714/AlquilerService.svc?xsd=xsd1" />
     <MetadataFile FileName="AlquilerService1.xsd" MetadataType="Schema" ID="f7b8954a-902d-447d-8bd1-e18161f0ad37" SourceId="1" SourceUrl="http://localhost:2714/AlquilerService.svc?xsd=xsd3" />
     <MetadataFile FileName="AlquilerService2.xsd" MetadataType="Schema" ID="601388dc-b3e9-428a-a06b-4a4d2cba0040" SourceId="1" SourceUrl="http://localhost:2714/AlquilerService.svc?xsd=xsd2" />
     <MetadataFile FileName="AlquilerService.wsdl" MetadataType="Wsdl" ID="3a368352-3a45-4838-9e0d-8e3ececea64b" SourceId="1" SourceUrl="http://localhost:2714/AlquilerService.svc?wsdl" />
     <MetadataFile FileName="AlquilerService3.xsd" MetadataType="Schema" ID="3cddd2b3-fbe6-4a03-bfc0-d852c43440e7" SourceId="1" SourceUrl="http://localhost:2714/AlquilerService.svc?xsd=xsd0" />
     <MetadataFile FileName="AlquilerService.disco" MetadataType="Disco" ID="cbb20a37-8b29-4fbd-a348-41e73cdb4c75" SourceId="1" SourceUrl="http://localhost:2714/AlquilerService.svc?disco" />
+    <MetadataFile FileName="AlquilerService.xsd" MetadataType="Schema" ID="58ed94bb-60b2-416f-88d0-c2c97412f4d9" SourceId="1" SourceUrl="http://localhost:2714/AlquilerService.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

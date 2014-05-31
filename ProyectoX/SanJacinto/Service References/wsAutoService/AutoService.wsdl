@@ -25,6 +25,12 @@
   <wsdl:message name="IAutoService_listarResultadoAutos_OutputMessage">
     <wsdl:part name="parameters" element="tns:listarResultadoAutosResponse" />
   </wsdl:message>
+  <wsdl:message name="IAutoService_obtenerAuto_InputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerAuto" />
+  </wsdl:message>
+  <wsdl:message name="IAutoService_obtenerAuto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerAutoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IAutoService">
     <wsdl:operation name="listarMarcas">
       <wsdl:input wsaw:Action="http://tempuri.org/IAutoService/listarMarcas" message="tns:IAutoService_listarMarcas_InputMessage" />
@@ -37,6 +43,10 @@
     <wsdl:operation name="listarResultadoAutos">
       <wsdl:input wsaw:Action="http://tempuri.org/IAutoService/listarResultadoAutos" message="tns:IAutoService_listarResultadoAutos_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAutoService/listarResultadoAutosResponse" message="tns:IAutoService_listarResultadoAutos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerAuto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAutoService/obtenerAuto" message="tns:IAutoService_obtenerAuto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAutoService/obtenerAutoResponse" message="tns:IAutoService_obtenerAuto_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IAutoService" type="tns:IAutoService">
@@ -61,6 +71,15 @@
     </wsdl:operation>
     <wsdl:operation name="listarResultadoAutos">
       <soap:operation soapAction="http://tempuri.org/IAutoService/listarResultadoAutos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerAuto">
+      <soap:operation soapAction="http://tempuri.org/IAutoService/obtenerAuto" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

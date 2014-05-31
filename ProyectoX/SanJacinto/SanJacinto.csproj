@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="Models\AlquilerModel.cs" />
     <Compile Include="Models\AutoModel.cs" />
+    <Compile Include="Models\CategoriaModel.cs" />
     <Compile Include="Models\EstadoModel.cs" />
     <Compile Include="Models\MarcaModel.cs" />
     <Compile Include="Models\MasterParameters.cs" />

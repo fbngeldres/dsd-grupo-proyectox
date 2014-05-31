@@ -14,55 +14,27 @@ namespace SanJacintoServices.Persistencia
         {
             using (ISession sesion = NHibernateHelper.ObtenerSesion())
             {
-                String squery = "FROM Auto WHERE 1=1 ";
-
-                 
-                if( marca != 0){
-                    squery += " AND Marca.Codigo = :marca";
-                
-                }
-                if ( modelo != 0)
+                ICriteria busqueda = sesion.CreateCriteria<Auto>();
+                if (marca != 0)
                 {
-                    squery += " AND Modelo.Codigo = :modelo";
-
+                    busqueda.Add(Restrictions.Eq("Marca.Codigo", marca));
                 }
-                if ( precioMin != 0 && precioMax != 0)
+                if (modelo != 0)
                 {
-                    squery += " AND Precio between :precioMin  AND :precioMax";
-
-                }
-               
-                if (categoria != 0)
-                {
-                    squery += " AND Categoria.Codigo = :categoria";
-
-                }
-
-                IQuery query = sesion.CreateQuery(squery);
-                if ( marca != 0)
-                {
-                    query.SetParameter("marca", marca);
-                }
-                if ( modelo != 0)
-                {
-                    query.SetParameter("modelo", modelo);
-                }
-                if ( precioMin != 0 && precioMax != 0)
-                {
-                    query.SetParameter("precioMax", precioMax);
-                    query.SetParameter("precioMin", precioMin);
+                    busqueda.Add(Restrictions.Eq("Modelo.Codigo", modelo));
                 }
                 if (categoria != 0)
                 {
-                    query.SetParameter("categoria", categoria);
+                    //busqueda.Add(Restrictions.Eq("Categoria.Codigo", categoria));
                 }
-                
-                 query.SetMaxResults(10);
-               //  ArrayList<Auto> autos = query.List<Auto>();
+                if (precioMin != 0 && precioMax != 0)
+                {
+                    busqueda.Add(Restrictions.Between("Precio", precioMin, precioMax));
+                }
 
-
-
-                return query.List<Auto>().ToList();
+                //ICriteria busqueda = sesion.CreateCriteria("from Auto a where a.precio between "+precioMin+" and "+precioMax);
+                //List<Auto> busqueda = sesion.CreateCriteria(typeof(Auto)).l;
+                return busqueda.List<Auto>().ToList();
             }
         }
     }

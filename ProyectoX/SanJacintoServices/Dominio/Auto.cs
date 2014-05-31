@@ -18,7 +18,7 @@ namespace SanJacintoServices.Dominio
         [DataMember]
         public decimal Precio { get; set; }
         [DataMember]
-        public int Categoria { get; set; }
+        public Categoria Categoria { get; set; }
         [DataMember]
         public Estado Estado { get; set; }
         [DataMember]

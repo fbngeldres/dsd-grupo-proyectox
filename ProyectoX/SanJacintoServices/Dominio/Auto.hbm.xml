@@ -10,7 +10,7 @@
     <many-to-one name="Marca" column="marca" />
     <many-to-one name="Modelo" column="modelo" />
     <property name="Precio" column="precio" />
-    <property name="Categoria" column="categoria" />
+    <many-to-one name="Categoria" column="categoria" />
     <many-to-one name="Estado" column="estado" />
     <property name="Placa" column="placa" />
     <property name="Imagen" column="imagen" />

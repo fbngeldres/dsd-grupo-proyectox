@@ -42,23 +42,57 @@
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="textinput">
-                                Ciudad
+                                Placa
                             </label>
-                            <div class="col-sm-10">
-                                <input type="text" placeholder="Ciudad o Aeropuerto" class="form-control" />
+                            <div class="col-sm-4">
+                                <input type="text" placeholder="Placa" class="form-control" />
+                            </div>
+                            <label class="col-sm-2 control-label" for="textinput">
+                                Precio
+                            </label>
+                            <div class="col-sm-4">
+                                <input type="text" placeholder="Precio" class="form-control" />
                             </div>
                         </div>
-                        <!-- Text input-->
+
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="textinput">
-                                Fecha Pick-up</label>
+                                Marca
+                            </label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" value="" id="Text1" placeholder="Pick up" />
+                                <select id="Select3" name="subject" class="form-control" required="required">
+                                    <option value="na" selected="">Elige Hora:</option>
+                                    <option value="service">1:00 AM</option>
+                                    <option value="service">2:00 AM</option>
+                                    <option value="service">3:00 AM</option>
+                                    <option value="service">4:00 AM</option>
+                                    <option value="service">5:00 AM</option>
+                                    <option value="service">6:00 AM</option>
+                                    <option value="service">7:00 AM</option>
+                                    <option value="service">8:00 AM</option>
+                                    <option value="service">9:00 AM</option>
+                                    <option value="service">10:00 AM</option>
+                                    <option value="service">11:00 AM</option>
+                                    <option value="service">12:00 PM</option>
+                                    <option value="service">13:00 PM</option>
+                                    <option value="service">14:00 PM</option>
+                                    <option value="service">15:00 PM</option>
+                                    <option value="service">16:00 PM</option>
+                                    <option value="service">17:00 PM</option>
+                                    <option value="service">18:00 PM</option>
+                                    <option value="service">19:00 PM</option>
+                                    <option value="service">20:00 PM</option>
+                                    <option value="service">21:00 PM</option>
+                                    <option value="service">22:00 PM</option>
+                                    <option value="service">23:00 PM</option>
+                                    <option value="service">00:00 PM</option>
+                                </select>
                             </div>
                             <label class="col-sm-2 control-label" for="textinput">
-                                Hora Pick-up</label>
+                                Modelo
+                            </label>
                             <div class="col-sm-4">
-                                <select id="Select1" name="subject" class="form-control" required="required">
+                                <select id="Select4" name="subject" class="form-control" required="required">
                                     <option value="na" selected="">Elige Hora:</option>
                                     <option value="service">1:00 AM</option>
                                     <option value="service">2:00 AM</option>
@@ -87,16 +121,13 @@
                                 </select>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="textinput">
-                                Fecha Drop-off</label>
+                                Categoría
+                            </label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" value="" id="Text2" placeholder="Drop off">
-                            </div>
-                            <label class="col-sm-2 control-label" for="textinput">
-                                Hora Drop-off</label>
-                            <div class="col-sm-4">
-                                <select id="Select2" name="subject" class="form-control" required="required">
+                                <select id="Select5" name="subject" class="form-control" required="required">
                                     <option value="na" selected="">Elige Hora:</option>
                                     <option value="service">1:00 AM</option>
                                     <option value="service">2:00 AM</option>
@@ -124,9 +155,9 @@
                                     <option value="service">00:00 PM</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
+
+                            <label class="col-sm-2 control-label" for="textinput"></label>
+                            <div class="col-sm-4">
                                 <div class="pull-right">
                                     <%: Html.ActionLink("Buscar", "ResultadoBusquedaAuto", "Auto", new { @class = "btn btn-primary" })%>
                                 </div>
