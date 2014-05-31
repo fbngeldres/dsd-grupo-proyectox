@@ -12,6 +12,16 @@ namespace SanJacinto.Controllers
         public ActionResult CrearAlquiler(int intCodAuto, decimal dcPrecio, int intCodEstado, 
             string strEstado, int intCodMarca, string strMarca, int intCodModelo, string strModelo) 
         {
+            AutoModel autoModel = new AutoModel()
+            {
+                Codigo = intCodAuto,
+                PrecioMinimo = dcPrecio,
+                EstadoDesc = strEstado,
+                MarcaDesc = strMarca,
+                ModeloDesc = strModelo
+            };
+
+            /*
             ModeloModel modeloModel = new ModeloModel()
             {
                 Codigo = intCodModelo,
@@ -28,15 +38,8 @@ namespace SanJacinto.Controllers
                 Codigo = intCodEstado,
                 Descripcion = strEstado
             };
+            */
 
-            AutoModel autoModel = new AutoModel(){
-                Codigo = intCodAuto,
-                PrecioMinimo = dcPrecio,
-                Estado = estadoModel,
-                Marca = marcaModel,
-                Modelo = modeloModel
-            };
-            
             AlquilerModel nuevoAlquiler = new AlquilerModel(){
                 Auto = autoModel
             };

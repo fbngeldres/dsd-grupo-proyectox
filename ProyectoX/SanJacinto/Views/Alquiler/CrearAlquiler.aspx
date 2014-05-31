@@ -176,8 +176,8 @@
                                     </a>
                                     <div class="media-body">
                                         <h4 class="media-heading">
-                                            <a href="#"><%: Model.Auto.Marca.Descripcion %> - <%: Model.Auto.Modelo.Descripcion %></a></h4>
-                                        <span>Estado: </span><span class="text-success"><strong><%: Model.Auto.Estado.Descripcion %></strong></span>
+                                            <a href="#"><%: Model.Auto.MarcaDesc %> - <%: Model.Auto.ModeloDesc %></a></h4>
+                                        <span>Estado: </span><span class="text-success"><strong><%: Model.Auto.EstadoDesc %></strong></span>
                                     </div>
                                 </div>
                             </td>
