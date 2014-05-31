@@ -61,13 +61,13 @@
                                 Marca:
                             </label>
                             <div class="col-sm-4">
-                                <%: Html.DropDownListFor(m => m.Marca, Model.lstMarcas, new { @class = "form-control" })%>
+                                <%: Html.DropDownListFor(m => m.Marca.Codigo, Model.lstMarcas, new { @class = "form-control" })%>
                             </div>
                             <label class="col-sm-2 control-label" for="textinput">
                                 Modelo:
                             </label>
                             <div class="col-sm-4">
-                                <%: Html.DropDownListFor(m => m.Modelo, Model.lstModelos, new { @class = "form-control" })%>
+                                <%: Html.DropDownListFor(m => m.Modelo.Codigo, Model.lstModelos, new { @class = "form-control" })%>
                             </div>
                         </div>
 
