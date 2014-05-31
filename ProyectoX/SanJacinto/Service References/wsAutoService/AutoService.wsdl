@@ -19,6 +19,12 @@
   <wsdl:message name="IAutoService_listarModelos_OutputMessage">
     <wsdl:part name="parameters" element="tns:listarModelosResponse" />
   </wsdl:message>
+  <wsdl:message name="IAutoService_listarCategorias_InputMessage">
+    <wsdl:part name="parameters" element="tns:listarCategorias" />
+  </wsdl:message>
+  <wsdl:message name="IAutoService_listarCategorias_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listarCategoriasResponse" />
+  </wsdl:message>
   <wsdl:message name="IAutoService_listarResultadoAutos_InputMessage">
     <wsdl:part name="parameters" element="tns:listarResultadoAutos" />
   </wsdl:message>
@@ -39,6 +45,10 @@
     <wsdl:operation name="listarModelos">
       <wsdl:input wsaw:Action="http://tempuri.org/IAutoService/listarModelos" message="tns:IAutoService_listarModelos_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAutoService/listarModelosResponse" message="tns:IAutoService_listarModelos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listarCategorias">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAutoService/listarCategorias" message="tns:IAutoService_listarCategorias_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAutoService/listarCategoriasResponse" message="tns:IAutoService_listarCategorias_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="listarResultadoAutos">
       <wsdl:input wsaw:Action="http://tempuri.org/IAutoService/listarResultadoAutos" message="tns:IAutoService_listarResultadoAutos_InputMessage" />
@@ -62,6 +72,15 @@
     </wsdl:operation>
     <wsdl:operation name="listarModelos">
       <soap:operation soapAction="http://tempuri.org/IAutoService/listarModelos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarCategorias">
+      <soap:operation soapAction="http://tempuri.org/IAutoService/listarCategorias" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

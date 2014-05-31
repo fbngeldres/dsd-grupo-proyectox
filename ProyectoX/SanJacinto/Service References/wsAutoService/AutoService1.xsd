@@ -27,6 +27,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Modelo" nillable="true" type="tns:Modelo" />
+  <xs:complexType name="ArrayOfCategoria">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Categoria" nillable="true" type="tns:Categoria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCategoria" nillable="true" type="tns:ArrayOfCategoria" />
+  <xs:complexType name="Categoria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" type="xs:int" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Categoria" nillable="true" type="tns:Categoria" />
   <xs:complexType name="ArrayOfAuto">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Auto" nillable="true" type="tns:Auto" />
@@ -46,13 +59,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Auto" nillable="true" type="tns:Auto" />
-  <xs:complexType name="Categoria">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Codigo" type="xs:int" />
-      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Categoria" nillable="true" type="tns:Categoria" />
   <xs:complexType name="Estado">
     <xs:sequence>
       <xs:element minOccurs="0" name="Codigo" type="xs:int" />

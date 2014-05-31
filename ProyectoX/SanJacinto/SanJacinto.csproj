@@ -199,6 +199,9 @@
     <None Include="Service References\wsAutoService\SanJacinto.wsAutoService.Auto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\wsAutoService\SanJacinto.wsAutoService.Categoria.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\wsAutoService\SanJacinto.wsAutoService.Marca.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

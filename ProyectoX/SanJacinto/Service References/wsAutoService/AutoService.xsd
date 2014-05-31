@@ -25,6 +25,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="listarCategorias">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listarCategoriasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio" minOccurs="0" name="listarCategoriasResult" nillable="true" type="q3:ArrayOfCategoria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="listarResultadoAutos">
     <xs:complexType>
       <xs:sequence>
@@ -39,7 +51,7 @@
   <xs:element name="listarResultadoAutosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio" minOccurs="0" name="listarResultadoAutosResult" nillable="true" type="q3:ArrayOfAuto" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio" minOccurs="0" name="listarResultadoAutosResult" nillable="true" type="q4:ArrayOfAuto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -53,7 +65,7 @@
   <xs:element name="obtenerAutoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio" minOccurs="0" name="obtenerAutoResult" nillable="true" type="q4:Auto" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio" minOccurs="0" name="obtenerAutoResult" nillable="true" type="q5:Auto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
