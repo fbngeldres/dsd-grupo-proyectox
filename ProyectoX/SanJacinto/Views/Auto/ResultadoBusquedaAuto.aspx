@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<SanJacinto.Models.AutoModel>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<SanJacinto.wsAutoService.Auto>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	ResultadoBusquedaAuto
@@ -50,6 +50,7 @@
                                     <li><%: item.Marca.Descripcion %></li>
                                     <li><%: item.Estado.Descripcion %></li>
                                     <li><%: item.Placa %></li>
+                                    <li><%: item.Categoria.Descripcion %></li>
                                 </ul>
                                 <p>
                                     <%: Html.ActionLink("Revervar", "CrearAlquiler", "Alquiler", 
