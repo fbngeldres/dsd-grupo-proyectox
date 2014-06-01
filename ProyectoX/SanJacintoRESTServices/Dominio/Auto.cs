@@ -10,29 +10,29 @@ namespace SanJacintoRESTServices.Dominio
     public class Auto
     {
         [DataMember]
-        public int codigo { get; set; }
-        
-        [DataMember]
-        public int marca { get; set; }
+        public int Codigo { get; set; }
 
         [DataMember]
-        public int modelo { get; set; }
+        public int Marca { get; set; }
 
         [DataMember]
-        public decimal  precio { get; set; }
+        public int Modelo { get; set; }
 
         [DataMember]
-        public int categoria  { get; set; }
+        public decimal Precio { get; set; }
 
         [DataMember]
-        public int estado { get; set; }
+        public int Categoria { get; set; }
 
         [DataMember]
-        public string  placa { get; set; }       
+        public int Estado { get; set; }
 
         [DataMember]
-        public string  imagen { get; set; }
-        
+        public string Placa { get; set; }
+
+        [DataMember]
+        public string Imagen { get; set; }
+
 
     }
 }
