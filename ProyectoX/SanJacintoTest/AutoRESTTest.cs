@@ -37,7 +37,7 @@ namespace SanJacintoTest
                 autoPrueba.Imagen + "\"}"; //JSON
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req = (HttpWebRequest)WebRequest
-                .Create("http://localhost:1281/Autos.svc/Autos");
+                .Create("http://localhost:1281/AutosServices.svc/Autos");
             req.Method = "POST";
             req.ContentLength = data.Length;
             req.ContentType = "application/json";
@@ -76,7 +76,7 @@ namespace SanJacintoTest
 
             //Prueba de Obtención de Alumno vía HTTP GET
             HttpWebRequest req2 = (HttpWebRequest)WebRequest
-                .Create("http://localhost:1281/Autos.svc/Autos/17");
+                .Create("http://localhost:1281/AutosServices.svc/Autos/17");
             req2.Method = "GET";
             HttpWebResponse res2 = (HttpWebResponse)req2.GetResponse();
             StreamReader reader2 = new StreamReader(res2.GetResponseStream());
@@ -116,7 +116,7 @@ namespace SanJacintoTest
                 autoPrueba.Imagen + "\"}"; //JSON
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req = (HttpWebRequest)WebRequest
-               .Create("http://localhost:1281/Autos.svc/Autos");
+               .Create("http://localhost:1281/AutosServices.svc/Autos");
             req.Method = "PUT";
             req.ContentLength = data.Length;
             req.ContentType = "application/json";
@@ -142,7 +142,7 @@ namespace SanJacintoTest
         {
             //Prueba de Obtención de Alumno vía HTTP GET
             HttpWebRequest req2 = (HttpWebRequest)WebRequest
-                .Create("http://localhost:1281/Autos.svc/Autos");
+                .Create("http://localhost:1281/AutosServices.svc/Autos");
             req2.Method = "GET";
             HttpWebResponse res2 = (HttpWebResponse)req2.GetResponse();
             StreamReader reader2 = new StreamReader(res2.GetResponseStream());

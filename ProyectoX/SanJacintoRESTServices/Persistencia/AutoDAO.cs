@@ -95,21 +95,9 @@ namespace SanJacintoRESTServices.Persistencia
         }
         public void Eliminar(int codigoAutoAEliminar)
         {
-            try
-            {
-                using (var sc = new SqlConnection(ConexionUtil.Cadena))
-                using (var cmd = sc.CreateCommand())
-                {
-                    sc.Open();
-                    cmd.CommandText = "DELETE FROM tb_auto WHERE codigo=@cod";
-                    cmd.Parameters.AddWithValue("@cod", codigoAutoAEliminar);
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception e)
-            {
-
-            }
+            //El auto no se eliminara. Existe un campo "estado" en el cual el auto pasara de estado 1 a 0.
+            //Por ello, validar que el auto este con eso estado. Posteriormente, actualizar.
+            //Codigo desarrollo:
 
         }
         public List<Auto> ListarTodos()
