@@ -72,12 +72,27 @@
     <EmbeddedResource Include="Dominio\Marca.hbm.xml" />
     <EmbeddedResource Include="Dominio\Modelo.hbm.xml" />
     <EmbeddedResource Include="Dominio\Estado.hbm.xml" />
-    <None Include="Service References\wsAutoService\AutoService.disco" />
-    <None Include="Service References\wsAutoService\configuration91.svcinfo" />
-    <None Include="Service References\wsAutoService\configuration.svcinfo" />
-    <None Include="Service References\wsAutoService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <None Include="Service References\wsAuto\AutoService.wsdl" />
+    <None Include="Service References\wsAuto\AutoService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wsAuto\AutoService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wsAuto\AutoService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wsAuto\SanJacintoServices.wsAuto.Auto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\wsAuto\SanJacintoServices.wsAuto.Categoria.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\wsAuto\SanJacintoServices.wsAuto.Marca.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\wsAuto\SanJacintoServices.wsAuto.Modelo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\wsUsuarioService\SanJacintoServices.wsUsuarioService.Usuario.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -90,6 +105,13 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <EmbeddedResource Include="Dominio\Categoria.hbm.xml" />
+    <None Include="Service References\wsAuto\AutoService.disco" />
+    <None Include="Service References\wsAuto\configuration91.svcinfo" />
+    <None Include="Service References\wsAuto\configuration.svcinfo" />
+    <None Include="Service References\wsAuto\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="UsuarioService.svc" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -98,25 +120,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <None Include="Service References\wsAutoService\AutoService.wsdl" />
-    <None Include="Service References\wsAutoService\AutoService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wsAutoService\AutoService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wsAutoService\AutoService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wsAutoService\SanJacintoServices.wsAutoService.Auto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\wsAutoService\SanJacintoServices.wsAutoService.Marca.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\wsAutoService\SanJacintoServices.wsAutoService.Modelo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\wsUsuarioService\UsuarioService.wsdl" />
     <None Include="Service References\wsUsuarioService\UsuarioService.xsd">
       <SubType>Designer</SubType>
@@ -158,7 +161,7 @@
     <Compile Include="Persistencia\UsuarioDAO.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\wsAutoService\Reference.cs">
+    <Compile Include="Service References\wsAuto\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -179,7 +182,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\wsAutoService\" />
+    <WCFMetadataStorage Include="Service References\wsAuto\" />
     <WCFMetadataStorage Include="Service References\wsUsuarioService\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AutoService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:2714/AutoService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2714/AutoService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:2714/AutoService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAutoService_listarMarcas_InputMessage">
+    <wsdl:part name="parameters" element="tns:listarMarcas" />
+  </wsdl:message>
+  <wsdl:message name="IAutoService_listarMarcas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listarMarcasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAutoService_listarModelos_InputMessage">
+    <wsdl:part name="parameters" element="tns:listarModelos" />
+  </wsdl:message>
+  <wsdl:message name="IAutoService_listarModelos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listarModelosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAutoService_listarCategorias_InputMessage">
+    <wsdl:part name="parameters" element="tns:listarCategorias" />
+  </wsdl:message>
+  <wsdl:message name="IAutoService_listarCategorias_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listarCategoriasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAutoService_listarResultadoAutos_InputMessage">
+    <wsdl:part name="parameters" element="tns:listarResultadoAutos" />
+  </wsdl:message>
+  <wsdl:message name="IAutoService_listarResultadoAutos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listarResultadoAutosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAutoService_obtenerAuto_InputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerAuto" />
+  </wsdl:message>
+  <wsdl:message name="IAutoService_obtenerAuto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerAutoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAutoService">
+    <wsdl:operation name="listarMarcas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAutoService/listarMarcas" message="tns:IAutoService_listarMarcas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAutoService/listarMarcasResponse" message="tns:IAutoService_listarMarcas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listarModelos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAutoService/listarModelos" message="tns:IAutoService_listarModelos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAutoService/listarModelosResponse" message="tns:IAutoService_listarModelos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listarCategorias">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAutoService/listarCategorias" message="tns:IAutoService_listarCategorias_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAutoService/listarCategoriasResponse" message="tns:IAutoService_listarCategorias_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listarResultadoAutos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAutoService/listarResultadoAutos" message="tns:IAutoService_listarResultadoAutos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAutoService/listarResultadoAutosResponse" message="tns:IAutoService_listarResultadoAutos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerAuto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAutoService/obtenerAuto" message="tns:IAutoService_obtenerAuto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAutoService/obtenerAutoResponse" message="tns:IAutoService_obtenerAuto_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAutoService" type="tns:IAutoService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="listarMarcas">
+      <soap:operation soapAction="http://tempuri.org/IAutoService/listarMarcas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarModelos">
+      <soap:operation soapAction="http://tempuri.org/IAutoService/listarModelos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarCategorias">
+      <soap:operation soapAction="http://tempuri.org/IAutoService/listarCategorias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarResultadoAutos">
+      <soap:operation soapAction="http://tempuri.org/IAutoService/listarResultadoAutos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerAuto">
+      <soap:operation soapAction="http://tempuri.org/IAutoService/obtenerAuto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AutoService">
+    <wsdl:port name="BasicHttpBinding_IAutoService" binding="tns:BasicHttpBinding_IAutoService">
+      <soap:address location="http://localhost:2714/AutoService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

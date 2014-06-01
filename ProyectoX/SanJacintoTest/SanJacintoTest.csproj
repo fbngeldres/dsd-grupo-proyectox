@@ -59,6 +59,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\wsAuto\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="UnitTest1.cs" />
     <Compile Include="UsuarioTest.cs" />
   </ItemGroup>
@@ -96,10 +101,33 @@
     <None Include="Service References\wsAlquiler\SanJacintoTest.wsAlquiler.Alquiler.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\wsAuto\AutoService.wsdl" />
+    <None Include="Service References\wsAuto\AutoService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wsAuto\AutoService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wsAuto\AutoService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wsAuto\SanJacintoTest.wsAuto.Auto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\wsAuto\SanJacintoTest.wsAuto.Categoria.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\wsAuto\SanJacintoTest.wsAuto.Marca.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\wsAuto\SanJacintoTest.wsAuto.Modelo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\UsuarioWS\" />
     <WCFMetadataStorage Include="Service References\wsAlquiler\" />
+    <WCFMetadataStorage Include="Service References\wsAuto\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wsAlquiler\AlquilerService.disco" />
@@ -127,6 +155,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\UsuarioWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wsAuto\AutoService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wsAuto\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wsAuto\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wsAuto\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

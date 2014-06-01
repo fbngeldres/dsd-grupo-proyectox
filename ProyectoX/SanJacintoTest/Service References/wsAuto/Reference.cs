@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SanJacintoServices.wsAutoService {
+namespace SanJacintoTest.wsAuto {
     using System.Runtime.Serialization;
     using System;
     
@@ -90,7 +90,7 @@ namespace SanJacintoServices.wsAutoService {
         private string DescripcionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SanJacintoServices.wsAutoService.Marca MarcaField;
+        private SanJacintoTest.wsAuto.Marca MarcaField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -129,7 +129,7 @@ namespace SanJacintoServices.wsAutoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SanJacintoServices.wsAutoService.Marca Marca {
+        public SanJacintoTest.wsAuto.Marca Marca {
             get {
                 return this.MarcaField;
             }
@@ -137,6 +137,67 @@ namespace SanJacintoServices.wsAutoService {
                 if ((object.ReferenceEquals(this.MarcaField, value) != true)) {
                     this.MarcaField = value;
                     this.RaisePropertyChanged("Marca");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Categoria", Namespace="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class Categoria : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CodigoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripcionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Codigo {
+            get {
+                return this.CodigoField;
+            }
+            set {
+                if ((this.CodigoField.Equals(value) != true)) {
+                    this.CodigoField = value;
+                    this.RaisePropertyChanged("Codigo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Descripcion {
+            get {
+                return this.DescripcionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripcionField, value) != true)) {
+                    this.DescripcionField = value;
+                    this.RaisePropertyChanged("Descripcion");
                 }
             }
         }
@@ -161,22 +222,22 @@ namespace SanJacintoServices.wsAutoService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CategoriaField;
+        private SanJacintoTest.wsAuto.Categoria CategoriaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int CodigoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SanJacintoServices.wsAutoService.Estado EstadoField;
+        private SanJacintoTest.wsAuto.Estado EstadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ImagenField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SanJacintoServices.wsAutoService.Marca MarcaField;
+        private SanJacintoTest.wsAuto.Marca MarcaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SanJacintoServices.wsAutoService.Modelo ModeloField;
+        private SanJacintoTest.wsAuto.Modelo ModeloField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PlacaField;
@@ -195,12 +256,12 @@ namespace SanJacintoServices.wsAutoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Categoria {
+        public SanJacintoTest.wsAuto.Categoria Categoria {
             get {
                 return this.CategoriaField;
             }
             set {
-                if ((this.CategoriaField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.CategoriaField, value) != true)) {
                     this.CategoriaField = value;
                     this.RaisePropertyChanged("Categoria");
                 }
@@ -221,7 +282,7 @@ namespace SanJacintoServices.wsAutoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SanJacintoServices.wsAutoService.Estado Estado {
+        public SanJacintoTest.wsAuto.Estado Estado {
             get {
                 return this.EstadoField;
             }
@@ -247,7 +308,7 @@ namespace SanJacintoServices.wsAutoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SanJacintoServices.wsAutoService.Marca Marca {
+        public SanJacintoTest.wsAuto.Marca Marca {
             get {
                 return this.MarcaField;
             }
@@ -260,7 +321,7 @@ namespace SanJacintoServices.wsAutoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SanJacintoServices.wsAutoService.Modelo Modelo {
+        public SanJacintoTest.wsAuto.Modelo Modelo {
             get {
                 return this.ModeloField;
             }
@@ -370,29 +431,32 @@ namespace SanJacintoServices.wsAutoService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wsAutoService.IAutoService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wsAuto.IAutoService")]
     public interface IAutoService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/listarMarcas", ReplyAction="http://tempuri.org/IAutoService/listarMarcasResponse")]
-        SanJacintoServices.wsAutoService.Marca[] listarMarcas();
+        SanJacintoTest.wsAuto.Marca[] listarMarcas();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/listarModelos", ReplyAction="http://tempuri.org/IAutoService/listarModelosResponse")]
-        SanJacintoServices.wsAutoService.Modelo[] listarModelos();
+        SanJacintoTest.wsAuto.Modelo[] listarModelos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/listarCategorias", ReplyAction="http://tempuri.org/IAutoService/listarCategoriasResponse")]
+        SanJacintoTest.wsAuto.Categoria[] listarCategorias();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/listarResultadoAutos", ReplyAction="http://tempuri.org/IAutoService/listarResultadoAutosResponse")]
-        SanJacintoServices.wsAutoService.Auto[] listarResultadoAutos(int marca, int modelo, decimal precioMin, decimal precioMax, int categoria);
+        SanJacintoTest.wsAuto.Auto[] listarResultadoAutos(int marca, int modelo, decimal precioMin, decimal precioMax, int categoria);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/obtenerAuto", ReplyAction="http://tempuri.org/IAutoService/obtenerAutoResponse")]
-        SanJacintoServices.wsAutoService.Auto obtenerAuto(int intCodigoAuto);
+        SanJacintoTest.wsAuto.Auto obtenerAuto(int intCodigoAuto);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IAutoServiceChannel : SanJacintoServices.wsAutoService.IAutoService, System.ServiceModel.IClientChannel {
+    public interface IAutoServiceChannel : SanJacintoTest.wsAuto.IAutoService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class AutoServiceClient : System.ServiceModel.ClientBase<SanJacintoServices.wsAutoService.IAutoService>, SanJacintoServices.wsAutoService.IAutoService {
+    public partial class AutoServiceClient : System.ServiceModel.ClientBase<SanJacintoTest.wsAuto.IAutoService>, SanJacintoTest.wsAuto.IAutoService {
         
         public AutoServiceClient() {
         }
@@ -413,19 +477,23 @@ namespace SanJacintoServices.wsAutoService {
                 base(binding, remoteAddress) {
         }
         
-        public SanJacintoServices.wsAutoService.Marca[] listarMarcas() {
+        public SanJacintoTest.wsAuto.Marca[] listarMarcas() {
             return base.Channel.listarMarcas();
         }
         
-        public SanJacintoServices.wsAutoService.Modelo[] listarModelos() {
+        public SanJacintoTest.wsAuto.Modelo[] listarModelos() {
             return base.Channel.listarModelos();
         }
         
-        public SanJacintoServices.wsAutoService.Auto[] listarResultadoAutos(int marca, int modelo, decimal precioMin, decimal precioMax, int categoria) {
+        public SanJacintoTest.wsAuto.Categoria[] listarCategorias() {
+            return base.Channel.listarCategorias();
+        }
+        
+        public SanJacintoTest.wsAuto.Auto[] listarResultadoAutos(int marca, int modelo, decimal precioMin, decimal precioMax, int categoria) {
             return base.Channel.listarResultadoAutos(marca, modelo, precioMin, precioMax, categoria);
         }
         
-        public SanJacintoServices.wsAutoService.Auto obtenerAuto(int intCodigoAuto) {
+        public SanJacintoTest.wsAuto.Auto obtenerAuto(int intCodigoAuto) {
             return base.Channel.obtenerAuto(intCodigoAuto);
         }
     }

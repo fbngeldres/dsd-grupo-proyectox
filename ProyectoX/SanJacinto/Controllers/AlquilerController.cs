@@ -9,8 +9,8 @@ namespace SanJacinto.Controllers
 {
     public class AlquilerController : Controller
     {
-        public ActionResult CrearAlquiler(int intCodAuto, decimal dcPrecio, int intCodEstado, 
-            string strEstado, int intCodMarca, string strMarca, int intCodModelo, string strModelo) 
+        public ActionResult CrearAlquiler(int intCodAuto, decimal dcPrecio, int intCodEstado,
+            string strEstado, int intCodMarca, string strMarca, int intCodModelo, string strModelo)
         {
             AutoModel autoModel = new AutoModel()
             {
@@ -21,41 +21,32 @@ namespace SanJacinto.Controllers
                 ModeloDesc = strModelo
             };
 
-            /*
-            ModeloModel modeloModel = new ModeloModel()
+            UsuarioModel usuarioModel = new UsuarioModel()
             {
-                Codigo = intCodModelo,
-                Descripcion = strModelo
+                Codigo = 1,
+                Nombres = "Ronal",
+                Apellidos = "Crisostomo Matias"
             };
 
-            MarcaModel marcaModel = new MarcaModel()
+            AlquilerModel nuevoAlquiler = new AlquilerModel()
             {
-                Codigo = intCodMarca,
-                Descripcion = strMarca
-            };
-
-            EstadoModel estadoModel = new EstadoModel(){
-                Codigo = intCodEstado,
-                Descripcion = strEstado
-            };
-            */
-
-            AlquilerModel nuevoAlquiler = new AlquilerModel(){
-                Auto = autoModel
+                Auto = autoModel,
+                Usuario = usuarioModel
             };
 
             return View(nuevoAlquiler);
         }
 
-        public ActionResult RegistrarAlquiler(int intCantidadDias)
+        public ActionResult RegistrarAlquiler(int CantidadDias, decimal strPrecioAuto, int intCodigoAuto, int intCodigoUsuario)
         {
             wsAlquiler.AlquilerServiceClient miAlquiler = new wsAlquiler.AlquilerServiceClient();
+
             wsAlquiler.Alquiler objAlquiler = new wsAlquiler.Alquiler();
-            objAlquiler.Costo = 1000;
+            objAlquiler.Costo = strPrecioAuto;
             objAlquiler.CostoAdicional = 100;
             objAlquiler.Accesorios = "Silla de Bebe";
 
-            objAlquiler = miAlquiler.registrarAlquiler(objAlquiler, 1, 1);
+            objAlquiler = miAlquiler.registrarAlquiler(objAlquiler, intCodigoAuto, intCodigoUsuario);
 
             AutoModel autoModel = new AutoModel()
             {
@@ -102,11 +93,6 @@ namespace SanJacinto.Controllers
             }
 
             return View(listaAlquilerModel);
-        }
-
-        public ActionResult CrearAlquiler234()
-        {
-            return View();
         }
 
     }

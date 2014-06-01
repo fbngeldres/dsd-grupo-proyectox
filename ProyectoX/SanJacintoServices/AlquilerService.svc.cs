@@ -49,35 +49,34 @@ namespace SanJacintoServices
         {
             
            /*try {*/
-                wsAutoService.AutoServiceClient proxy = new wsAutoService.AutoServiceClient();
-                wsAutoService.Auto objAutoObtenido = proxy.obtenerAuto(intCodigoAuto);
-
+                wsAuto.AutoServiceClient proxy = new wsAuto.AutoServiceClient();
+                wsAuto.Auto autoObtenido = proxy.obtenerAuto(intCodigoAuto);
+                
                 wsUsuarioService.UsuarioServiceClient proxyU = new wsUsuarioService.UsuarioServiceClient();
                 wsUsuarioService.Usuario objUsuObtenido = proxyU.ObtenerUsuario(intCodigoUsuario);
 
                 //DateTime myDate = DateTime.ParseExact("2009-05-08 14:40:52", "yyyy-MM-dd HH:mm:ss",
                   //                     System.Globalization.CultureInfo.InvariantCulture);
-                Auto autoObtenido = new Auto();
-                autoObtenido.Codigo = objAutoObtenido.Codigo;
-                autoObtenido.Placa = objAutoObtenido.Placa;
-                autoObtenido.Precio = objAutoObtenido.Precio;
-                //autoObtenido.Categoria = objAutoObtenido.Categoria;
+                Auto auto = new Auto();
+                auto.Codigo = autoObtenido.Codigo;
+                auto.Placa = autoObtenido.Placa;
+                auto.Precio = autoObtenido.Precio;
 
                 Marca marca = new Marca();
-                marca.Codigo = objAutoObtenido.Marca.Codigo;
-                marca.Descripcion = objAutoObtenido.Marca.Descripcion;
+                marca.Codigo = autoObtenido.Marca.Codigo;
+                marca.Descripcion = autoObtenido.Marca.Descripcion;
 
                 Modelo modelo = new Modelo();
-                modelo.Codigo = objAutoObtenido.Modelo.Codigo;
-                modelo.Descripcion = objAutoObtenido.Modelo.Descripcion;
+                modelo.Codigo = autoObtenido.Modelo.Codigo;
+                modelo.Descripcion = autoObtenido.Modelo.Descripcion;
 
                 Estado estado = new Estado();
-                estado.Codigo = objAutoObtenido.Estado.Codigo;
-                estado.Descripcion = objAutoObtenido.Estado.Descripcion;
+                estado.Codigo = autoObtenido.Estado.Codigo;
+                estado.Descripcion = autoObtenido.Estado.Descripcion;
 
-                autoObtenido.Marca = marca;
-                autoObtenido.Modelo = modelo;
-                autoObtenido.Estado = estado;
+                auto.Marca = marca;
+                auto.Modelo = modelo;
+                auto.Estado = estado;
                 
                 Usuario usuarioObtenido = new Usuario();
                 usuarioObtenido.Codigo = objUsuObtenido.Codigo;
@@ -92,7 +91,7 @@ namespace SanJacintoServices
                 {
                     Costo = objAlquiler.Costo,
                     CostoAdicional = objAlquiler.CostoAdicional,
-                    Auto = autoObtenido,
+                    Auto = auto,
                     Usuario = usuarioObtenido,
                     FechaInicio = DateTime.Now,
                     FechaFin = DateTime.Now,

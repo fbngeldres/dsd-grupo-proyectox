@@ -5,7 +5,9 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    
     <script type="text/javascript">
+        //.heading-desc
         function onBlurDias() {
             var dias = document.getElementById("CantidadDias").value;
             var precio = document.getElementById("strPrecio").innerHTML + "";
@@ -142,7 +144,55 @@
         </div>
         <!--PAGO FIN-->
         <!---dettale-->
-        <form id="form1" runat="server">
+        <% using (Html.BeginForm("RegistrarAlquiler", "Alquiler"))
+            { %>
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                            </th>
+                            <th>
+                                Fecha Inicio
+                            </th>
+                            <th>
+                               Accesorios
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                               
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-sm-1 col-md-1">
+                            </td>
+                            <td class="col-sm-8 col-md-6">
+                                <input type="text" name="txtFechaInicio" id="txtFechaInicio" class="form-control" style="width: 150px !important;"/>
+                            </td>
+                            <td class="col-sm-1 col-md-1">
+                                <label style="font-weight:normal"><input type="checkbox" name="radio1" id="radio1" class="form-control"/>Silla de beb&eacute;</label>
+                            </td>
+                            <td class="col-sm-1 col-md-1">
+                                <label style="font-weight:normal"><input type="checkbox" name="radio2" id="Checkbox1" class="form-control"/>Radio</label>
+                            </td>
+                            <td class="col-sm-1 col-md-1">
+                                <label style="font-weight:normal"><input type="checkbox" name="radio2" id="Checkbox2" class="form-control"/>Parlantes</label>
+                            </td>
+                            <td class="col-sm-1 col-md-1">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>        
+        </div>
         <div class="row">
             <div class="col-sm-12 col-md-10 col-md-offset-1">
                 <table class="table table-hover">
@@ -176,7 +226,7 @@
                                     </a>
                                     <div class="media-body">
                                         <h4 class="media-heading">
-                                            <a href="#"><%: Model.Auto.MarcaDesc %> - <%: Model.Auto.ModeloDesc %></a></h4>
+                                            <a href="#"><strong id="stMarcaDesc" style="font-weight: normal"><%: Model.Auto.MarcaDesc %></strong> - <strong id="stModeloDesc" style="font-weight: normal"><%: Model.Auto.ModeloDesc %></strong></a></h4>
                                         <span>Estado: </span><span class="text-success"><strong><%: Model.Auto.EstadoDesc %></strong></span>
                                     </div>
                                 </div>
@@ -187,6 +237,9 @@
                             </td>
                             <td class="col-sm-1 col-md-1 text-center">
                                 <strong>$</strong><strong id="strPrecio"><%: Model.Auto.PrecioMinimo %></strong>
+                                <input id="strPrecioAuto" name="strPrecioAuto" type="hidden" value="<%: Model.Auto.PrecioMinimo %>" />
+                                <input id="intCodigoAuto" name="intCodigoAuto" type="hidden" value="<%: Model.Auto.Codigo %>" />
+                                <input id="intCodigoUsuario" name="intCodigoUsuario" type="hidden" value="<%: Model.Usuario.Codigo %>" />
                             </td>
                             <td class="col-sm-1 col-md-1 text-center">
                                 <strong>$</strong><strong id="strMontoTotal"></strong>
@@ -253,8 +306,9 @@
                         </button>-->
                             </td>
                             <td>
-                                <button type="button" class="btn btn-default">
-                                    <%: Html.ActionLink("Alquilar", "RegistrarAlquiler", "Alquiler", new { intCantidadDias = Model.CantidadDias }, new { @class = "glyphicon glyphicon-shopping-cart" })%>
+                                <input id="btnSubmit" type="submit" value="Alquilar" class="hide"/>
+                                <button id="btnAlquilar" type="button" class="btn btn-primary">
+                                    Alquiler
                                 </button>
                             </td>
                         </tr>
@@ -262,7 +316,84 @@
                 </table>
             </div>
         </div>
-        </form>
+        <% } %>
         <!--fin detalle-->
     </div>
+
+    <div id="confirmAlquilar" style="display: none;" class="modal">
+        <div class="modal-dialog">
+            <div class="form-signin mg-btm">
+                <h4 class="heading-desc" style="font-size: 16px !important;font-weight: normal !important;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        ×</button>
+                    ¿Est&aacute; seguro de registrar el alquiler?</h4>
+                <div class="main">
+                    <p>
+                        <label>Marca: </label> <strong id="stMarca" style="font-weight:normal">$</strong>
+                    </p>
+                    <p>
+                        <label>Modelo: </label> <strong id="stModelo" style="font-weight:normal">$</strong>
+                    </p>
+                    <p>
+                        <label>Placa: </label> <strong id="stPlaca" style="font-weight:normal">$</strong>
+                    </p>
+                    <p>
+                        <label>Accesorios: </label> <strong id="stAccesorios" style="font-weight:normal">$</strong>
+                    </p>
+                    <p>
+                        <label>Fecha de Inicio: </label> <strong id="stFechaInicio" style="font-weight:normal">$</strong>
+                    </p>
+                    <p>
+                        <label>Monto Total: </label> <strong id="stMonto" style="font-weight:normal">$</strong>
+                    </p>
+                </div>
+                <div class="login-footer">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-6 pull-left">
+                            <button id="btnCancelar" type="button" class="btn btn-large btn-danger pull-right">
+                                Cancelar
+                            </button>
+                        </div>
+                        <div class="col-xs-6 col-md-6 pull-right">
+                            <button id="btnAlquilarEnd" type="button" class="btn btn-large btn-danger pull-right">
+                                Registrar Alquiler
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#txtFechaInicio").datepicker({
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+
+        $("#btnAlquilar").click(function () {
+            var marca = $("#stMarcaDesc").text();
+            var modelo = $("#stModeloDesc").text();
+            //var placa = $("#stPlaca").val();
+            //var accesorios = $("#stAccesorios").val();
+            //var fechaInicio = $("#stFecInicio").val();
+            var total = $("#strTotal").text();
+
+            $("#stMarca").text(marca);
+            $("#stModelo").text(modelo);
+            $("#stMonto").text(total);
+
+            $("#confirmAlquilar").modal();
+        });
+
+        $("#btnCancelar").click(function () {
+            $("#confirmAlquilar").modal("hide");
+        });
+
+        $("#btnAlquilarEnd").click(function () {
+            $("#btnSubmit").click();
+        });
+
+    </script>    
 </asp:Content>

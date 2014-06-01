@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d2fc6670-877c-4c39-8d82-9e4cbf516bd8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="facc2685-9b1a-4d89-a7f5-7ede06591123" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -21,11 +21,11 @@
     <MetadataSource Address="http://localhost:2714/AutoService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="AutoService.disco" MetadataType="Disco" ID="68987799-45d0-4df9-bbd9-d68187a6254d" SourceId="1" SourceUrl="http://localhost:2714/AutoService.svc?disco" />
-    <MetadataFile FileName="AutoService.xsd" MetadataType="Schema" ID="0fa1893e-3934-4520-8df1-9dafcbe5d2e0" SourceId="1" SourceUrl="http://localhost:2714/AutoService.svc?xsd=xsd0" />
-    <MetadataFile FileName="AutoService.wsdl" MetadataType="Wsdl" ID="0318cc37-ee18-43d6-a698-8b1702eefaa0" SourceId="1" SourceUrl="http://localhost:2714/AutoService.svc?wsdl" />
-    <MetadataFile FileName="AutoService1.xsd" MetadataType="Schema" ID="056dce34-ec1e-4afd-ac27-32beb2bcdf0e" SourceId="1" SourceUrl="http://localhost:2714/AutoService.svc?xsd=xsd2" />
-    <MetadataFile FileName="AutoService2.xsd" MetadataType="Schema" ID="6cdf7968-25ef-4a0c-bc50-0acdfa826eb6" SourceId="1" SourceUrl="http://localhost:2714/AutoService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AutoService.disco" MetadataType="Disco" ID="ba848756-1396-465a-a30b-6919893fb3d5" SourceId="1" SourceUrl="http://localhost:2714/AutoService.svc?disco" />
+    <MetadataFile FileName="AutoService.xsd" MetadataType="Schema" ID="c210854d-a57c-40c5-913f-7217d0733d25" SourceId="1" SourceUrl="http://localhost:2714/AutoService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AutoService.wsdl" MetadataType="Wsdl" ID="dc70e215-efaa-4c77-b6f4-2b52430de0f9" SourceId="1" SourceUrl="http://localhost:2714/AutoService.svc?wsdl" />
+    <MetadataFile FileName="AutoService1.xsd" MetadataType="Schema" ID="3247101f-2390-4ad2-b8d7-97aa80ac7506" SourceId="1" SourceUrl="http://localhost:2714/AutoService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AutoService2.xsd" MetadataType="Schema" ID="14dbbbe2-a457-47b0-a159-62e51f55d2bb" SourceId="1" SourceUrl="http://localhost:2714/AutoService.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

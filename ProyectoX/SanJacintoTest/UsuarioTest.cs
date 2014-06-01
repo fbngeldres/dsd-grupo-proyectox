@@ -55,5 +55,12 @@ namespace SanJacintoTest
             string mensaje = proxy.AutenticarUsuario(1, "dnnisurb@gmail.com", "9876543210");
             Assert.AreEqual("", mensaje);
         }
+        [TestMethod]
+        public void ObtenerAuto()
+        {
+            wsAuto.AutoServiceClient proxy = new wsAuto.AutoServiceClient();
+            wsAuto.Auto autoObtenido = proxy.obtenerAuto(1);
+            Assert.IsNotNull(autoObtenido);
+        }
     }
 }
