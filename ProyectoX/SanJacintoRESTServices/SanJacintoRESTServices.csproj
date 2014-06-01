@@ -65,13 +65,14 @@
     <Compile Include="AutosServices.svc.cs">
       <DependentUpon>AutosServices.svc</DependentUpon>
     </Compile>
+    <Compile Include="Dominio\Auto.cs" />
     <Compile Include="IAutosServices.cs" />
     <Compile Include="Persistencia\AutoDAO.cs" />
+    <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Dominio\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
