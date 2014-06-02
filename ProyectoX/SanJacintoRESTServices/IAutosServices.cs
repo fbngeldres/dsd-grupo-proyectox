@@ -19,15 +19,15 @@ namespace SanJacintoRESTServices
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "Autos/{codigo}", ResponseFormat = WebMessageFormat.Json)]
-        Auto ObtenerAuto(string codigo);
+        Auto ObtenerAuto(int  codigo);
 
         [OperationContract]
         [WebInvoke(Method = "PUT", UriTemplate = "Autos", ResponseFormat = WebMessageFormat.Json)]
         Auto ModificarAuto(Auto alumnoAModificar);
 
         [OperationContract]
-        [WebInvoke(Method = "DELETE", UriTemplate = "Autos/{codigo}", ResponseFormat = WebMessageFormat.Json)]
-        void EliminarAuto(string codigo);
+        [WebInvoke(Method = "PUT", UriTemplate = "AutosE", ResponseFormat = WebMessageFormat.Json)]
+        Auto EliminarAuto(Auto codigoAutoAEliminar);
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "Autos", ResponseFormat = WebMessageFormat.Json)]

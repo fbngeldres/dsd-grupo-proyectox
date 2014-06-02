@@ -25,11 +25,11 @@ namespace SanJacintoTest
                 Categoria = 1,
                 Estado = 1,
                 Placa = "SIFUNCIONA",
-                Imagen = "https://code.google.com/p/dsd-grupo-proyectox"
+                Imagen = "http://google.com.pe"
 
             };
 
-            //Prueba de creación de alumno vía HTTP POST
+            //Prueba de creación de auto vía HTTP POST
             string postdata = "{\"Codigo\":\"" + autoPrueba.Codigo + "\", \"Marca\":\"" +
                 autoPrueba.Marca + "\",\"Modelo\":\"" + autoPrueba.Modelo + "\",\"Precio\":\"" +
                 autoPrueba.Precio + "\",\"Categoria\":\"" + autoPrueba.Categoria + "\",\"Estado\":\"" +
@@ -59,22 +59,22 @@ namespace SanJacintoTest
         }
 
         [TestMethod]
-        public void BuscarAutoTest()
+        public void ObtenerAutoTest()
         {
-            Auto autoPrueba = new Auto()
+            Auto auto = new Auto()
             {
                 Codigo = 17,
-                Marca = 2,
-                Modelo = 1,
-                Precio = 10,
-                Categoria = 1,
+                Marca = 4,
+                Modelo = 4,
+                Precio = 40,
+                Categoria = 3,
                 Estado = 1,
-                Placa = "SIFUNCIONA",
-                Imagen = "https://code.google.com/p/dsd-grupo-proyectox"
+                Placa = "HYUNDAI",
+                Imagen = "Hyundai_ix35.jpg"
 
             };
 
-            //Prueba de Obtención de Alumno vía HTTP GET
+            //Prueba de Obtención de Auto vía HTTP GET
             HttpWebRequest req2 = (HttpWebRequest)WebRequest
                 .Create("http://localhost:1281/AutosServices.svc/Autos/17");
             req2.Method = "GET";
@@ -83,14 +83,14 @@ namespace SanJacintoTest
             string autoJson2 = reader2.ReadToEnd();
             JavaScriptSerializer js2 = new JavaScriptSerializer();
             Auto autoObtenido = js2.Deserialize<Auto>(autoJson2);
-            Assert.AreEqual(autoPrueba.Codigo, autoObtenido.Codigo);
-            Assert.AreEqual(autoPrueba.Marca, autoObtenido.Marca);
-            Assert.AreEqual(autoPrueba.Modelo, autoObtenido.Modelo);
-            Assert.AreEqual(autoPrueba.Precio, autoObtenido.Precio);
-            Assert.AreEqual(autoPrueba.Categoria, autoObtenido.Categoria);
-            Assert.AreEqual(autoPrueba.Estado, autoObtenido.Estado);
-            Assert.AreEqual(autoPrueba.Placa, autoObtenido.Placa);
-            Assert.AreEqual(autoPrueba.Imagen, autoObtenido.Imagen);
+            Assert.AreEqual(auto.Codigo, autoObtenido.Codigo);
+            Assert.AreEqual(auto.Marca, autoObtenido.Marca);
+            Assert.AreEqual(auto.Modelo, autoObtenido.Modelo);
+            Assert.AreEqual(auto.Precio, autoObtenido.Precio);
+            Assert.AreEqual(auto.Categoria, autoObtenido.Categoria);
+            Assert.AreEqual(auto.Estado, autoObtenido.Estado);
+            Assert.AreEqual(auto.Placa, autoObtenido.Placa);
+            Assert.AreEqual(auto.Imagen, autoObtenido.Imagen);
         }
 
         [TestMethod]
@@ -108,7 +108,7 @@ namespace SanJacintoTest
                 Imagen = "Hyundai_ix35.jpg"
             };
 
-            //Prueba de creación de alumno vía HTTP POST
+            //Prueba de creación de auto vía HTTP POST
             string postdata = "{\"Codigo\":\"" + autoPrueba.Codigo + "\", \"Marca\":\"" +
                 autoPrueba.Marca + "\",\"Modelo\":\"" + autoPrueba.Modelo + "\",\"Precio\":\"" +
                 autoPrueba.Precio + "\",\"Categoria\":\"" + autoPrueba.Categoria + "\",\"Estado\":\"" +
@@ -149,7 +149,40 @@ namespace SanJacintoTest
             string autoJson2 = reader2.ReadToEnd();
             JavaScriptSerializer js2 = new JavaScriptSerializer();
             List<Auto> autoObtenido = js2.Deserialize<List<Auto>>(autoJson2);
-            Assert.AreEqual(15, autoObtenido.Count());
+            Assert.AreEqual(17, autoObtenido.Count());
         }
+
+        ///////////////////////////////////////////////////////////////
+
+        [TestMethod]
+        public void EliminarAutoTest()
+        {
+            Auto autoPrueba = new Auto()
+            {
+                Codigo = 16,
+                Estado = 0,
+              
+            };
+
+            string postdata = "{\"Codigo\":\"" + autoPrueba.Codigo + "\",\"Estado\":\"" + autoPrueba.Estado  + "\"}"; //JSON
+            byte[] data = Encoding.UTF8.GetBytes(postdata);
+            HttpWebRequest req = (HttpWebRequest)WebRequest
+               .Create("http://localhost:1281/AutosServices.svc/AutosE");
+            req.Method = "PUT";
+            req.ContentLength = data.Length;
+            req.ContentType = "application/json";
+            var reqStream = req.GetRequestStream();
+            reqStream.Write(data, 0, data.Length);
+            var res = (HttpWebResponse)req.GetResponse();
+            StreamReader reader = new StreamReader(res.GetResponseStream());
+            string autoJson = reader.ReadToEnd();
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Auto autoCreado = js.Deserialize<Auto>(autoJson);
+            Assert.AreEqual(autoPrueba.Codigo, autoCreado.Codigo);
+             Assert.AreEqual(autoPrueba.Estado, autoCreado.Estado);
+   
+        }
+
+
     }
 }

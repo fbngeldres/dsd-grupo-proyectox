@@ -13,13 +13,13 @@ namespace SanJacintoRESTServices.Persistencia
         {
             Auto autoCreado = null;
 
-            string sql = "INSERT INTO tb_auto VALUES (@cod, @marca, @modelo, @precio, @categoria, @estado, @placa, @imagen )";
+            string sql = "INSERT INTO tb_auto VALUES (@codigo, @marca, @modelo, @precio, @categoria, @estado, @placa, @imagen )";
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
             {
                 con.Open();
                 using (SqlCommand com = new SqlCommand(sql, con))
                 {
-                    com.Parameters.Add(new SqlParameter("@cod", autoACrear.Codigo));
+                    com.Parameters.Add(new SqlParameter("@codigo", autoACrear.Codigo));
                     com.Parameters.Add(new SqlParameter("@marca", autoACrear.Marca));
                     com.Parameters.Add(new SqlParameter("@modelo", autoACrear.Modelo));
                     com.Parameters.Add(new SqlParameter("@precio", autoACrear.Precio));
@@ -33,6 +33,11 @@ namespace SanJacintoRESTServices.Persistencia
             autoCreado = Obtener(autoACrear.Codigo);
             return autoCreado;
         }
+
+
+        /// ////////////////////////////////////////////////////////////////////////////
+      
+
         public Auto Obtener(int codigo)
         {
             Auto autoEncontrado = null;
@@ -67,6 +72,10 @@ namespace SanJacintoRESTServices.Persistencia
             return autoEncontrado;
         }
 
+    
+        /// ///////////////////////////////////////////////////////////////////
+      
+
         public Auto Modificar(Auto autoAModificar)
         {
             Auto autoCreado = null;
@@ -93,18 +102,40 @@ namespace SanJacintoRESTServices.Persistencia
             autoCreado = Obtener(autoAModificar.Codigo);
             return autoCreado;
         }
-        public void Eliminar(int codigoAutoAEliminar)
+
+
+        /// ////////////////////////////////////////////////////////////////////
+      
+
+        public Auto  Eliminar(Auto  codigoAutoAEliminar)
         {
-            //El auto no se eliminara. Existe un campo "estado" en el cual el auto pasara de estado 1 a 0.
-            //Por ello, validar que el auto este con eso estado. Posteriormente, actualizar.
-            //Codigo desarrollo:
+
+            Auto autoCreado = null;
+            string sql = "UPDATE tb_auto " +
+                        "SET estado = @estado "
+                        + "WHERE codigo = @cod";
+            using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand(sql, con))
+                {
+                    com.Parameters.Add(new SqlParameter("@cod", codigoAutoAEliminar.Codigo));
+                    com.Parameters.Add(new SqlParameter("@estado", codigoAutoAEliminar.Estado));
+                 
+                    com.ExecuteNonQuery();
+                }
+            }
+            autoCreado = Obtener(codigoAutoAEliminar.Codigo);
+            return autoCreado;
 
         }
+
+
         public List<Auto> ListarTodos()
         {
             Auto autoEncontrado = null;
             List<Auto> lista = new List<Auto>();
-            string sql = "SELECT * FROM tb_auto";
+            string sql = "SELECT * FROM tb_auto where estado=1";
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
             {
                 con.Open();

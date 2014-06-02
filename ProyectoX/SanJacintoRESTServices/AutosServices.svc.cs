@@ -20,10 +20,9 @@ namespace SanJacintoRESTServices
             return dao.Crear(autoACrear);
         }
 
-        public Auto ObtenerAuto(string codigo)
+        public Auto ObtenerAuto(int  codigo)
         {
-            int cod = Convert.ToInt32(codigo);
-            return dao.Obtener(cod);
+              return dao.Obtener(codigo);
         }
 
         public Auto ModificarAuto(Auto autoAModificar)
@@ -31,8 +30,9 @@ namespace SanJacintoRESTServices
             return dao.Modificar(autoAModificar);
         }
 
-        public void EliminarAuto(string codigo)
+        public Auto  EliminarAuto(Auto  codigoAutoAEliminar)
         {
+            return dao.Eliminar (codigoAutoAEliminar);
 
         }
 
