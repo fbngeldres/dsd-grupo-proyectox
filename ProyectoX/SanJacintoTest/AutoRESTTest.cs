@@ -16,7 +16,13 @@ namespace SanJacintoTest
         [TestMethod]
         public void AgregarAutoTest()
         {
-            string postdata = "{\"Categoria\":{\"Codigo\":1,\"Descripcion\":\"Económico\"},\"Codigo\":19,\"Estado\":{\"Codigo\":1,\"Descripcion\":\"Libre\"},\"Imagen\":\"picanto.jpg\",\"Marca\":{\"Codigo\":2,\"Descripcion\":\"VOLKSWAGEN\"},\"Modelo\":{\"Codigo\":1,\"Descripcion\":\"RAV4\",\"Marca\":{\"Codigo\":71,\"Descripcion\":\"TOYOTA\"}},\"Placa\":\"BB456\",\"Precio\":1000.00}";
+            string postdata = "{\"Categoria\":{\"Codigo\":1},"+
+                               "\"Estado\":{\"Codigo\":1},"+
+                               "\"Imagen\":\"fffffffffffffffffffpicanto.jpg\","+
+                               "\"Marca\":{\"Codigo\":2},"+
+                               "\"Modelo\":{\"Codigo\":1},"+
+                               "\"Placa\":\"BB456\","+
+                               "\"Precio\":1000.00}";
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req = (HttpWebRequest)WebRequest
                 .Create("http://localhost:1281/AutosServices.svc/Autos");
@@ -91,7 +97,7 @@ namespace SanJacintoTest
         public void ObtenerAutoTest()
         {
             Auto auto = new Auto()
-            {
+            {/*
                 Codigo = 17,
                 Marca = 4,
                 Modelo = 4,
@@ -100,7 +106,7 @@ namespace SanJacintoTest
                 Estado = 1,
                 Placa = "HYUNDAI",
                 Imagen = "Hyundai_ix35.jpg"
-
+                */
             };
 
             //Prueba de Obtención de Auto vía HTTP GET
@@ -126,7 +132,7 @@ namespace SanJacintoTest
         public void ModificarAutoTest()
         {
             Auto autoPrueba = new Auto()
-            {
+            {/*
                 Codigo = 17,
                 Marca = 4,
                 Modelo = 4,
@@ -134,7 +140,7 @@ namespace SanJacintoTest
                 Categoria = 3,
                 Estado = 1,
                 Placa = "HYUNDAI",
-                Imagen = "Hyundai_ix35.jpg"
+                Imagen = "Hyundai_ix35.jpg"*/
             };
 
             //Prueba de creación de auto vía HTTP POST
@@ -169,47 +175,32 @@ namespace SanJacintoTest
         [TestMethod]
         public void ListarAutosTest()
         {
-            //Prueba de Obtención de Auto vía HTTP GET
-            HttpWebRequest req2 = (HttpWebRequest)WebRequest
-                .Create("http://localhost:1281/AutosServices.svc/Autos");
+            HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos");
             req2.Method = "GET";
             HttpWebResponse res2 = (HttpWebResponse)req2.GetResponse();
             StreamReader reader2 = new StreamReader(res2.GetResponseStream());
             string autoJson2 = reader2.ReadToEnd();
             JavaScriptSerializer js2 = new JavaScriptSerializer();
             List<Auto> autoObtenido = js2.Deserialize<List<Auto>>(autoJson2);
-            Assert.AreEqual(16, autoObtenido.Count());
+            Assert.AreEqual(18, autoObtenido.Count());
         }
 
-        ///////////////////////////////////////////////////////////////
 
         [TestMethod]
         public void EliminarAutoTest()
         {
-            Auto autoPrueba = new Auto()
-            {
-                Codigo = 16,
-                Estado = 2,
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos/25");
+            req.Method = "DELETE";
+            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
 
-            };
-
-            string postdata = "{\"Codigo\":\"" + autoPrueba.Codigo + "\",\"Estado\":\"" + autoPrueba.Estado + "\"}"; //JSON
-            byte[] data = Encoding.UTF8.GetBytes(postdata);
-            HttpWebRequest req = (HttpWebRequest)WebRequest
-               .Create("http://localhost:1281/AutosServices.svc/AutosE");
-            req.Method = "PUT";
-            req.ContentLength = data.Length;
-            req.ContentType = "application/json";
-            var reqStream = req.GetRequestStream();
-            reqStream.Write(data, 0, data.Length);
-            var res = (HttpWebResponse)req.GetResponse();
-            StreamReader reader = new StreamReader(res.GetResponseStream());
-            string autoJson = reader.ReadToEnd();
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            Auto autoCreado = js.Deserialize<Auto>(autoJson);
-            Assert.AreEqual(autoPrueba.Codigo, autoCreado.Codigo);
-            Assert.AreEqual(autoPrueba.Estado, autoCreado.Estado);
-
+            HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos/25");
+            req2.Method = "GET";
+            HttpWebResponse res2 = (HttpWebResponse)req2.GetResponse();
+            StreamReader reader2 = new StreamReader(res2.GetResponseStream());
+            string autoJson2 = reader2.ReadToEnd();
+            JavaScriptSerializer js2 = new JavaScriptSerializer();
+            Auto autoObtenido = js2.Deserialize<Auto>(autoJson2);
+            Assert.IsNull(autoObtenido);
         }
 
 
