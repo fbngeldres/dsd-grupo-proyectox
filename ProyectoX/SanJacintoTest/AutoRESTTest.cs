@@ -9,13 +9,27 @@ using System.Web.Script.Serialization;
 
 namespace SanJacintoTest
 {
-  
+
     [TestClass]
-    public class AutoRestRESTTest
+    public class AutoRESTTest
     {
         [TestMethod]
-        public void AgregarAutoRestTest()
+        public void AgregarAutoTest()
         {
+            string postdata = "{\"Categoria\":{\"Codigo\":1,\"Descripcion\":\"Económico\"},\"Codigo\":19,\"Estado\":{\"Codigo\":1,\"Descripcion\":\"Libre\"},\"Imagen\":\"picanto.jpg\",\"Marca\":{\"Codigo\":2,\"Descripcion\":\"VOLKSWAGEN\"},\"Modelo\":{\"Codigo\":1,\"Descripcion\":\"RAV4\",\"Marca\":{\"Codigo\":71,\"Descripcion\":\"TOYOTA\"}},\"Placa\":\"BB456\",\"Precio\":1000.00}";
+            byte[] data = Encoding.UTF8.GetBytes(postdata);
+            HttpWebRequest req = (HttpWebRequest)WebRequest
+                .Create("http://localhost:1281/AutosServices.svc/Autos");
+            req.Method = "POST";
+            req.ContentLength = data.Length;
+            req.ContentType = "application/json";
+            var reqStream = req.GetRequestStream();
+            reqStream.Write(data, 0, data.Length);
+            var res = (HttpWebResponse)req.GetResponse();
+            StreamReader reader = new StreamReader(res.GetResponseStream());
+            string autoJson = reader.ReadToEnd();
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            /*
             Auto autoPrueba = new Auto()
             {
                 Codigo = 19,
@@ -29,15 +43,14 @@ namespace SanJacintoTest
 
             };
 
-            //Prueba de creación de auto vía HTTP POST
             string postdata = "{\"Codigo\":\"" + autoPrueba.Codigo + "\", \"Marca\":\"" +
                 autoPrueba.Marca + "\",\"Modelo\":\"" + autoPrueba.Modelo + "\",\"Precio\":\"" +
                 autoPrueba.Precio + "\",\"Categoria\":\"" + autoPrueba.Categoria + "\",\"Estado\":\"" +
                 autoPrueba.Estado + "\",\"Placa\":\"" + autoPrueba.Placa + "\", \"Imagen\":\"" +
-                autoPrueba.Imagen + "\"}"; //JSON
+                autoPrueba.Imagen + "\"}"; 
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req = (HttpWebRequest)WebRequest
-                .Create("http://localhost:1281/AutoServices.svc/Auto");
+                .Create("http://localhost:1281/AutosServices.svc/Autos");
             req.Method = "POST";
             req.ContentLength = data.Length;
             req.ContentType = "application/json";
@@ -71,11 +84,11 @@ namespace SanJacintoTest
                 Assert.AreEqual("Faltan Datos para crear el auto", mensaje);
 
             }
-
+            */
         }
 
         [TestMethod]
-        public void ObtenerAutoRestTest()
+        public void ObtenerAutoTest()
         {
             Auto auto = new Auto()
             {
@@ -90,9 +103,9 @@ namespace SanJacintoTest
 
             };
 
-            //Prueba de Obtención de AutoRest vía HTTP GET
+            //Prueba de Obtención de Auto vía HTTP GET
             HttpWebRequest req2 = (HttpWebRequest)WebRequest
-                .Create("http://localhost:1281/AutoServices.svc/Auto/17");
+                .Create("http://localhost:1281/AutosServices.svc/Autos/17");
             req2.Method = "GET";
             HttpWebResponse res2 = (HttpWebResponse)req2.GetResponse();
             StreamReader reader2 = new StreamReader(res2.GetResponseStream());
@@ -110,7 +123,7 @@ namespace SanJacintoTest
         }
 
         [TestMethod]
-        public void ModificarAutoRestTest()
+        public void ModificarAutoTest()
         {
             Auto autoPrueba = new Auto()
             {
@@ -132,7 +145,7 @@ namespace SanJacintoTest
                 autoPrueba.Imagen + "\"}"; //JSON
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req = (HttpWebRequest)WebRequest
-               .Create("http://localhost:1281/AutoServices.svc/Auto");
+               .Create("http://localhost:1281/AutosServices.svc/Autos");
             req.Method = "PUT";
             req.ContentLength = data.Length;
             req.ContentType = "application/json";
@@ -154,11 +167,11 @@ namespace SanJacintoTest
         }
 
         [TestMethod]
-        public void ListarAutoTest()
+        public void ListarAutosTest()
         {
-            //Prueba de Obtención de AutoRest vía HTTP GET
+            //Prueba de Obtención de Auto vía HTTP GET
             HttpWebRequest req2 = (HttpWebRequest)WebRequest
-                .Create("http://localhost:1281/AutoServices.svc/Auto");
+                .Create("http://localhost:1281/AutosServices.svc/Autos");
             req2.Method = "GET";
             HttpWebResponse res2 = (HttpWebResponse)req2.GetResponse();
             StreamReader reader2 = new StreamReader(res2.GetResponseStream());
@@ -171,19 +184,19 @@ namespace SanJacintoTest
         ///////////////////////////////////////////////////////////////
 
         [TestMethod]
-        public void EliminarAutoRestTest()
+        public void EliminarAutoTest()
         {
             Auto autoPrueba = new Auto()
             {
                 Codigo = 16,
                 Estado = 2,
-              
+
             };
 
-            string postdata = "{\"Codigo\":\"" + autoPrueba.Codigo + "\",\"Estado\":\"" + autoPrueba.Estado  + "\"}"; //JSON
+            string postdata = "{\"Codigo\":\"" + autoPrueba.Codigo + "\",\"Estado\":\"" + autoPrueba.Estado + "\"}"; //JSON
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req = (HttpWebRequest)WebRequest
-               .Create("http://localhost:1281/AutoServices.svc/Auto");
+               .Create("http://localhost:1281/AutosServices.svc/AutosE");
             req.Method = "PUT";
             req.ContentLength = data.Length;
             req.ContentType = "application/json";
@@ -195,8 +208,8 @@ namespace SanJacintoTest
             JavaScriptSerializer js = new JavaScriptSerializer();
             Auto autoCreado = js.Deserialize<Auto>(autoJson);
             Assert.AreEqual(autoPrueba.Codigo, autoCreado.Codigo);
-             Assert.AreEqual(autoPrueba.Estado, autoCreado.Estado);
-   
+            Assert.AreEqual(autoPrueba.Estado, autoCreado.Estado);
+
         }
 
 
