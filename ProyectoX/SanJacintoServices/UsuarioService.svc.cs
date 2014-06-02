@@ -75,25 +75,9 @@ namespace SanJacintoServices
         }
 
 
-        public string AutenticarUsuario(int codigo, string correo, string clave)
+        public Usuario AutenticarUsuario(string correo, string clave)
         {
-            string mensaje = "";
-            Usuario usuarioObtenido = UsuarioDAO.Obtener(codigo);
-            if (usuarioObtenido.Correo == correo)
-            {
-                if (usuarioObtenido.Clave == clave)
-                { }
-                else
-                {
-                    mensaje = "Clave incorrecta";
-                }
-            }
-            else
-            {
-                mensaje = "Usuario no Existe";
-            }
-
-            return mensaje;
+            return UsuarioDAO.obtenerUsuarioLogeado(correo, clave);
         }
     }
 }

@@ -98,6 +98,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\wsUsuarioService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\bootstrap-theme.css" />
@@ -147,6 +152,16 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\wsUsuarioService\SanJacinto.wsUsuarioService.Usuario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\wsUsuarioService\UsuarioService.disco" />
+    <None Include="Service References\wsUsuarioService\configuration91.svcinfo" />
+    <None Include="Service References\wsUsuarioService\configuration.svcinfo" />
+    <None Include="Service References\wsUsuarioService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Views\Alquiler\CrearAlquiler.aspx" />
     <Content Include="Views\Alquiler\ListarAlquileres.aspx" />
     <Content Include="Views\Alquiler\RegistrarAlquiler.aspx" />
@@ -154,6 +169,9 @@
     <Content Include="Views\Auto\MantenimientoAuto.aspx" />
     <Content Include="Views\Auto\RegistrarAuto.aspx" />
     <Content Include="Views\Auto\ResultadoBusquedaAuto.aspx" />
+    <Content Include="Views\Shared\LogeoOpciones.ascx" />
+    <Content Include="Views\Shared\PopIniciarSesion.ascx" />
+    <Content Include="Views\Usuario\RegistarUsuario.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -207,10 +225,19 @@
     <None Include="Service References\wsAutoService\SanJacinto.wsAutoService.Modelo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\wsUsuarioService\UsuarioService.wsdl" />
+    <None Include="Service References\wsUsuarioService\UsuarioService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wsUsuarioService\UsuarioService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wsUsuarioService\UsuarioService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="fonts\glyphicons-halflings-regular.eot" />
@@ -278,6 +305,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\wsAlquiler\" />
     <WCFMetadataStorage Include="Service References\wsAutoService\" />
+    <WCFMetadataStorage Include="Service References\wsUsuarioService\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

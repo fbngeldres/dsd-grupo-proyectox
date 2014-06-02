@@ -27,6 +27,6 @@ namespace SanJacintoServices
         List<Usuario> ListarUsuarios();
 
         [OperationContract]
-        string AutenticarUsuario(int codigo, string correo, string clave);
+        Usuario AutenticarUsuario(string correo, string clave);
     }
 }

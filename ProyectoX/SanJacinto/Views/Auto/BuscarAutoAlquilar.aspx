@@ -31,8 +31,7 @@
     </div>
     <br />
     <br />
-    <% using (Html.BeginForm("ResultadoBusquedaAuto", "Auto"))
-       { %>
+    <% using (Html.BeginForm("ResultadoBusquedaAuto", "Auto"))  { %>
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-4">
@@ -90,7 +89,7 @@
                         <div class="form-group">
 	                        <div class="col-sm-offset-2 col-sm-10">
 		                        <div class="pull-right">
-                                    <input id="btnSubmit" type="submit" value="Submit" class="btn btn-primary"/>
+                                    <input id="btnSubmit" type="submit" value="Buscar" class="btn btn-primary"/>
 		                        </div>
 	                        </div>
                         </div>

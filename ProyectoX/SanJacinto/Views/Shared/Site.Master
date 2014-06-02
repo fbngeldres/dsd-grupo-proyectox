@@ -8,7 +8,7 @@
 
     <link href="../../css/bootstrap.min.css" rel="stylesheet"/>
 	<link href="../../css/style.css" rel="stylesheet"/>
-    <link href="../../css/datepicker.css" rel="stylesheet">
+    <link href="../../css/datepicker.css" rel="stylesheet"/>
 
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../img/apple-touch-icon-144-precomposed.png"/>
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../img/apple-touch-icon-114-precomposed.png"/>
@@ -59,50 +59,7 @@
 							<input type="text" class="form-control">
 						</div> <button type="search" class="btn btn-default ">  <span class="glyphicon glyphicon-search"></span> Buscar</button>
                         --> 
-					<ul class="nav navbar-nav navbar-right">
-					    <li>
-							<a id="modal-469447" href="#modal-container-469447" data-toggle="modal">Iniciar Sesion</a>
-						</li>
-                        
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Mi cuenta
-                            <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <div class="navbar-content">
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <img src="http://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/twDq00QDud4/s120-c/photo.jpg"
-                                                    alt="Alternate Text" class="img-responsive" />
-                                                <p class="text-center small">
-                                                    <a href="#">Cambiar Foto</a></p>
-                                            </div>
-                                            <div class="col-md-7">
-                                                <span>Bhaumik Patel</span>
-                                                <p class="text-muted small">
-                                                    mail@gmail.com</p>
-                                                <div class="divider">
-                                                </div>
-                                                <a href="#" class="btn btn-primary btn-sm active">Editar Perfil</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="navbar-footer">
-                                        <div class="navbar-footer-content">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <a href="#" class="btn btn-default btn-sm">Change Passowrd</a>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <a href="http://www.jquery2dotnet.com" class="btn btn-default btn-sm pull-right">Sign Out</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                       
-                     </ul>
+                    <% Html.RenderPartial("LogeoOpciones"); %>
 				</div>
 			</nav>
             <br />
@@ -111,55 +68,8 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
     </div>
-    </div>
-    <div class="modal fade" id="modal-container-469447" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="form-signin mg-btm">
-                <h3 class="heading-desc">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        ×</button>
-                    Iniciar Sesión en San Jacinto</h3>
-                <div class="social-box">
-                    <div class="row mg-btm">
-                        <div class="col-md-12">
-                            <a href="#" class="btn btn-primary btn-block">
-                                <i class="icon-facebook"></i>Logearse con Facebook
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a href="#" class="btn btn-info btn-block">
-                                <i class="icon-twitter"></i>Logearse con Twitter
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="main">
-                    Usuario:
-                    <input type="text" class="form-control" placeholder="Email" autofocus />
-                    Contraseña:
-                    <input type="password" class="form-control" placeholder="Password" />
-                    <span class="clearfix"></span>
-                </div>
-                <div class="login-footer">
-                    <div class="row">
-                        <div class="col-xs-6 col-md-6">
-                            <div class="left-section">
-                                <%: Html.ActionLink("Registrese Ahora!", "RegistarUsuario", "Usuario")%>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-md-6 pull-right">
-                            <button type="submit" class="btn btn-large btn-danger pull-right">
-                                Iniciar sesión
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
+<% Html.RenderPartial("PopIniciarSesion", new ViewDataDictionary()); %>
 </body>
 
 </html>
