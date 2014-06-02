@@ -122,5 +122,21 @@ namespace SanJacintoServices
             /*alquilerDAO = new AlquilerDAO();*/
             return AlquilerDAO.ListarTodos().ToList();
         }
+
+
+        public Alquiler RealizarDevolucion(int codigo)
+        {
+            Auto autoAlquilado = AlquilerDAO.Obtener(codigo).Auto;
+            
+            
+         
+            Estado estaLibre = new Estado();
+            estaLibre.Codigo = 1;
+            autoAlquilado.Estado = estaLibre;
+
+            AutoDAO.Modificar(autoAlquilado);
+
+            return AlquilerDAO.Obtener(codigo); 
+        }
     }
 }
