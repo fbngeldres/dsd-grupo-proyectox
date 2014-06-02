@@ -149,7 +149,7 @@ namespace SanJacintoTest
             string autoJson2 = reader2.ReadToEnd();
             JavaScriptSerializer js2 = new JavaScriptSerializer();
             List<Auto> autoObtenido = js2.Deserialize<List<Auto>>(autoJson2);
-            Assert.AreEqual(17, autoObtenido.Count());
+            Assert.AreEqual(16, autoObtenido.Count());
         }
 
         ///////////////////////////////////////////////////////////////
