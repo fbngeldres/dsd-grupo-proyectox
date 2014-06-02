@@ -18,14 +18,14 @@ namespace SanJacintoTest
         {
             Auto autoPrueba = new Auto()
             {
-                Codigo = 18,
-                Marca = 2,
+                Codigo = 19,
+                Marca = 1,
                 Modelo = 1,
                 Precio = 1000,
                 Categoria = 1,
-                Estado = 1,
-                Placa = "BB456",
-                Imagen = "picanto.jpg"
+                Estado = 2,
+                Placa = "AGBF586",
+                Imagen = "aaaaa.jpg "
 
             };
 
@@ -43,19 +43,35 @@ namespace SanJacintoTest
             req.ContentType = "application/json";
             var reqStream = req.GetRequestStream();
             reqStream.Write(data, 0, data.Length);
-            var res = (HttpWebResponse)req.GetResponse();
-            StreamReader reader = new StreamReader(res.GetResponseStream());
-            string autoJson = reader.ReadToEnd();
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            Auto autoCreado = js.Deserialize<Auto>(autoJson);
-            Assert.AreEqual(autoPrueba.Codigo, autoCreado.Codigo);
-            Assert.AreEqual(autoPrueba.Marca, autoCreado.Marca);
-            Assert.AreEqual(autoPrueba.Modelo, autoCreado.Modelo);
-            Assert.AreEqual(autoPrueba.Precio, autoCreado.Precio);
-            Assert.AreEqual(autoPrueba.Categoria, autoCreado.Categoria);
-            Assert.AreEqual(autoPrueba.Estado, autoCreado.Estado);
-            Assert.AreEqual(autoPrueba.Placa, autoCreado.Placa);
-            Assert.AreEqual(autoPrueba.Imagen, autoCreado.Imagen);
+            HttpWebResponse res = null;
+            try
+            {
+                res = (HttpWebResponse)req.GetResponse();
+                StreamReader reader = new StreamReader(res.GetResponseStream());
+                string autoJson = reader.ReadToEnd();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                Auto autoCreado = js.Deserialize<Auto>(autoJson);
+                Assert.AreEqual(autoPrueba.Codigo, autoCreado.Codigo);
+                Assert.AreEqual(autoPrueba.Marca, autoCreado.Marca);
+                Assert.AreEqual(autoPrueba.Modelo, autoCreado.Modelo);
+                Assert.AreEqual(autoPrueba.Precio, autoCreado.Precio);
+                Assert.AreEqual(autoPrueba.Categoria, autoCreado.Categoria);
+                Assert.AreEqual(autoPrueba.Estado, autoCreado.Estado);
+                Assert.AreEqual(autoPrueba.Placa, autoCreado.Placa);
+                Assert.AreEqual(autoPrueba.Imagen, autoCreado.Imagen);
+            }
+            catch (WebException e)
+            {
+                HttpStatusCode code = ((HttpWebResponse)e.Response).StatusCode;
+                string message = ((HttpWebResponse)e.Response).StatusDescription;
+                StreamReader reader = new StreamReader(e.Response.GetResponseStream());
+                string error = reader.ReadToEnd();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                string mensaje = js.Deserialize<string>(error);
+                Assert.AreEqual("Faltan Datos para crear el auto", mensaje);
+
+            }
+
         }
 
         [TestMethod]
