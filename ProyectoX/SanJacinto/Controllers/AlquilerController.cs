@@ -65,21 +65,15 @@ namespace SanJacinto.Controllers
 
             AutoModel autoModel = new AutoModel()
             {
-                Placa = objAlquiler.Auto.Placa
-            };
-
-            UsuarioModel usuarioModel = new UsuarioModel()
-            {
-                Nombres = objAlquiler.Usuario.Nombres,
-                Apellidos = objAlquiler.Usuario.Apellidos
+                MarcaDesc = objAlquiler.Auto.Marca.Descripcion,
+                ModeloDesc = objAlquiler.Auto.Modelo.Descripcion,
+                Imagen = objAlquiler.Auto.Imagen
             };
 
             AlquilerModel alquilerModel = new AlquilerModel()
             {
-                Costo = objAlquiler.Costo,
-                CostoAdicional = objAlquiler.CostoAdicional,
-                Auto = autoModel,
-                Usuario = usuarioModel
+                FechaFin = objAlquiler.FechaFin,
+                Auto = autoModel
             };
 
             return View(alquilerModel);
@@ -95,7 +89,7 @@ namespace SanJacinto.Controllers
             foreach (var item in listaAlquileres)
             {
                 AutoModel auto = new AutoModel();
-                //auto.Marca = "Audi R8";
+                auto.MarcaDesc = item.Auto.Marca.Descripcion;
 
                 alquilerModel = new AlquilerModel();
                 alquilerModel.Auto = auto;

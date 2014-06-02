@@ -46,7 +46,7 @@
                        </p>
                     </td>
                     <td>
-                        <%: item.Auto.Marca %>
+                        <%: item.Auto.MarcaDesc %>
                     </td>
                     <td>
                         <%: String.Format("{0:F}", item.Costo) %>

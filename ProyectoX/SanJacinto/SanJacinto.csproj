@@ -136,6 +136,7 @@
     <Content Include="js\datepickerBuscar.js" />
     <Content Include="js\html5shiv.js" />
     <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.ui.datepicker-es.js" />
     <Content Include="js\less-1.3.3.min.js" />
     <Content Include="js\scripts.js" />
     <None Include="Service References\wsAlquiler\AlquilerService.disco" />

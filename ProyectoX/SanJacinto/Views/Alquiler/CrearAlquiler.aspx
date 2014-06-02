@@ -380,7 +380,16 @@
 
         $(document).ready(function () {
             $("#txtFechaInicio").datepicker({
-                dateFormat: 'dd/MM/yyyy'
+                dateFormat: 'dd/MM/yyyy',
+                onSelect: function (date) {
+                    var fecha = date + "";
+                    var list = fecha.split("/");
+
+                    var dia = list[0];
+                    var mes = list[1];
+                    var anio = "2014";
+                    $("#txtFechaInicio").val(dia + "/" + obtenerIndexMes(mes) + "/" + anio);
+                }
             });
         });
 
@@ -465,6 +474,33 @@
                 s[1] += new Array(prec - s[1].length + 1).join('0');
             }
             return s.join(dec);
+        }
+
+        function obtenerIndexMes(cadena) {
+            if (cadena == "Enero")
+                return "01";
+            else if (cadena == "Febrero")
+                return "02";
+            else if (cadena == "Marzo")
+                return "03";
+            else if (cadena == "Abril")
+                return "04";
+            else if (cadena == "Mayo")
+                return "05";
+            else if (cadena == "Junio")
+                return "06";
+            else if (cadena == "Julio")
+                return "07";
+            else if (cadena == "Agosto")
+                return "08";
+            else if (cadena == "Septiembre")
+                return "09";
+            else if (cadena == "Octubre")
+                return "10";
+            else if (cadena == "Noviembre")
+                return "11";
+            else
+                return "12";
         }
 
     </script>    

@@ -59,6 +59,7 @@ namespace SanJacintoServices
                 auto.Codigo = autoObtenido.Codigo;
                 auto.Placa = autoObtenido.Placa;
                 auto.Precio = autoObtenido.Precio;
+                auto.Imagen = autoObtenido.Imagen;
 
                 Marca marca = new Marca();
                 marca.Codigo = autoObtenido.Marca.Codigo;
