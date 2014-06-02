@@ -52,10 +52,22 @@
                                     <li><font style="font-weight:bold;">Categoría:</font> <%: item.Categoria.Descripcion %></li>
                                 </ul>
                                 <p>
-                                    <%: Html.ActionLink("Revervar", "CrearAlquiler", "Alquiler", 
+                                    <%
+                                        if (Request.IsAuthenticated) {
+                                    %>
+                                        <%: Html.ActionLink("Revervar", "CrearAlquiler", "Alquiler", 
                                         new { dcPrecio = item.Precio,intCodAuto = item.Codigo,intCodEstado = item.Estado.Codigo, 
                                             strEstado = item.Estado.Descripcion,intCodModelo = item.Modelo.Codigo, strModelo = item.Modelo.Descripcion,
                                             intCodMarca = item.Marca.Codigo, strMarca = item.Marca.Descripcion}, new { @class = "btn btn-primary" })%>
+                                    <%
+                                        }
+                                        else {
+                                    %> 
+                                        <a id="modal-469447" href="#modal-container-469447" data-toggle="modal" class="btn btn-primary">Reservar</a>
+
+                                    <%
+                                        }
+                                    %>
                                     <a class="btn" href="#"><%: item.Precio %></a>
                                 </p>
                             </div>

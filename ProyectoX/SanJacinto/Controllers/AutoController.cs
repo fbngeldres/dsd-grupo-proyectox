@@ -9,7 +9,7 @@ namespace SanJacinto.Controllers
 {
     public class AutoController : Controller
     {
-        public ActionResult BuscarAutoAlquilar() {
+        private AutoModel inicializarListas() {
             AutoModel auto = new AutoModel();
             auto.lstCategorias = new List<SelectListItem>();
             auto.lstModelos = new List<SelectListItem>();
@@ -56,10 +56,15 @@ namespace SanJacinto.Controllers
                 item = new SelectListItem
                 {
                     Value = l.Codigo.ToString(),
-                    Text = l.Descripcion 
+                    Text = l.Descripcion
                 };
                 auto.lstCategorias.Add(item);
             }
+            return auto;
+        }
+
+        public ActionResult BuscarAutoAlquilar() {
+            AutoModel auto = inicializarListas();
 
             return View(auto);
         }

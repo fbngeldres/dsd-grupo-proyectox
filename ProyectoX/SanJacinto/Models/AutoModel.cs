@@ -42,4 +42,14 @@ namespace SanJacinto.Models
         public string EstadoDesc { get; set; }
     }
 
+    public class AutoRest {
+        public int Codigo { get; set; }
+        public int Marca { get; set; }
+        public int Modelo { get; set; }
+        public decimal Precio { get; set; }
+        public int Categoria { get; set; }
+        public int Estado { get; set; }
+        public string Placa { get; set; }
+        public string Imagen { get; set; }
+    }
 }

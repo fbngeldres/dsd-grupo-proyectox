@@ -50,7 +50,7 @@ namespace SanJacinto.Controllers
                 FormsAuthentication.SetAuthCookie(model.Correo, true);
                 return RedirectToAction("Index", "Home");
             }
-
+            //return Content("thanks for submitting");
             return View(model);
         }
 
