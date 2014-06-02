@@ -16,16 +16,19 @@ namespace SanJacintoTest
         [TestMethod]
         public void AgregarAutoTest()
         {
-            string postdata = "{\"Categoria\":{\"Codigo\":1},"+
-                               "\"Estado\":{\"Codigo\":1},"+
-                               "\"Imagen\":\"fffffffffffffffffffpicanto.jpg\","+
-                               "\"Marca\":{\"Codigo\":2},"+
-                               "\"Modelo\":{\"Codigo\":1},"+
-                               "\"Placa\":\"BB456\","+
-                               "\"Precio\":1000.00}";
+            Auto auto = new Auto();
+            auto.Categoria = new Categoria() {Codigo = 1};
+            auto.Estado = new Estado() { Codigo = 1 };
+            auto.Marca = new Marca() { Codigo = 1 };
+            auto.Modelo = new Modelo() { Codigo = 1 };
+            auto.Imagen = "lost3333";
+            auto.Placa = "123456";
+            auto.Precio = 1000;
+
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            string postdata = serializer.Serialize(auto);
             byte[] data = Encoding.UTF8.GetBytes(postdata);
-            HttpWebRequest req = (HttpWebRequest)WebRequest
-                .Create("http://localhost:1281/AutosServices.svc/Autos");
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos");
             req.Method = "POST";
             req.ContentLength = data.Length;
             req.ContentType = "application/json";
@@ -35,6 +38,14 @@ namespace SanJacintoTest
             StreamReader reader = new StreamReader(res.GetResponseStream());
             string autoJson = reader.ReadToEnd();
             JavaScriptSerializer js = new JavaScriptSerializer();
+            Auto autoCreado = js.Deserialize<Auto>(autoJson);
+            Assert.AreEqual(auto.Marca.Codigo, autoCreado.Marca.Codigo);
+            Assert.AreEqual(auto.Modelo.Codigo, autoCreado.Modelo.Codigo);
+            Assert.AreEqual(auto.Precio, autoCreado.Precio);
+            Assert.AreEqual(auto.Categoria.Codigo, autoCreado.Categoria.Codigo);
+            Assert.AreEqual(auto.Estado.Codigo, autoCreado.Estado.Codigo);
+            Assert.AreEqual(auto.Placa, autoCreado.Placa);
+            Assert.AreEqual(auto.Imagen, autoCreado.Imagen);
             /*
             Auto autoPrueba = new Auto()
             {
@@ -96,34 +107,28 @@ namespace SanJacintoTest
         [TestMethod]
         public void ObtenerAutoTest()
         {
-            Auto auto = new Auto()
-            {/*
-                Codigo = 17,
-                Marca = 4,
-                Modelo = 4,
-                Precio = 40,
-                Categoria = 3,
-                Estado = 1,
-                Placa = "HYUNDAI",
-                Imagen = "Hyundai_ix35.jpg"
-                */
-            };
-
-            //Prueba de Obtención de Auto vía HTTP GET
-            HttpWebRequest req2 = (HttpWebRequest)WebRequest
-                .Create("http://localhost:1281/AutosServices.svc/Autos/17");
+            Auto auto = new Auto();
+            auto.Codigo = 30;
+            auto.Categoria = new Categoria() { Codigo = 1 };
+            auto.Estado = new Estado() { Codigo = 1 };
+            auto.Marca = new Marca() { Codigo = 1 };
+            auto.Modelo = new Modelo() { Codigo = 1 };
+            auto.Imagen = "lost3333";
+            auto.Placa = "123456";
+            auto.Precio = 1000;
+            
+            HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos/" + auto.Codigo);
             req2.Method = "GET";
             HttpWebResponse res2 = (HttpWebResponse)req2.GetResponse();
             StreamReader reader2 = new StreamReader(res2.GetResponseStream());
             string autoJson2 = reader2.ReadToEnd();
             JavaScriptSerializer js2 = new JavaScriptSerializer();
             Auto autoObtenido = js2.Deserialize<Auto>(autoJson2);
-            Assert.AreEqual(auto.Codigo, autoObtenido.Codigo);
-            Assert.AreEqual(auto.Marca, autoObtenido.Marca);
-            Assert.AreEqual(auto.Modelo, autoObtenido.Modelo);
+            Assert.AreEqual(auto.Marca.Codigo, autoObtenido.Marca.Codigo);
+            Assert.AreEqual(auto.Modelo.Codigo, autoObtenido.Modelo.Codigo);
             Assert.AreEqual(auto.Precio, autoObtenido.Precio);
-            Assert.AreEqual(auto.Categoria, autoObtenido.Categoria);
-            Assert.AreEqual(auto.Estado, autoObtenido.Estado);
+            Assert.AreEqual(auto.Categoria.Codigo, autoObtenido.Categoria.Codigo);
+            Assert.AreEqual(auto.Estado.Codigo, autoObtenido.Estado.Codigo);
             Assert.AreEqual(auto.Placa, autoObtenido.Placa);
             Assert.AreEqual(auto.Imagen, autoObtenido.Imagen);
         }
@@ -131,27 +136,20 @@ namespace SanJacintoTest
         [TestMethod]
         public void ModificarAutoTest()
         {
-            Auto autoPrueba = new Auto()
-            {/*
-                Codigo = 17,
-                Marca = 4,
-                Modelo = 4,
-                Precio = 40,
-                Categoria = 3,
-                Estado = 1,
-                Placa = "HYUNDAI",
-                Imagen = "Hyundai_ix35.jpg"*/
-            };
+            Auto auto = new Auto();
+            auto.Codigo = 30;
+            auto.Categoria = new Categoria() { Codigo = 1 };
+            auto.Estado = new Estado() { Codigo = 1 };
+            auto.Marca = new Marca() { Codigo = 1 };
+            auto.Modelo = new Modelo() { Codigo = 1 };
+            auto.Imagen = "Pruebita";
+            auto.Placa = "Jejejeje";
+            auto.Precio = 1000;
 
-            //Prueba de creación de auto vía HTTP POST
-            string postdata = "{\"Codigo\":\"" + autoPrueba.Codigo + "\", \"Marca\":\"" +
-                autoPrueba.Marca + "\",\"Modelo\":\"" + autoPrueba.Modelo + "\",\"Precio\":\"" +
-                autoPrueba.Precio + "\",\"Categoria\":\"" + autoPrueba.Categoria + "\",\"Estado\":\"" +
-                autoPrueba.Estado + "\",\"Placa\":\"" + autoPrueba.Placa + "\", \"Imagen\":\"" +
-                autoPrueba.Imagen + "\"}"; //JSON
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            string postdata = serializer.Serialize(auto);
             byte[] data = Encoding.UTF8.GetBytes(postdata);
-            HttpWebRequest req = (HttpWebRequest)WebRequest
-               .Create("http://localhost:1281/AutosServices.svc/Autos");
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos");
             req.Method = "PUT";
             req.ContentLength = data.Length;
             req.ContentType = "application/json";
@@ -161,15 +159,14 @@ namespace SanJacintoTest
             StreamReader reader = new StreamReader(res.GetResponseStream());
             string autoJson = reader.ReadToEnd();
             JavaScriptSerializer js = new JavaScriptSerializer();
-            Auto autoCreado = js.Deserialize<Auto>(autoJson);
-            Assert.AreEqual(autoPrueba.Codigo, autoCreado.Codigo);
-            Assert.AreEqual(autoPrueba.Marca, autoCreado.Marca);
-            Assert.AreEqual(autoPrueba.Modelo, autoCreado.Modelo);
-            Assert.AreEqual(autoPrueba.Precio, autoCreado.Precio);
-            Assert.AreEqual(autoPrueba.Categoria, autoCreado.Categoria);
-            Assert.AreEqual(autoPrueba.Estado, autoCreado.Estado);
-            Assert.AreEqual(autoPrueba.Placa, autoCreado.Placa);
-            Assert.AreEqual(autoPrueba.Imagen, autoCreado.Imagen);
+            Auto autoModificado = js.Deserialize<Auto>(autoJson);
+            Assert.AreEqual(auto.Marca.Codigo, autoModificado.Marca.Codigo);
+            Assert.AreEqual(auto.Modelo.Codigo, autoModificado.Modelo.Codigo);
+            Assert.AreEqual(auto.Precio, autoModificado.Precio);
+            Assert.AreEqual(auto.Categoria.Codigo, autoModificado.Categoria.Codigo);
+            Assert.AreEqual(auto.Estado.Codigo, autoModificado.Estado.Codigo);
+            Assert.AreEqual(auto.Placa, autoModificado.Placa);
+            Assert.AreEqual(auto.Imagen, autoModificado.Imagen);
         }
 
         [TestMethod]

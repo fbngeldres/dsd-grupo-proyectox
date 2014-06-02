@@ -26,6 +26,15 @@ namespace SanJacintoRESTServices
 
         public Auto CrearAuto(Auto autoACrear)
         {
+            /*
+             if (objetoAuto.Codigo.Equals(autoACrear.Codigo ))
+            {
+                throw new WebFaultException<string>(
+                    "Faltan Datos para crear el auto", HttpStatusCode.InternalServerError);
+
+            }
+             */
+
             return AutoDAO.Crear(autoACrear);
         }
 
