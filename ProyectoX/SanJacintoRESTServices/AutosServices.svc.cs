@@ -26,14 +26,7 @@ namespace SanJacintoRESTServices
 
         public Auto CrearAuto(Auto autoACrear)
         {
-            Auto auto = new Auto
-            {
-                Placa = "ddd"
-
-
-            };
-            //return dao.Crear(autoACrear);
-            return null;
+            return AutoDAO.Crear(autoACrear);
         }
 
         public Auto ObtenerAuto(string  codigo)
@@ -44,20 +37,35 @@ namespace SanJacintoRESTServices
 
         public Auto ModificarAuto(Auto autoAModificar)
         {
-            //return dao.Modificar(autoAModificar);
-            return null;
+            return AutoDAO.Modificar(autoAModificar);
         }
 
         public void EliminarAuto(string codigoAutoAEliminar)
         {
-            //return dao.Eliminar (codigoAutoAEliminar);
-            //return null;
+            Auto autoExistente = new Auto();
+            autoExistente = AutoDAO.Obtener(Int32.Parse(codigoAutoAEliminar));
+            AutoDAO.Eliminar(autoExistente);
         }
 
         public List<Auto> ListarAuto()
         {
-            //return dao.ListarTodos();
             return AutoDAO.ListarTodos().ToList();
+        }
+
+
+        public List<Marca> ListarMarcas()
+        {
+            return AutoDAO.obtenerMarcas();
+        }
+
+        public List<Categoria> ListarCategorias()
+        {
+            return AutoDAO.obtenerCategorias();
+        }
+
+        public List<Modelo> ListarModelos()
+        {
+            return AutoDAO.obtenerModelos();
         }
     }
 }
