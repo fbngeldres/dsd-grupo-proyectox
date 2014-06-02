@@ -21,5 +21,8 @@ namespace SanJacintoServices
 
         [OperationContract]
         List<Alquiler> listaAlquileres();
+
+        [OperationContract]
+        Alquiler RealizarDevolucion(int codigo);
     }
 }
