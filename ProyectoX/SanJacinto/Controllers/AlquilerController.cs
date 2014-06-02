@@ -37,14 +37,29 @@ namespace SanJacinto.Controllers
             return View(nuevoAlquiler);
         }
 
-        public ActionResult RegistrarAlquiler(int CantidadDias, decimal strPrecioAuto, int intCodigoAuto, int intCodigoUsuario)
+        public ActionResult RegistrarAlquiler(int CantidadDias, decimal strPrecioAuto, int intCodigoAuto, int intCodigoUsuario,
+            string txtFechaInicio,string txtAccesorios,string txtCostoAdicional)
         {
             wsAlquiler.AlquilerServiceClient miAlquiler = new wsAlquiler.AlquilerServiceClient();
 
             wsAlquiler.Alquiler objAlquiler = new wsAlquiler.Alquiler();
             objAlquiler.Costo = strPrecioAuto;
-            objAlquiler.CostoAdicional = 100;
-            objAlquiler.Accesorios = "Silla de Bebe";
+            objAlquiler.CantidadDias = CantidadDias;
+
+            if(txtCostoAdicional.Length > 0 )
+                objAlquiler.CostoAdicional = Convert.ToDecimal(txtCostoAdicional);
+
+            objAlquiler.Accesorios = txtAccesorios;
+
+            decimal subMonto = objAlquiler.Costo * CantidadDias;
+            decimal igv = Convert.ToDecimal(0.18);
+            objAlquiler.Igv = igv * subMonto;
+            objAlquiler.MontoTotal = subMonto + objAlquiler.Igv + objAlquiler.CostoAdicional;
+
+            DateTime fecInicio = Convert.ToDateTime(txtFechaInicio);
+            DateTime fecFin = fecInicio.AddDays(CantidadDias);
+            objAlquiler.FechaInicio = fecInicio;
+            objAlquiler.FechaFin = fecFin;
 
             objAlquiler = miAlquiler.registrarAlquiler(objAlquiler, intCodigoAuto, intCodigoUsuario);
 

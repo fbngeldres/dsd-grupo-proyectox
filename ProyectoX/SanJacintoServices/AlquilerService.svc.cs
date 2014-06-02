@@ -55,8 +55,6 @@ namespace SanJacintoServices
                 wsUsuarioService.UsuarioServiceClient proxyU = new wsUsuarioService.UsuarioServiceClient();
                 wsUsuarioService.Usuario objUsuObtenido = proxyU.ObtenerUsuario(intCodigoUsuario);
 
-                //DateTime myDate = DateTime.ParseExact("2009-05-08 14:40:52", "yyyy-MM-dd HH:mm:ss",
-                  //                     System.Globalization.CultureInfo.InvariantCulture);
                 Auto auto = new Auto();
                 auto.Codigo = autoObtenido.Codigo;
                 auto.Placa = autoObtenido.Placa;
@@ -91,13 +89,14 @@ namespace SanJacintoServices
                 {
                     Costo = objAlquiler.Costo,
                     CostoAdicional = objAlquiler.CostoAdicional,
+                    MontoTotal = objAlquiler.MontoTotal,
                     Auto = auto,
                     Usuario = usuarioObtenido,
-                    FechaInicio = DateTime.Now,
-                    FechaFin = DateTime.Now,
+                    FechaInicio = objAlquiler.FechaInicio,
+                    FechaFin = objAlquiler.FechaFin,
                     CantidadDias = objAlquiler.CantidadDias,
                     Accesorios = objAlquiler.Accesorios,
-                    Igv = 100
+                    Igv = objAlquiler.Igv
                 };
 
                 alquilerCreado = AlquilerDAO.Crear(alquilerCreado);

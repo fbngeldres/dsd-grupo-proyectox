@@ -7,24 +7,31 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     
     <script type="text/javascript">
-        //.heading-desc
         function onBlurDias() {
             var dias = document.getElementById("CantidadDias").value;
             var precio = document.getElementById("strPrecio").innerHTML + "";
 
             var montoTotal = 0;
             limpiaMontos();
-            console.info(precio);
             if (precio.length != 0 && precio != '') {
+
                 montoTotal = parseInt(dias) * parseInt(precio);
+                var total = montoTotal;
+
+                montoTotal = number_format(montoTotal, 2, '.', ',');
 
                 document.getElementById("strMontoTotal").innerHTML = montoTotal + "";
                 document.getElementById("strSubTotal").innerHTML = montoTotal + "";
 
-                var igv = 0.18 * montoTotal;
+                var igv = 0.18 * total;
+                var igv2 = igv;
+                igv = number_format(igv, 2, '.', ',');
                 document.getElementById("strIGV").innerHTML = igv + "";
 
-                document.getElementById("strTotal").innerHTML = (montoTotal + igv) + "";
+                montoTotal = total + igv2;
+                document.getElementById("strTotalHide").innerHTML = montoTotal + "";
+                montoTotal = number_format(montoTotal, 2, '.', ',');
+                document.getElementById("strTotal").innerHTML = montoTotal + "";
             }
         }
 
@@ -178,13 +185,13 @@
                                 <input type="text" name="txtFechaInicio" id="txtFechaInicio" class="form-control" style="width: 150px !important;"/>
                             </td>
                             <td class="col-sm-1 col-md-1">
-                                <label style="font-weight:normal"><input type="checkbox" name="radio1" id="radio1" class="form-control"/>Silla de beb&eacute;</label>
+                                <label style="font-weight:normal"><input type="checkbox" value="Silla de Bebé" name="Checkbox1" id="Checkbox1" class="form-control"/>Silla de beb&eacute;</label>
                             </td>
                             <td class="col-sm-1 col-md-1">
-                                <label style="font-weight:normal"><input type="checkbox" name="radio2" id="Checkbox1" class="form-control"/>Radio</label>
+                                <label style="font-weight:normal"><input type="checkbox" value="Radio MP3" name="Checkbox2" id="Checkbox2" class="form-control"/>Radio</label>
                             </td>
                             <td class="col-sm-1 col-md-1">
-                                <label style="font-weight:normal"><input type="checkbox" name="radio2" id="Checkbox2" class="form-control"/>Parlantes</label>
+                                <label style="font-weight:normal"><input type="checkbox" value="Parlantes" name="Checkbox3" id="Checkbox3" class="form-control"/>Parlantes</label>
                             </td>
                             <td class="col-sm-1 col-md-1">
                             </td>
@@ -240,6 +247,8 @@
                                 <input id="strPrecioAuto" name="strPrecioAuto" type="hidden" value="<%: Model.Auto.PrecioMinimo %>" />
                                 <input id="intCodigoAuto" name="intCodigoAuto" type="hidden" value="<%: Model.Auto.Codigo %>" />
                                 <input id="intCodigoUsuario" name="intCodigoUsuario" type="hidden" value="<%: Model.Usuario.Codigo %>" />
+                                <input id="txtAccesorios" name="txtAccesorios" type="hidden" />
+                                <input id="txtCostoAdicional" name="txtCostoAdicional" type="hidden" />
                             </td>
                             <td class="col-sm-1 col-md-1 text-center">
                                 <strong>$</strong><strong id="strMontoTotal"></strong>
@@ -290,7 +299,7 @@
                             </td>
                             <td class="text-right">
                                 <h3>
-                                    <strong>$</strong><strong id="strTotal"></strong></h3>
+                                    <strong>$</strong><strong id="strTotal"></strong><strong id="strTotalHide" style="display: none;"></strong></h3>
                             </td>
                         </tr>
                         <tr>
@@ -335,16 +344,19 @@
                         <label>Modelo: </label> <strong id="stModelo" style="font-weight:normal">$</strong>
                     </p>
                     <p>
-                        <label>Placa: </label> <strong id="stPlaca" style="font-weight:normal">$</strong>
-                    </p>
-                    <p>
-                        <label>Accesorios: </label> <strong id="stAccesorios" style="font-weight:normal">$</strong>
+                        <label>Precio x dia: $</label> <strong id="stPrecio" style="font-weight:normal">$</strong>
                     </p>
                     <p>
                         <label>Fecha de Inicio: </label> <strong id="stFechaInicio" style="font-weight:normal">$</strong>
                     </p>
                     <p>
-                        <label>Monto Total: </label> <strong id="stMonto" style="font-weight:normal">$</strong>
+                        <label>Accesorios: </label> <strong id="stAccesorios" style="font-weight:normal">$</strong>
+                    </p>
+                    <p>
+                        <label>Costo Adicional: </label> <strong id="stCostoAdicional" style="font-weight:normal">$</strong>
+                    </p>
+                    <p>
+                        <label>Monto Total: $</label> <strong id="stMontoTotal" style="font-weight:normal">$</strong>
                     </p>
                 </div>
                 <div class="login-footer">
@@ -368,21 +380,57 @@
 
         $(document).ready(function () {
             $("#txtFechaInicio").datepicker({
-                dateFormat: 'dd/mm/yy'
+                dateFormat: 'dd/MM/yyyy'
             });
         });
 
         $("#btnAlquilar").click(function () {
             var marca = $("#stMarcaDesc").text();
             var modelo = $("#stModeloDesc").text();
-            //var placa = $("#stPlaca").val();
-            //var accesorios = $("#stAccesorios").val();
-            //var fechaInicio = $("#stFecInicio").val();
-            var total = $("#strTotal").text();
+            var precio = $("#strPrecio").text();
+
+            var cadenaAccesorios = "";
+            var costoAdicional = 0;
+            var isSelectA1 = $("#Checkbox1").is(":checked");
+            if (isSelectA1) {
+                cadenaAccesorios += $("#Checkbox1").val();
+                cadenaAccesorios += ", ";
+                costoAdicional += 100;
+            }
+            var isSelectA2 = $("#Checkbox2").is(":checked");
+            if (isSelectA2) {
+                cadenaAccesorios += $("#Checkbox2").val();
+                cadenaAccesorios += ", ";
+                costoAdicional += 150;
+            }
+            var isSelectA3 = $("#Checkbox3").is(":checked");
+            if (isSelectA3) {
+                cadenaAccesorios += $("#Checkbox3").val();
+                cadenaAccesorios += ", ";
+                costoAdicional += 180;
+            }
+
+            var fechaInicio = $("#txtFechaInicio").val();
+            var strTotal = $("#strTotalHide").text() + "";
+            var montoTotal = parseFloat(strTotal) + costoAdicional;
+
+            if (cadenaAccesorios.length == 0)
+                cadenaAccesorios = " - ";
+            else
+                cadenaAccesorios = cadenaAccesorios.substr(0, cadenaAccesorios.length - 2);
+
+            montoTotal = number_format(montoTotal, 2, '.', ',');
 
             $("#stMarca").text(marca);
             $("#stModelo").text(modelo);
-            $("#stMonto").text(total);
+            $("#stPrecio").text(precio);
+            $("#stFechaInicio").text(fechaInicio);
+            $("#stAccesorios").text(cadenaAccesorios);
+            $("#stCostoAdicional").text(costoAdicional);
+            $("#stMontoTotal").text(montoTotal);
+
+            $("#txtAccesorios").val(cadenaAccesorios);
+            $("#txtCostoAdicional").val(costoAdicional);
 
             $("#confirmAlquilar").modal();
         });
@@ -394,6 +442,30 @@
         $("#btnAlquilarEnd").click(function () {
             $("#btnSubmit").click();
         });
+
+
+        function number_format(number, decimals, dec_point, thousands_sep) {
+            number = (number + '').replace(/[^0-9+-Ee.]/g, '');
+            var n = !isFinite(+number) ? 0 : +number,
+            prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+            sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+            dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+            s = '',
+            toFixedFix = function (n, prec) {
+                var k = Math.pow(10, prec);
+                return '' + Math.round(n * k) / k;
+            };
+            // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+            s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+            if (s[0].length > 3) {
+                s[0] = s[0].replace(/\B(?=(\d{3})+(?!\d))/g, sep); ///B(?=(?:d{3})+(?!d))/g
+            }
+            if ((s[1] || '').length < prec) {
+                s[1] = s[1] || '';
+                s[1] += new Array(prec - s[1].length + 1).join('0');
+            }
+            return s.join(dec);
+        }
 
     </script>    
 </asp:Content>
