@@ -104,5 +104,84 @@ namespace SanJacinto.Controllers
             return View(listaAlquilerModel);
         }
 
+
+        public ActionResult DevolverVehiculo(string idAuto)
+        {
+
+           
+
+            System.Diagnostics.Debug.WriteLine("PRUEBA" + idAuto);
+            System.Diagnostics.Debug.WriteLine("-" + idAuto + "-");
+
+            wsAlquiler.AlquilerServiceClient proxy = new wsAlquiler.AlquilerServiceClient();
+
+            wsAlquiler.Alquiler alquiler=  proxy.RealizarDevolucion(Int32.Parse(  idAuto));
+
+            if(alquiler.Auto.Estado.Codigo ==1   ){
+                //Exception no se realizo devolucion
+            }
+
+
+            List<wsAlquiler.Alquiler> listaAlquiler = proxy.listaAlquileres().ToList<wsAlquiler.Alquiler>();
+
+
+            return View(transformarListaAlquilerToListAlquilerModel(listaAlquiler));
+            
+        }
+        List<AutoModel> transformarListaAlquilerToListAlquilerModel(List<wsAlquiler.Alquiler> listaAlquiler)
+        {
+
+            List<AutoModel> listaAlquilerModel = new List<AutoModel>();
+            System.Diagnostics.Debug.WriteLine("PRUEBA" + listaAlquiler.Count);
+            foreach (var item in listaAlquiler)
+            {
+                MarcaModel marcaModel = new MarcaModel()
+                {
+                    Codigo = item.Auto.Marca.Codigo,
+                    Descripcion = item.Auto.Marca.Descripcion
+                };
+
+                ModeloModel modeloModel = new ModeloModel()
+                {
+                    Codigo = item.Auto.Modelo.Codigo,
+                    Descripcion = item.Auto.Modelo.Descripcion
+                };
+
+                EstadoModel estradoModel = new EstadoModel()
+                {
+                    Codigo = item.Auto.Estado.Codigo,
+                    Descripcion = item.Auto.Estado.Descripcion
+                };
+
+
+                AutoModel auto = new AutoModel()
+                {
+
+
+                    Codigo = item.Codigo,
+                    Marca = 1,
+                    Modelo = 1,
+                    Estado = 1,
+                    Placa = item.Auto.Placa,
+                    Imagen = item.Auto.Imagen,
+
+                };
+                listaAlquilerModel.Add(auto);
+            }
+
+            return listaAlquilerModel;
+        }
+
+        public ActionResult ListarAutosDevolucion()
+        {
+            
+            wsAlquiler.AlquilerServiceClient proxy = new wsAlquiler.AlquilerServiceClient();
+
+           List<wsAlquiler.Alquiler> listaAlquiler = proxy.listaAlquileres().ToList<wsAlquiler.Alquiler>();
+
+
+
+           return View(transformarListaAlquilerToListAlquilerModel(listaAlquiler));
+        }
     }
 }
