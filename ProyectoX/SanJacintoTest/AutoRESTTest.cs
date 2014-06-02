@@ -160,7 +160,7 @@ namespace SanJacintoTest
             Auto autoPrueba = new Auto()
             {
                 Codigo = 16,
-                Estado = 0,
+                Estado = 2,
               
             };
 
