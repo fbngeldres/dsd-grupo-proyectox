@@ -7,13 +7,9 @@ namespace SanJacintoRESTServices.Persistencia
 {
     public class ConexionUtil
     {
-        public static string Cadena
+        public static string ObtenerCadena()
         {
-            get
-            {
-                return "Data Source=(local);Initial Catalog=BD_SANJACINTO;Integrated Security=SSPI;";
-            }
+            return "Data Source=(local);Initial Catalog=BD_SANJACINTO;Integrated Security=SSPI;";
         }
-
     }
 }

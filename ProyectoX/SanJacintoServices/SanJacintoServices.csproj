@@ -65,7 +65,6 @@
     <EmbeddedResource Include="Dominio\Alquiler.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dominio\Generico.hbm.xml" />
     <EmbeddedResource Include="Dominio\Devolucion.hbm.xml" />
     <EmbeddedResource Include="Dominio\Usuario.hbm.xml" />
     <Content Include="AutoService.svc" />
@@ -142,7 +141,6 @@
     <Compile Include="Dominio\Alquiler.cs" />
     <Compile Include="Dominio\Categoria.cs" />
     <Compile Include="Dominio\Estado.cs" />
-    <Compile Include="Dominio\Generico.cs" />
     <Compile Include="Dominio\Devolucion.cs" />
     <Compile Include="Dominio\Marca.cs" />
     <Compile Include="Dominio\Modelo.cs" />

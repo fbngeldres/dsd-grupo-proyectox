@@ -7,53 +7,57 @@ using System.ServiceModel.Web;
 using System.Text;
 using SanJacintoRESTServices.Dominio;
 using SanJacintoRESTServices.Persistencia;
-using System.Net;
 
 namespace SanJacintoRESTServices
 {
     
     public class AutosServices : IAutosServices
     {
-
-        private AutoDAO dao = new AutoDAO();
+        private AutoDAO autoDAO = null;
+        private AutoDAO AutoDAO
+        {
+            get
+            {
+                if (autoDAO == null)
+                    autoDAO = new AutoDAO();
+                return autoDAO;
+            }
+        }
 
         public Auto CrearAuto(Auto autoACrear)
         {
-            Auto objetoAuto = new Auto()
+            Auto auto = new Auto
             {
-                Codigo = 19,
+                Placa = "ddd"
+
 
             };
-
-            if (objetoAuto.Codigo.Equals(autoACrear.Codigo ))
-            {
-                throw new WebFaultException<string>(
-                    "Faltan Datos para crear el auto", HttpStatusCode.InternalServerError);
-
-            }
-            return dao.Crear(autoACrear);
+            //return dao.Crear(autoACrear);
+            return null;
         }
 
         public Auto ObtenerAuto(string  codigo)
         {
             int cod = Convert.ToInt32(codigo);
-            return dao.Obtener(cod);
+            return AutoDAO.Obtener(cod);
         }
 
         public Auto ModificarAuto(Auto autoAModificar)
         {
-            return dao.Modificar(autoAModificar);
+            //return dao.Modificar(autoAModificar);
+            return null;
         }
 
-        public Auto  EliminarAuto(Auto  codigoAutoAEliminar)
+        public void EliminarAuto(string codigoAutoAEliminar)
         {
-            return dao.Eliminar (codigoAutoAEliminar);
-
+            //return dao.Eliminar (codigoAutoAEliminar);
+            //return null;
         }
 
         public List<Auto> ListarAuto()
         {
-            return dao.ListarTodos();
+            //return dao.ListarTodos();
+            return AutoDAO.ListarTodos().ToList();
         }
     }
 }

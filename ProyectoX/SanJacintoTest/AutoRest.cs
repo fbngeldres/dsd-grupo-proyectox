@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SanJacintoTest
 {
-    class AutoRest
+    class Auto
     {
         public int Codigo { get; set; }
         public int Marca { get; set; }
