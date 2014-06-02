@@ -23,7 +23,7 @@ namespace SanJacintoRESTServices
 
         [OperationContract]
         [WebInvoke(Method = "PUT", UriTemplate = "Autos", ResponseFormat = WebMessageFormat.Json)]
-        Auto ModificarAuto(Auto alumnoAModificar);
+        Auto ModificarAuto(Auto autoAModificar);
 
         [OperationContract]
         [WebInvoke(Method = "PUT", UriTemplate = "AutosE", ResponseFormat = WebMessageFormat.Json)]
