@@ -18,14 +18,14 @@ namespace SanJacintoTest
         {
             Auto autoPrueba = new Auto()
             {
-                Codigo = 17,
+                Codigo = 18,
                 Marca = 2,
                 Modelo = 1,
-                Precio = 10,
+                Precio = 1000,
                 Categoria = 1,
                 Estado = 1,
-                Placa = "SIFUNCIONA",
-                Imagen = "http://google.com.pe"
+                Placa = "BB456",
+                Imagen = "picanto.jpg"
 
             };
 
