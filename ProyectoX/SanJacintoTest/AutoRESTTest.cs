@@ -140,7 +140,7 @@ namespace SanJacintoTest
         [TestMethod]
         public void ListarAutosTest()
         {
-            //Prueba de Obtención de Alumno vía HTTP GET
+            //Prueba de Obtención de Auto vía HTTP GET
             HttpWebRequest req2 = (HttpWebRequest)WebRequest
                 .Create("http://localhost:1281/AutosServices.svc/Autos");
             req2.Method = "GET";

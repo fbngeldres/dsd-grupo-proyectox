@@ -11,7 +11,7 @@ namespace SanJacintoRESTServices.Dominio
     public class Auto
     {
         [DataMember]
-        public int Codigo { get; set; }
+        public int  Codigo { get; set; }
 
         [DataMember]
         public int Marca { get; set; }

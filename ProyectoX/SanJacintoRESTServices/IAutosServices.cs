@@ -19,7 +19,7 @@ namespace SanJacintoRESTServices
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "Autos/{codigo}", ResponseFormat = WebMessageFormat.Json)]
-        Auto ObtenerAuto(int  codigo);
+        Auto ObtenerAuto(string codigo);
 
         [OperationContract]
         [WebInvoke(Method = "PUT", UriTemplate = "Autos", ResponseFormat = WebMessageFormat.Json)]
