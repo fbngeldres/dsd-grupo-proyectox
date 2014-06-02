@@ -45,10 +45,7 @@
 						<li>
 							<%: Html.ActionLink("Alquilar", "BuscarAutoAlquilar", "Auto")%>
 						</li>
-						<li>
-							<a href="#">Contactenos</a>
-						</li>
-
+						
                         <li>
                             <%: Html.ActionLink("Auto", "MantenimientoAuto", "Auto")%>
                         </li>
@@ -56,6 +53,14 @@
                         <li>
                             <%: Html.ActionLink("Mis Alquileres", "ListarAlquileres", "Alquiler")%>
                         </li>
+
+                         <li>
+                            <%: Html.ActionLink("Devolucion", "ListarAutosDevolucion", "Alquiler")%>
+                        </li>
+                        <li>
+							<a href="#">Contactenos</a>
+						</li>
+
 					</ul>
                         <!-- 
 						<div class="form-group">
