@@ -81,19 +81,6 @@ namespace SanJacintoRESTServices
         }
 
 
-        public List<Marca> ListarMarcas()
-        {
-            return AutoDAO.obtenerMarcas();
-        }
-
-        public List<Categoria> ListarCategorias()
-        {
-            return AutoDAO.obtenerCategorias();
-        }
-
-        public List<Modelo> ListarModelos()
-        {
-            return AutoDAO.obtenerModelos();
-        }
+      
     }
 }

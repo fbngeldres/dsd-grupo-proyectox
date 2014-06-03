@@ -33,10 +33,7 @@ namespace SanJacintoRESTServices
         [WebInvoke(Method = "GET", UriTemplate = "Autos", ResponseFormat = WebMessageFormat.Json)]
         List<Auto> ListarAuto();
 
-        [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "Autos/Marcas", ResponseFormat = WebMessageFormat.Json)]
-        List<Marca> ListarMarcas();
-
+       
       
     }
 }
