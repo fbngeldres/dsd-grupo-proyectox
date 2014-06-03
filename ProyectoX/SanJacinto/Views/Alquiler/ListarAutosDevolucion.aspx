@@ -64,10 +64,10 @@
                         <%: item.Codigo  %>
                     </td>
                     <td>
-                        <%: item.Marca.Descripcion   %>
+                        <%: item.MarcaDesc    %>
                     </td>
                   <td>
-                        <%: item.Modelo.Descripcion   %>
+                        <%: item.ModeloDesc    %>
                     </td>
                       
                       <td>
@@ -77,7 +77,7 @@
                         <%: item.Imagen  %>
                     </td>
                       <td>
-                        <%: item.Estado.Descripcion   %>
+                        <%: item.EstadoDesc    %>
                     </td>
                    
                 </tr>
