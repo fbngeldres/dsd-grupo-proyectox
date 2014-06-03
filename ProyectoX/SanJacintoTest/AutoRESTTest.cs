@@ -17,11 +17,11 @@ namespace SanJacintoTest
         public void AgregarAutoTest()
         {
             Auto auto = new Auto();
-            auto.Categoria = new Categoria() {Codigo = 1};
+            auto.Categoria = new Categoria() {Codigo = 2};
             auto.Estado = new Estado() { Codigo = 1 };
             auto.Marca = new Marca() { Codigo = 1 };
             auto.Modelo = new Modelo() { Codigo = 1 };
-            auto.Imagen = "lost3333";
+            auto.Imagen = "lost444";
             auto.Placa = "123456";
             auto.Precio = 1000;
 
@@ -34,7 +34,11 @@ namespace SanJacintoTest
             req.ContentType = "application/json";
             var reqStream = req.GetRequestStream();
             reqStream.Write(data, 0, data.Length);
-            var res = (HttpWebResponse)req.GetResponse();
+            HttpWebResponse res = null;
+            try
+            {
+            
+            res = (HttpWebResponse)req.GetResponse();
             StreamReader reader = new StreamReader(res.GetResponseStream());
             string autoJson = reader.ReadToEnd();
             JavaScriptSerializer js = new JavaScriptSerializer();
@@ -46,6 +50,19 @@ namespace SanJacintoTest
             Assert.AreEqual(auto.Estado.Codigo, autoCreado.Estado.Codigo);
             Assert.AreEqual(auto.Placa, autoCreado.Placa);
             Assert.AreEqual(auto.Imagen, autoCreado.Imagen);
+
+            }
+            catch (WebException e)
+            {
+                HttpStatusCode code = ((HttpWebResponse)e.Response).StatusCode;
+                string message = ((HttpWebResponse)e.Response).StatusDescription;
+                StreamReader reader = new StreamReader(e.Response.GetResponseStream());
+                string error = reader.ReadToEnd();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                string mensaje = js.Deserialize<string>(error);
+                Assert.AreEqual("Faltan Datos para crear el auto", mensaje);
+
+            }
             /*
             Auto autoPrueba = new Auto()
             {
