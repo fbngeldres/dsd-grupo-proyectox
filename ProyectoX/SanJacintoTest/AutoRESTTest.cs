@@ -117,18 +117,32 @@ namespace SanJacintoTest
             req.ContentType = "application/json";
             var reqStream = req.GetRequestStream();
             reqStream.Write(data, 0, data.Length);
-            var res = (HttpWebResponse)req.GetResponse();
-            StreamReader reader = new StreamReader(res.GetResponseStream());
-            string autoJson = reader.ReadToEnd();
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            Auto autoModificado = js.Deserialize<Auto>(autoJson);
-            Assert.AreEqual(auto.Marca.Codigo, autoModificado.Marca.Codigo);
-            Assert.AreEqual(auto.Modelo.Codigo, autoModificado.Modelo.Codigo);
-            Assert.AreEqual(auto.Precio, autoModificado.Precio);
-            Assert.AreEqual(auto.Categoria.Codigo, autoModificado.Categoria.Codigo);
-            Assert.AreEqual(auto.Estado.Codigo, autoModificado.Estado.Codigo);
-            Assert.AreEqual(auto.Placa, autoModificado.Placa);
-            Assert.AreEqual(auto.Imagen, autoModificado.Imagen);
+            HttpWebResponse res = null;
+            try
+            {
+                res = (HttpWebResponse)req.GetResponse();
+                StreamReader reader = new StreamReader(res.GetResponseStream());
+                string autoJson = reader.ReadToEnd();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                Auto autoModificado = js.Deserialize<Auto>(autoJson);
+                Assert.AreEqual(auto.Marca.Codigo, autoModificado.Marca.Codigo);
+                Assert.AreEqual(auto.Modelo.Codigo, autoModificado.Modelo.Codigo);
+                Assert.AreEqual(auto.Precio, autoModificado.Precio);
+                Assert.AreEqual(auto.Categoria.Codigo, autoModificado.Categoria.Codigo);
+                Assert.AreEqual(auto.Estado.Codigo, autoModificado.Estado.Codigo);
+                Assert.AreEqual(auto.Placa, autoModificado.Placa);
+                Assert.AreEqual(auto.Imagen, autoModificado.Imagen);
+            }
+            catch (WebException e)
+            {
+                HttpStatusCode code = ((HttpWebResponse)e.Response).StatusCode;
+                string message = ((HttpWebResponse)e.Response).StatusDescription;
+                StreamReader reader = new StreamReader(e.Response.GetResponseStream());
+                string error = reader.ReadToEnd();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                string mensaje = js.Deserialize<string>(error);
+                Assert.AreEqual(Constantes.ERROR_PLACA_MODIFICAR, mensaje);
+            }
         }
 
         [TestMethod]
@@ -148,20 +162,10 @@ namespace SanJacintoTest
         [TestMethod]
         public void EliminarAutoTest()
         {
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos/25");
-            req.Method = "DELETE";
-            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+            
 
-            HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos/25");
-            req2.Method = "GET";
-            HttpWebResponse res2 = (HttpWebResponse)req2.GetResponse();
-            StreamReader reader2 = new StreamReader(res2.GetResponseStream());
-            string autoJson2 = reader2.ReadToEnd();
-            JavaScriptSerializer js2 = new JavaScriptSerializer();
-            Auto autoObtenido = js2.Deserialize<Auto>(autoJson2);
-            Assert.IsNull(autoObtenido);
+            }
         }
-
 
     }
 }
