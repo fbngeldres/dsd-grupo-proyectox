@@ -36,5 +36,38 @@ namespace SanJacintoRESTServices.Persistencia
                 return busqueda.List<Modelo>().ToList();
             }
         }
+
+
+        public Auto buscarAutoUnico(string placa)
+        {
+
+            using (ISession sesion = NHibernateHelper.ObtenerSesion())
+            {
+
+                ICriteria busqueda = sesion.CreateCriteria<Auto>();
+                busqueda.Add(Restrictions.Eq("Placa", placa)).Add(Restrictions.Eq("Estado.Codigo", 4));
+
+                if (busqueda.List<Auto>().Count() == 1)
+                {
+                    return busqueda.List<Auto>()[0];
+                }
+
+                else
+                {
+                    return null;
+                }
+
+            }
+        }
+
+        public List<Auto> listarAutosHabilitados()
+        {
+            using (ISession sesion = NHibernateHelper.ObtenerSesion())
+            {
+                ICriteria busqueda = sesion.CreateCriteria<Auto>();
+                busqueda.Add(!Restrictions.Eq("Estado.Codigo", 4));
+                return busqueda.List<Auto>().ToList();
+            }
+        }
     }
 }

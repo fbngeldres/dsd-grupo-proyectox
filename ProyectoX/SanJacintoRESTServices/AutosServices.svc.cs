@@ -7,6 +7,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using SanJacintoRESTServices.Dominio;
 using SanJacintoRESTServices.Persistencia;
+using System.Net;
 
 namespace SanJacintoRESTServices
 {
@@ -26,14 +27,13 @@ namespace SanJacintoRESTServices
 
         public Auto CrearAuto(Auto autoACrear)
         {
-            /*
-             if (objetoAuto.Codigo.Equals(autoACrear.Codigo ))
+            Auto auto = AutoDAO.buscarAutoUnico(autoACrear.Placa);
+
+            if (auto != null)
             {
                 throw new WebFaultException<string>(
-                    "Faltan Datos para crear el auto", HttpStatusCode.InternalServerError);
-
+                            Constantes.ERROR_PLACA_EN_USO_MODIFICAR, HttpStatusCode.InternalServerError);
             }
-             */
 
             return AutoDAO.Crear(autoACrear);
         }
@@ -46,6 +46,15 @@ namespace SanJacintoRESTServices
 
         public Auto ModificarAuto(Auto autoAModificar)
         {
+            Auto auto = AutoDAO.buscarAutoUnico(autoAModificar.Placa);
+
+            if (auto != null)
+            {
+                throw new WebFaultException<string>(Constantes.ERROR_PLACA_MODIFICAR, HttpStatusCode.InternalServerError);
+            }else if(auto.Estado.Codigo != 1)
+            {
+                throw new WebFaultException<string>(Constantes.ERROR_PLACA_EN_USO_MODIFICAR, HttpStatusCode.InternalServerError);
+            }
             return AutoDAO.Modificar(autoAModificar);
         }
 
@@ -53,12 +62,22 @@ namespace SanJacintoRESTServices
         {
             Auto autoExistente = new Auto();
             autoExistente = AutoDAO.Obtener(Int32.Parse(codigoAutoAEliminar));
+
+            if (autoExistente == null)
+            {
+                throw new WebFaultException<string>(Constantes.ERROR_PLACA_ELIMINAR, HttpStatusCode.InternalServerError);
+            }
+            else if (autoExistente.Estado.Codigo != 1)
+            {
+                throw new WebFaultException<string>(Constantes.ERROR_PLACA_EN_USO_ELIMINAR, HttpStatusCode.InternalServerError);
+            }
+
             AutoDAO.Eliminar(autoExistente);
         }
 
         public List<Auto> ListarAuto()
         {
-            return AutoDAO.ListarTodos().ToList();
+            return AutoDAO.listarAutosHabilitados();
         }
 
 
