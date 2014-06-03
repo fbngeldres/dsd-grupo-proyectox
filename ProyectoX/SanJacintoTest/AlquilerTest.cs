@@ -14,7 +14,7 @@ namespace SanJacintoTest
         {
             wsAlquiler.AlquilerServiceClient proxy = new wsAlquiler.AlquilerServiceClient();
             wsAlquiler.Alquiler alquiler = new wsAlquiler.Alquiler();
-            alquiler.Costo = 1478;
+           // alquiler.Costo = 1478;
             alquiler.Accesorios = "RADIO MP4";
 
             wsAlquiler.Alquiler alquilerNuevo = new wsAlquiler.Alquiler();
@@ -43,6 +43,23 @@ namespace SanJacintoTest
             List<wsAlquiler.Alquiler> lista = proxy.listaAlquileres().ToList();
 
             Assert.IsNotNull(lista);
+            Assert.IsTrue(lista.Count > 0);
+
+        }
+
+
+
+        [TestMethod]
+        public void RealizarDevolucion()
+        {
+            wsAlquiler.AlquilerServiceClient proxy = new wsAlquiler.AlquilerServiceClient();
+
+            wsAlquiler.Alquiler alquilerDevuelto = proxy.RealizarDevolucion(1);
+
+
+            Assert.AreEqual(1, alquilerDevuelto.Auto.Estado.Codigo);
+            Assert.IsTrue(1 == alquilerDevuelto.Auto.Estado.Codigo);
+          
 
         }
     }
