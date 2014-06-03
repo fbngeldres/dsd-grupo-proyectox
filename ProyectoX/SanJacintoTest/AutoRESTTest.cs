@@ -60,7 +60,7 @@ namespace SanJacintoTest
                 string error = reader.ReadToEnd();
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 string mensaje = js.Deserialize<string>(error);
-                Assert.AreEqual("Probando placas2", mensaje);
+                Assert.AreEqual(Constantes.ERROR_PLACA_CREADA, mensaje);
 
             }
             

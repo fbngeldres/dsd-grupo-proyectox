@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SanJacintoTest
 {
-    class Costantes
+    class Constantes
     {
         public static string ERROR_PLACA_CREADA = "Ya existe un auto con la misma placa registrado";
         public static string ERROR_PLACA_MODIFICAR = "No se puede modificar el auto, ya que existe uno con la misma placa ingresado.";
