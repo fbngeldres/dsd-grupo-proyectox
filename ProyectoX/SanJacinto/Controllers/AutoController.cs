@@ -4,6 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SanJacinto.Models;
+using System.Net;
+using System.Web.Services;
+using System.Web.Script.Serialization;
+using System.Text;
+using System.IO;
+using SanJacinto.JsonObjects;
 
 namespace SanJacinto.Controllers
 {
@@ -84,7 +90,157 @@ namespace SanJacinto.Controllers
 
         public ActionResult MantenimientoAuto()
         {
-            return View();
+
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos");
+            request.Method = "GET";
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            StreamReader reader = new StreamReader(response.GetResponseStream());
+            string autoJson = reader.ReadToEnd();
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            List<AutoJson> listaAutosJson = js.Deserialize<List<AutoJson>>(autoJson);
+
+
+            List<AutoModel> listaAuto = new List<AutoModel>();
+            foreach (var autoBean in listaAutosJson)
+            {
+                AutoModel auto = new AutoModel()
+                {
+                    
+                    Codigo = autoBean.Codigo ,
+                    MarcaDesc = autoBean.Marca.Descripcion,
+                    ModeloDesc = autoBean.Modelo.Descripcion,
+                    PrecioMinimo = autoBean.Precio,
+                    Placa = autoBean.Placa 
+                };
+                listaAuto.Add(auto); 
+            }
+           
+
+            return View(listaAuto);
+        }
+
+        public ActionResult PlantillaAgregarAuto()
+        {
+            AutoModel auto = inicializarListas();
+            System.Diagnostics.Debug.WriteLine("Auto---");
+
+            return View(auto);
+        }
+
+        public ActionResult PlantillaModificarAuto(String codigo)
+        {
+
+            System.Diagnostics.Debug.WriteLine("Modificar---"+codigo);
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos/" + codigo);
+            request.Method = "GET";
+            HttpWebResponse respond = (HttpWebResponse)request.GetResponse();
+            StreamReader reader = new StreamReader(respond.GetResponseStream());
+            string autoJson = reader.ReadToEnd();
+            JavaScriptSerializer jsd = new JavaScriptSerializer();
+            AutoJson autoObtenido = jsd.Deserialize<AutoJson>(autoJson);
+            AutoModel auto = inicializarListas();
+            
+            AutoModel autoModel = new AutoModel() {
+                Marca = autoObtenido.Marca .Codigo ,
+                Modelo = autoObtenido.Modelo .Codigo ,
+                Categoria = autoObtenido.Categoria .Codigo ,
+                PrecioMinimo = autoObtenido.Precio ,
+                Placa = autoObtenido.Placa ,
+                Imagen = autoObtenido.Imagen ,
+                lstCategorias = auto.lstCategorias,
+                lstMarcas =auto .lstMarcas,
+                lstModelos=auto .lstModelos 
+            
+            };
+
+            return View(autoModel);
+        }
+
+        public ActionResult AgregarAuto(AutoModel model)
+        {
+            wsAutoService.Auto autoCrear = new wsAutoService.Auto()
+            {
+                Marca = new wsAutoService.Marca() { Codigo = model.Marca },
+                Modelo = new wsAutoService.Modelo() { Codigo = model.Modelo },
+                Precio = model.PrecioMinimo,
+                Categoria = new wsAutoService.Categoria() { Codigo = model.Categoria },
+                Placa = model.Placa,
+                Estado = new wsAutoService.Estado() {Codigo=1 },
+                Imagen = model.Imagen  
+            };
+
+
+            try {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            string postdata = serializer.Serialize(autoCrear);
+            byte[] data = Encoding.UTF8.GetBytes(postdata);
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos");
+            req.Method = "POST";
+            req.ContentLength = data.Length;
+            req.ContentType = "application/json";
+            var reqStream = req.GetRequestStream();
+            reqStream.Write(data, 0, data.Length);
+            var res = (HttpWebResponse)req.GetResponse();
+            StreamReader reader = new StreamReader(res.GetResponseStream());
+            string autoJson = reader.ReadToEnd();
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            AutoJson autoCreado = js.Deserialize<AutoJson>(autoJson);
+
+            System.Diagnostics.Debug.WriteLine("Auto---" + autoCreado.Codigo);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Auto---" + e.Message); 
+            }
+            return RedirectToAction( "MantenimientoAuto","Auto");
+        }
+
+
+        public ActionResult ModificarAuto(AutoModel model)
+        {
+            System.Diagnostics.Debug.WriteLine("Auto---" + model.Codigo);
+            wsAutoService.Auto autoModificar = new wsAutoService.Auto()
+            {
+                Codigo = model .Codigo ,
+                Marca = new wsAutoService.Marca() { Codigo = model.Marca },
+                Modelo = new wsAutoService.Modelo() { Codigo = model.Modelo },
+                Precio = model.PrecioMinimo,
+                Categoria = new wsAutoService.Categoria() { Codigo = model.Categoria },
+                Placa = model.Placa,
+                Estado = new wsAutoService.Estado() { Codigo = 1 },
+                Imagen = model.Imagen
+            };
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            string postdata = serializer.Serialize(autoModificar);
+            byte[] data = Encoding.UTF8.GetBytes(postdata);
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos");
+            req.Method = "PUT";
+            req.ContentLength = data.Length;
+            req.ContentType = "application/json";
+            var reqStream = req.GetRequestStream();
+            reqStream.Write(data, 0, data.Length);
+            var res = (HttpWebResponse)req.GetResponse();
+            StreamReader reader = new StreamReader(res.GetResponseStream());
+            string autoJson = reader.ReadToEnd();
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            AutoJson autoCreado = js.Deserialize<AutoJson>(autoJson);
+
+            System.Diagnostics.Debug.WriteLine("Auto---" + autoCreado.Codigo);
+
+            return RedirectToAction("MantenimientoAuto", "Auto");
+        }
+
+
+        public ActionResult EliminarAuto(String codigoEliminar)
+        {
+        
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos/" + codigoEliminar);
+            req.Method = "DELETE";
+            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+
+            return RedirectToAction("MantenimientoAuto", "Auto");
         }
 
         

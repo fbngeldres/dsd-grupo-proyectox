@@ -115,17 +115,13 @@ namespace SanJacinto.Controllers
 
             wsAlquiler.AlquilerServiceClient proxy = new wsAlquiler.AlquilerServiceClient();
 
-            wsAlquiler.Alquiler alquiler=  proxy.RealizarDevolucion(Int32.Parse(  idAuto));
+            wsAlquiler.Alquiler alquiler=  proxy.RealizarDevolucion(Int32.Parse(idAuto));
 
             if(alquiler.Auto.Estado.Codigo ==1   ){
                 //Exception no se realizo devolucion
             }
 
-
-            List<wsAlquiler.Alquiler> listaAlquiler = proxy.listaAlquileres().ToList<wsAlquiler.Alquiler>();
-
-
-            return View(transformarListaAlquilerToListAlquilerModel(listaAlquiler));
+            return RedirectToAction("ListarAutosDevolucion", "Alquiler");
             
         }
         List<AutoModel> transformarListaAlquilerToListAlquilerModel(List<wsAlquiler.Alquiler> listaAlquiler)
@@ -135,33 +131,14 @@ namespace SanJacinto.Controllers
             System.Diagnostics.Debug.WriteLine("PRUEBA" + listaAlquiler.Count);
             foreach (var item in listaAlquiler)
             {
-                MarcaModel marcaModel = new MarcaModel()
-                {
-                    Codigo = item.Auto.Marca.Codigo,
-                    Descripcion = item.Auto.Marca.Descripcion
-                };
-
-                ModeloModel modeloModel = new ModeloModel()
-                {
-                    Codigo = item.Auto.Modelo.Codigo,
-                    Descripcion = item.Auto.Modelo.Descripcion
-                };
-
-                EstadoModel estradoModel = new EstadoModel()
-                {
-                    Codigo = item.Auto.Estado.Codigo,
-                    Descripcion = item.Auto.Estado.Descripcion
-                };
-
-
-                AutoModel auto = new AutoModel()
+                               AutoModel auto = new AutoModel()
                 {
 
 
                     Codigo = item.Codigo,
-                    Marca = 1,
-                    Modelo = 1,
-                    Estado = 1,
+                    MarcaDesc = item.Auto.Marca.Descripcion,
+                    ModeloDesc = item.Auto.Modelo.Descripcion,
+                    EstadoDesc = item.Auto.Estado .Descripcion ,
                     Placa = item.Auto.Placa,
                     Imagen = item.Auto.Imagen,
 
