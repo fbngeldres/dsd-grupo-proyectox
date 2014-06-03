@@ -162,7 +162,33 @@ namespace SanJacintoTest
         [TestMethod]
         public void EliminarAutoTest()
         {
-            
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos/25");
+            req.Method = "DELETE";
+            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+
+            HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos/25");
+            req2.Method = "GET";
+
+            HttpWebResponse res2 = null;
+            try
+            {
+
+                res2 = (HttpWebResponse)req2.GetResponse();
+                StreamReader reader2 = new StreamReader(res2.GetResponseStream());
+                string autoJson2 = reader2.ReadToEnd();
+                JavaScriptSerializer js2 = new JavaScriptSerializer();
+                Auto autoObtenido = js2.Deserialize<Auto>(autoJson2);
+                Assert.IsNull(autoObtenido);
+            }
+            catch (WebException e)
+            {
+                HttpStatusCode code = ((HttpWebResponse)e.Response).StatusCode;
+                string message = ((HttpWebResponse)e.Response).StatusDescription;
+                StreamReader reader = new StreamReader(e.Response.GetResponseStream());
+                string error = reader.ReadToEnd();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                string mensaje = js.Deserialize<string>(error);
+                Assert.AreEqual(Constantes.ERROR_PLACA_ELIMINAR, mensaje);
 
             }
         }
