@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SanJacinto.Models;
+using System.Net;
 
 namespace SanJacinto.Controllers
 {
@@ -61,7 +62,14 @@ namespace SanJacinto.Controllers
             objAlquiler.FechaInicio = fecInicio;
             objAlquiler.FechaFin = fecFin;
 
-            objAlquiler = miAlquiler.registrarAlquiler(objAlquiler, intCodigoAuto, intCodigoUsuario);
+            try
+            {
+                objAlquiler = miAlquiler.registrarAlquiler(objAlquiler, intCodigoAuto, intCodigoUsuario);
+            }
+            catch (WebException e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
             AutoModel autoModel = new AutoModel()
             {

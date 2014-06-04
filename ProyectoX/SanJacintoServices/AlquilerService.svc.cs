@@ -48,7 +48,7 @@ namespace SanJacintoServices
         public Alquiler registrarAlquiler(Alquiler objAlquiler, int intCodigoAuto, int intCodigoUsuario)
         {
             
-           /*try {*/
+           try {
                 wsAuto.AutoServiceClient proxy = new wsAuto.AutoServiceClient();
                 wsAuto.Auto autoObtenido = proxy.obtenerAuto(intCodigoAuto);
                 
@@ -103,13 +103,13 @@ namespace SanJacintoServices
                 alquilerCreado = AlquilerDAO.Crear(alquilerCreado);
 
                 return alquilerCreado;
-            /*}
+            }
             catch (Exception)
             {
                 throw new FaultException<ValidationException>(new ValidationException 
                 { ValidationError = "Error en el servicio, no se pudo registrar su alquiler" }, 
                 new FaultReason("Validation Failed"));
-            }*/
+            }
         }
 
         public Alquiler obtenerAlquiler(int intCodigoAlquiler)
@@ -119,7 +119,6 @@ namespace SanJacintoServices
 
         public List<Alquiler> listaAlquileres()
         {
-            /*alquilerDAO = new AlquilerDAO();*/
             return AlquilerDAO.ListarTodos().ToList();
         }
 
