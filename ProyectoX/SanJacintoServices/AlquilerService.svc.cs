@@ -69,13 +69,12 @@ namespace SanJacintoServices
                 modelo.Codigo = autoObtenido.Modelo.Codigo;
                 modelo.Descripcion = autoObtenido.Modelo.Descripcion;
 
-                Estado estado = new Estado();
-                estado.Codigo = autoObtenido.Estado.Codigo;
-                estado.Descripcion = autoObtenido.Estado.Descripcion;
+                Estado estaAlquilado = new Estado();
+                estaAlquilado.Codigo = 2;
 
                 auto.Marca = marca;
                 auto.Modelo = modelo;
-                auto.Estado = estado;
+                auto.Estado = estaAlquilado;
                 
                 Usuario usuarioObtenido = new Usuario();
                 usuarioObtenido.Codigo = objUsuObtenido.Codigo;
