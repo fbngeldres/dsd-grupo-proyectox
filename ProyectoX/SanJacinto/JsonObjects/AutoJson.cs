@@ -7,6 +7,7 @@ namespace SanJacinto.JsonObjects
 {
     public class AutoJson
     {
+
         public int Codigo { get; set; }
 
         public Marca Marca { get; set; }
