@@ -43,4 +43,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RealizarDevolucion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RealizarDevolucionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio" minOccurs="0" name="RealizarDevolucionResult" nillable="true" type="q5:Alquiler" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -79,6 +79,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="JsonObjects\AutoJson.cs" />
     <Compile Include="Models\AlquilerModel.cs" />
     <Compile Include="Models\AutoModel.cs" />
     <Compile Include="Models\CategoriaModel.cs" />
@@ -139,12 +140,21 @@
     <Content Include="js\jquery.ui.datepicker-es.js" />
     <Content Include="js\less-1.3.3.min.js" />
     <Content Include="js\scripts.js" />
-    <None Include="Service References\wsAlquiler\AlquilerService.disco" />
-    <None Include="Service References\wsAlquiler\configuration91.svcinfo" />
-    <None Include="Service References\wsAlquiler\configuration.svcinfo" />
-    <None Include="Service References\wsAlquiler\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <None Include="Service References\wsAlquiler\AlquilerService.wsdl" />
+    <None Include="Service References\wsAlquiler\AlquilerService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wsAlquiler\AlquilerService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wsAlquiler\AlquilerService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wsAlquiler\AlquilerService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wsAlquiler\SanJacinto.wsAlquiler.Alquiler.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\wsAutoService\AutoService.disco" />
     <None Include="Service References\wsAutoService\configuration91.svcinfo" />
@@ -160,6 +170,13 @@
     <None Include="Service References\wsUsuarioService\configuration91.svcinfo" />
     <None Include="Service References\wsUsuarioService\configuration.svcinfo" />
     <None Include="Service References\wsUsuarioService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\wsAlquiler\AlquilerService.disco" />
+    <None Include="Service References\wsAlquiler\configuration91.svcinfo" />
+    <None Include="Service References\wsAlquiler\configuration.svcinfo" />
+    <None Include="Service References\wsAlquiler\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -201,9 +218,6 @@
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
-    <None Include="Service References\wsAlquiler\SanJacinto.wsAlquiler.Alquiler.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\wsAutoService\AutoService.wsdl" />
     <None Include="Service References\wsAutoService\AutoService.xsd">
       <SubType>Designer</SubType>
@@ -286,19 +300,6 @@
     <None Include="less\utilities.less" />
     <None Include="less\variables.less" />
     <None Include="less\wells.less" />
-    <None Include="Service References\wsAlquiler\AlquilerService.wsdl" />
-    <None Include="Service References\wsAlquiler\AlquilerService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wsAlquiler\AlquilerService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wsAlquiler\AlquilerService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wsAlquiler\AlquilerService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

@@ -24,9 +24,7 @@ namespace SanJacinto.Controllers
 
             UsuarioModel usuarioModel = new UsuarioModel()
             {
-                Codigo = 1,
-                Nombres = "Ronal",
-                Apellidos = "Crisostomo Matias"
+                Codigo = 2
             };
 
             AlquilerModel nuevoAlquiler = new AlquilerModel()
@@ -123,7 +121,7 @@ namespace SanJacinto.Controllers
 
             wsAlquiler.AlquilerServiceClient proxy = new wsAlquiler.AlquilerServiceClient();
 
-            wsAlquiler.Alquiler alquiler=  proxy.RealizarDevolucion(Int32.Parse(idAuto));
+            wsAlquiler.Alquiler alquiler = proxy.RealizarDevolucion(Int32.Parse(idAuto));
 
             if(alquiler.Auto.Estado.Codigo ==1   ){
                 //Exception no se realizo devolucion

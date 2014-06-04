@@ -126,7 +126,6 @@ namespace SanJacintoServices
         {
             Auto autoAlquilado = AlquilerDAO.Obtener(codigo).Auto;
             
-            
          
             Estado estaLibre = new Estado();
             estaLibre.Codigo = 1;

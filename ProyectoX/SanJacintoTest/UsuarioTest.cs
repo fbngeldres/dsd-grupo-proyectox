@@ -52,8 +52,8 @@ namespace SanJacintoTest
         public void Autenticar()
         {
             UsuarioWS.UsuarioServiceClient proxy = new UsuarioWS.UsuarioServiceClient();
-            UsuarioWS.Usuario  usuario = proxy.AutenticarUsuario("dnnisurb@gmail.com", "9876543210");
-            Assert.AreEqual("", usuario);
+            string mensaje = proxy.AutenticarUsuario(1, "dnnisurb@gmail.com", "9876543210");
+            Assert.AreEqual("", mensaje);
         }
         [TestMethod]
         public void ObtenerAuto()
