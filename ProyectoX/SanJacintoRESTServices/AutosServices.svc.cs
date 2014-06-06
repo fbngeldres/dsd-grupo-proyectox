@@ -28,11 +28,11 @@ namespace SanJacintoRESTServices
         public Auto CrearAuto(Auto autoACrear)
         {
             Auto auto = AutoDAO.buscarAutoUnico(autoACrear.Placa);
-
+            System.Diagnostics.Debug.WriteLine("Auto---" + auto);
             if (auto != null)
             {
                 throw new WebFaultException<string>(
-                            Constantes.ERROR_PLACA_EN_USO_MODIFICAR, HttpStatusCode.InternalServerError);
+                            Constantes.ERROR_PLACA_CREADA, HttpStatusCode.InternalServerError);
             }
 
             return AutoDAO.Crear(autoACrear);
@@ -46,11 +46,12 @@ namespace SanJacintoRESTServices
 
         public Auto ModificarAuto(Auto autoAModificar)
         {
+            System.Diagnostics.Debug.WriteLine("Auto--ModificarAuto-" + autoAModificar.Placa);
             Auto auto = AutoDAO.buscarAutoUnico(autoAModificar.Placa);
-
-            if (auto != null)
+            System.Diagnostics.Debug.WriteLine("Auto--ModificarAuto-" + auto);
+            if (auto == null)
             {
-                throw new WebFaultException<string>(Constantes.ERROR_PLACA_MODIFICAR, HttpStatusCode.InternalServerError);
+                throw new WebFaultException<string>(Constantes.ERROR_NO_PLACA_MODIFICAR, HttpStatusCode.InternalServerError);
             }else if(auto.Estado.Codigo != 1)
             {
                 throw new WebFaultException<string>(Constantes.ERROR_PLACA_EN_USO_MODIFICAR, HttpStatusCode.InternalServerError);
