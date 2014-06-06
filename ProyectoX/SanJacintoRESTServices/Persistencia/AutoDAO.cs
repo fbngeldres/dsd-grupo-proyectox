@@ -45,7 +45,9 @@ namespace SanJacintoRESTServices.Persistencia
             {
 
                 ICriteria busqueda = sesion.CreateCriteria<Auto>();
-                busqueda.Add(Restrictions.Eq("Placa", placa)).Add(Restrictions.Eq("Estado.Codigo", 4));
+               // busqueda.Add(Restrictions.Eq("Placa", placa)).Add(Restrictions.Eq("Estado.Codigo", 4));
+                busqueda.Add(Restrictions.Eq("Placa", placa));
+
 
                 if (busqueda.List<Auto>().Count() == 1)
                 {
