@@ -190,9 +190,16 @@ namespace SanJacinto.Controllers
 
             System.Diagnostics.Debug.WriteLine("Auto---" + autoCreado.Codigo);
             }
-            catch (Exception e)
+            catch (WebException e)
             {
-                System.Diagnostics.Debug.WriteLine("Auto---" + e.Message); 
+                HttpStatusCode code = ((HttpWebResponse)e.Response).StatusCode;
+                string mensaje=((HttpWebResponse)e.Response).StatusDescription;
+                StreamReader reader = new StreamReader(e.Response.GetResponseStream()  );
+                string error = reader.ReadToEnd();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                string mensajeError = js.Deserialize<string>(error);
+                throw new Exception(mensajeError);
+               
             }
             return RedirectToAction( "MantenimientoAuto","Auto");
         }
@@ -212,8 +219,10 @@ namespace SanJacinto.Controllers
                 Estado = new wsAutoService.Estado() { Codigo = 1 },
                 Imagen = model.Imagen
             };
+            try {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             string postdata = serializer.Serialize(autoModificar);
+            System.Diagnostics.Debug.WriteLine("Auto---" + postdata);
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos");
             req.Method = "PUT";
@@ -228,7 +237,19 @@ namespace SanJacinto.Controllers
             AutoJson autoCreado = js.Deserialize<AutoJson>(autoJson);
 
             System.Diagnostics.Debug.WriteLine("Auto---" + autoCreado.Codigo);
+            }
+            catch (WebException e)
+            {
+                HttpStatusCode code = ((HttpWebResponse)e.Response).StatusCode;
+                string mensaje = ((HttpWebResponse)e.Response).StatusDescription;
+                StreamReader reader = new StreamReader(e.Response.GetResponseStream());
+                string error = reader.ReadToEnd();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                string mensajeError = js.Deserialize<string>(error);
+                System.Diagnostics.Debug.WriteLine("Auto>>---" + mensajeError);
+                throw new Exception(mensajeError);
 
+            }
             return RedirectToAction("MantenimientoAuto", "Auto");
         }
 
