@@ -8,7 +8,7 @@
     <br />
     <br />
     
-    <% using (Html.BeginForm("AgregarAuto", "Auto"))  { %>
+    <% using (Html.BeginForm("ModificarAuto", "Auto"))  { %>
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-4">
