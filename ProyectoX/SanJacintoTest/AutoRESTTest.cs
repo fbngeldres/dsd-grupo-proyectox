@@ -13,7 +13,7 @@ namespace SanJacintoTest
     [TestClass]
     public class AutoRESTTest
     {
-        [TestMethod]
+       // [TestMethod]
         public void AgregarAutoTest()
         {
             Auto auto = new Auto();
@@ -66,7 +66,7 @@ namespace SanJacintoTest
             
         }
 
-        [TestMethod]
+      //  [TestMethod]
         public void ObtenerAutoTest()
         {
             Auto auto = new Auto();
@@ -95,17 +95,17 @@ namespace SanJacintoTest
             Assert.AreEqual(auto.Imagen, autoObtenido.Imagen);
         }
 
-        [TestMethod]
+       // [TestMethod]
         public void ModificarAutoTest()
         {
             Auto auto = new Auto();
-            auto.Codigo = 30;
+            auto.Codigo = 26;
             auto.Categoria = new Categoria() { Codigo = 1 };
             auto.Estado = new Estado() { Codigo = 1 };
             auto.Marca = new Marca() { Codigo = 1 };
             auto.Modelo = new Modelo() { Codigo = 1 };
             auto.Imagen = "Pruebita";
-            auto.Placa = "Jejejeje";
+            auto.Placa = "123333Dggggdddd";
             auto.Precio = 1000;
 
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -141,11 +141,11 @@ namespace SanJacintoTest
                 string error = reader.ReadToEnd();
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 string mensaje = js.Deserialize<string>(error);
-                Assert.AreEqual(Constantes.ERROR_PLACA_MODIFICAR, mensaje);
+                Assert.AreEqual(Constantes.ERROR_NO_PLACA_MODIFICAR, mensaje);
             }
         }
 
-        [TestMethod]
+       // [TestMethod]
         public void ListarAutosTest()
         {
             HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos");
@@ -162,16 +162,17 @@ namespace SanJacintoTest
         [TestMethod]
         public void EliminarAutoTest()
         {
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos/25");
-            req.Method = "DELETE";
-            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
-
-            HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos/25");
-            req2.Method = "GET";
-
-            HttpWebResponse res2 = null;
+           
             try
             {
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos/35");
+                req.Method = "DELETE";
+                HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+
+                HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos/35");
+                req2.Method = "GET";
+
+                HttpWebResponse res2 = null;
 
                 res2 = (HttpWebResponse)req2.GetResponse();
                 StreamReader reader2 = new StreamReader(res2.GetResponseStream());
