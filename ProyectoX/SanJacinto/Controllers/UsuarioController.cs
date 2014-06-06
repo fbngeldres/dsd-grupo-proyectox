@@ -49,6 +49,19 @@ namespace SanJacinto.Controllers
 
             if (regUsu != null) {
                 FormsAuthentication.SetAuthCookie(model.Correo, true);
+
+                string userData = regUsu.Nombres + " " + regUsu.Apellidos ;
+
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,
+                  model.Correo,
+                  DateTime.Now,
+                  DateTime.Now.AddMinutes(15),
+                  false,
+                  userData,
+                  FormsAuthentication.FormsCookiePath);
+
+                string encTicket = FormsAuthentication.Encrypt(ticket);
+                Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
                 return RedirectToAction("Index", "Home");
             }
             //return Content("thanks for submitting");
