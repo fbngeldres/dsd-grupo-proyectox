@@ -182,7 +182,10 @@
     </None>
     <Content Include="Views\Alquiler\CrearAlquiler.aspx" />
     <Content Include="Views\Alquiler\ListarAlquileres.aspx" />
+    <Content Include="Views\Alquiler\ListarAutosDevolucion.aspx" />
     <Content Include="Views\Alquiler\RegistrarAlquiler.aspx" />
+    <Content Include="Views\Auto\PlantillaModificarAuto.aspx" />
+    <Content Include="Views\Auto\PlantillaAgregarAuto.aspx" />
     <Content Include="Views\Auto\BuscarAutoAlquilar.aspx" />
     <Content Include="Views\Auto\MantenimientoAuto.aspx" />
     <Content Include="Views\Auto\RegistrarAuto.aspx" />
