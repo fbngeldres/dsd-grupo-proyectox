@@ -9,7 +9,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     ×</button>
                 Iniciar Sesión en San Jacinto</h3>
-            <div class="social-box">
+            <!--<div class="social-box">
                 <div class="row mg-btm">
                     <div class="col-md-12">
                         <a href="#" class="btn btn-primary btn-block">
@@ -24,7 +24,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="main">
                 Usuario:
                 <%: Html.TextBoxFor(m => m.Correo, new { placeholder = "prueba@sanjacinto.com", @class = "form-control" })%>
