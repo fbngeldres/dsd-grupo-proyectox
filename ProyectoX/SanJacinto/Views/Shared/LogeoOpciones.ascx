@@ -2,7 +2,11 @@
 <ul class="nav navbar-nav navbar-right">
     <%
         if (Request.IsAuthenticated) {
+            FormsIdentity id = (FormsIdentity)Page.User.Identity;
+            FormsAuthenticationTicket ticket = id.Ticket;
     %>
+    
+
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Mi cuenta
             <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -12,13 +16,13 @@
                             <div class="col-md-5">
                                 <img src="http://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/twDq00QDud4/s120-c/photo.jpg"
                                     alt="Alternate Text" class="img-responsive" />
-                                <p class="text-center small">
-                                    <a href="#">Cambiar Foto</a></p>
+                                <!--<p class="text-center small">
+                                    <a href="#">Cambiar Foto</a></p>-->
                             </div>
                             <div class="col-md-7">
-                                <span>Bhaumik Patel</span>
+                                <span><%:Page.User.Identity.Name%></span>
                                 <p class="text-muted small">
-                                    mail@gmail.com</p>
+                                    <%:ticket.UserData %></p>
                                 <div class="divider">
                                 </div>
                                 <a href="#" class="btn btn-primary btn-sm active">Editar Perfil</a>
