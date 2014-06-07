@@ -71,5 +71,17 @@ namespace SanJacintoRESTServices.Persistencia
                 return busqueda.List<Auto>().ToList();
             }
         }
+
+
+        public List<Auto> listarAutosXMarca()
+        {
+            using (ISession sesion = NHibernateHelper.ObtenerSesion())
+            {
+                ICriteria busqueda = sesion.CreateCriteria<Auto>();
+                busqueda.Add(!Restrictions.Eq("Marca.Codigo", 4));
+                return busqueda.List<Auto>().ToList();
+            }
+        }
+
     }
 }

@@ -66,6 +66,7 @@
     <EmbeddedResource Include="Dominio\Estado.hbm.xml" />
     <EmbeddedResource Include="Dominio\Marca.hbm.xml" />
     <EmbeddedResource Include="Dominio\Modelo.hbm.xml" />
+    <Content Include="ReportingServices.svc" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -78,18 +79,25 @@
     <Compile Include="AutosServices.svc.cs">
       <DependentUpon>AutosServices.svc</DependentUpon>
     </Compile>
+    <Compile Include="Dominio\Alquiler.cs" />
     <Compile Include="Dominio\Auto.cs" />
     <Compile Include="Dominio\Categoria.cs" />
     <Compile Include="Dominio\Estado.cs" />
     <Compile Include="Dominio\Marca.cs" />
     <Compile Include="Dominio\Modelo.cs" />
+    <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="IAutosServices.cs" />
+    <Compile Include="IReportingServices.cs" />
+    <Compile Include="Persistencia\AlquilerDAO.cs" />
     <Compile Include="Persistencia\AutoDAO.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\Constantes.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportingServices.svc.cs">
+      <DependentUpon>ReportingServices.svc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
