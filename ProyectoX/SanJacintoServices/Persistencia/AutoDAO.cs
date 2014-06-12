@@ -10,11 +10,15 @@ namespace SanJacintoServices.Persistencia
 {
     public class AutoDAO : BaseDAO<Auto, int>
     {
-        public List<Auto> obtenerAutos(int marca, int modelo, decimal precioMin, decimal precioMax, int categoria)
+        public List<Auto> obtenerAutos(string placa, int marca, int modelo, decimal precioMin, decimal precioMax, int categoria)
         {
             using (ISession sesion = NHibernateHelper.ObtenerSesion())
             {
                 ICriteria busqueda = sesion.CreateCriteria<Auto>();
+                if (placa != "")
+                {
+                    busqueda.Add(Restrictions.Eq("Placa", placa));
+                }
                 if (marca != 0)
                 {
                     busqueda.Add(Restrictions.Eq("Marca.Codigo", marca));

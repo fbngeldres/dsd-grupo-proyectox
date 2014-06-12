@@ -444,7 +444,7 @@ namespace SanJacinto.wsAutoService {
         SanJacinto.wsAutoService.Categoria[] listarCategorias();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/listarResultadoAutos", ReplyAction="http://tempuri.org/IAutoService/listarResultadoAutosResponse")]
-        SanJacinto.wsAutoService.Auto[] listarResultadoAutos(int marca, int modelo, decimal precioMin, decimal precioMax, int categoria);
+        SanJacinto.wsAutoService.Auto[] listarResultadoAutos(string placa, int marca, int modelo, decimal precioMin, decimal precioMax, int categoria);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/obtenerAuto", ReplyAction="http://tempuri.org/IAutoService/obtenerAutoResponse")]
         SanJacinto.wsAutoService.Auto obtenerAuto(int intCodigoAuto);
@@ -489,8 +489,8 @@ namespace SanJacinto.wsAutoService {
             return base.Channel.listarCategorias();
         }
         
-        public SanJacinto.wsAutoService.Auto[] listarResultadoAutos(int marca, int modelo, decimal precioMin, decimal precioMax, int categoria) {
-            return base.Channel.listarResultadoAutos(marca, modelo, precioMin, precioMax, categoria);
+        public SanJacinto.wsAutoService.Auto[] listarResultadoAutos(string placa, int marca, int modelo, decimal precioMin, decimal precioMax, int categoria) {
+            return base.Channel.listarResultadoAutos(placa, marca, modelo, precioMin, precioMax, categoria);
         }
         
         public SanJacinto.wsAutoService.Auto obtenerAuto(int intCodigoAuto) {

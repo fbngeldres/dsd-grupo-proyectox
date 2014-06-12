@@ -77,7 +77,7 @@ namespace SanJacinto.Controllers
 
         public ActionResult ResultadoBusquedaAuto(AutoModel model) {
             wsAutoService.AutoServiceClient proxy = new wsAutoService.AutoServiceClient();
-            List<wsAutoService.Auto> autos = proxy.listarResultadoAutos(model.Marca, model.Modelo, model.PrecioMinimo, model.PrecioMaximo, model.Categoria).ToList();
+            List<wsAutoService.Auto> autos = proxy.listarResultadoAutos(model.Placa, model.Marca, model.Modelo, model.PrecioMinimo, model.PrecioMaximo, model.Categoria).ToList();
 
             return View(autos);
             

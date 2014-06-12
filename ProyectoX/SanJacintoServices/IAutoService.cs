@@ -22,7 +22,7 @@ namespace SanJacintoServices
         List<Categoria> listarCategorias();
 
         [OperationContract]
-        List<Auto> listarResultadoAutos(int marca, int modelo, decimal precioMin, decimal precioMax, int categoria);
+        List<Auto> listarResultadoAutos(string placa, int marca, int modelo, decimal precioMin, decimal precioMax, int categoria);
 
         [OperationContract]
         Auto obtenerAuto(int intCodigoAuto);

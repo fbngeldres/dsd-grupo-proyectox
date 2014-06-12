@@ -40,6 +40,7 @@
   <xs:element name="listarResultadoAutos">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" name="placa" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="marca" type="xs:int" />
         <xs:element minOccurs="0" name="modelo" type="xs:int" />
         <xs:element minOccurs="0" name="precioMin" type="xs:decimal" />
