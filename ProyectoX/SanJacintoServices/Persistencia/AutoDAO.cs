@@ -15,7 +15,7 @@ namespace SanJacintoServices.Persistencia
             using (ISession sesion = NHibernateHelper.ObtenerSesion())
             {
                 ICriteria busqueda = sesion.CreateCriteria<Auto>();
-                if (placa != "")
+                if (placa != null)
                 {
                     busqueda.Add(Restrictions.Eq("Placa", placa));
                 }
