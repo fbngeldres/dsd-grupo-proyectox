@@ -49,5 +49,6 @@ namespace SanJacintoServices.Persistencia
                 return busqueda.List<Entidad>();
             }
         }
+
     }
 }

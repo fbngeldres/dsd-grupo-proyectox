@@ -5,12 +5,14 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using SanJacintoServices.Dominio;
+using SOAPServices.Dominio;
 
 namespace SanJacintoServices
 {  
     [ServiceContract]
     public interface IUsuarioService
     {
+        [FaultContract(typeof(ValidationException))]
         [OperationContract]
         Usuario CrearUsuario(string apellidos, string nombres, string telefono, string licencia, string dni, int codigo_rol,
                              string correo, string clave);
@@ -20,6 +22,7 @@ namespace SanJacintoServices
         [OperationContract]
         Usuario ModificarUsuario(int codigo, string apellidos, string nombres, string telefono, string licencia, string dni, int codigo_rol,
                                  string correo, string clave);
+        [FaultContract(typeof(ValidationException))]
         [OperationContract]
         void EliminarUsuario(int codigo);
 

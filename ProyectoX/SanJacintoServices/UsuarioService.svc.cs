@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using SanJacintoServices.Persistencia;
 using SanJacintoServices.Dominio;
+using SOAPServices.Dominio;
 
 namespace SanJacintoServices
 {    
@@ -24,18 +25,36 @@ namespace SanJacintoServices
 
         public Usuario CrearUsuario(string apellidos, string nombres, string telefono, string licencia, string dni, int codigo_rol, string correo, string clave)
         {
-            Usuario usuarioACrear = new Usuario()
-            {
-                Apellidos = apellidos,
-                Nombres = nombres,
-                Telefono = telefono,
-                Licencia = licencia,
-                Dni = dni,
-                Codigo_rol = codigo_rol,
-                Correo = correo,
-                Clave = clave
-            };
-            return UsuarioDAO.Crear(usuarioACrear);
+            //try {
+                Usuario usuarioExistente = null;
+                usuarioExistente = UsuarioDAO.ObtenerPorDni(dni);
+
+                if (usuarioExistente == null)
+                {
+                    Usuario usuarioACrear = new Usuario()
+                    {
+                        Apellidos = apellidos,
+                        Nombres = nombres,
+                        Telefono = telefono,
+                        Licencia = licencia,
+                        Dni = dni,
+                        Codigo_rol = codigo_rol,
+                        Correo = correo,
+                        Clave = clave
+                    };
+                    return UsuarioDAO.Crear(usuarioACrear);
+                }
+                //else
+                //{
+                    throw new FaultException<ValidationException>(new ValidationException { ValidationError = "Error, DNI existente" },
+                    new FaultReason("Validation Failed"));                    
+            //    }
+            //    }
+            //catch (Exception)
+            //    {
+            //        throw new FaultException<ValidationException>(new ValidationException { ValidationError = "Error en el servicio, no se pudo crear usuario" },
+            //        new FaultReason("Validation Failed"));
+            //    }
         }
 
         public Usuario ObtenerUsuario(int codigo)
@@ -64,9 +83,26 @@ namespace SanJacintoServices
 
         public void EliminarUsuario(int codigo)
         {
-            Usuario usuarioExistente = new Usuario();
-            usuarioExistente = UsuarioDAO.Obtener(codigo);
-            UsuarioDAO.Eliminar(usuarioExistente);
+            try
+            {
+                int alquilerActivo = 0;
+                alquilerActivo = UsuarioDAO.AlquilerActivo(codigo);
+                if (alquilerActivo == 0)
+                {
+                    Usuario usuarioExistente = new Usuario();
+                    usuarioExistente = UsuarioDAO.Obtener(codigo);
+                    UsuarioDAO.Eliminar(usuarioExistente);
+                }
+                else
+                {
+                    throw new FaultException<ValidationException>(new ValidationException 
+                    { ValidationError = "“Error, el usuario tiene un alquiler en curso" },
+                    new FaultReason("Validation Failed"));                    
+                }
+            }
+            catch (Exception)
+            { }
+            
         }
 
         public List<Usuario> ListarUsuarios()

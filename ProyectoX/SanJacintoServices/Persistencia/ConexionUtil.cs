@@ -11,5 +11,12 @@ namespace SanJacintoServices.Persistencia
         {
             return "Data Source=(local);Initial Catalog=BD_SANJACINTO;Integrated Security=SSPI;";
         }
+        public static string Cadena
+        {
+            get
+            {
+                return "Data Source=(local);Initial Catalog=BD_SANJACINTO;Integrated Security=SSPI;";
+            }
+        }
     }
 }

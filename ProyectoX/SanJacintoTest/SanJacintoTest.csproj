@@ -89,6 +89,9 @@
     <None Include="Service References\UsuarioWS\UsuarioService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\UsuarioWS\UsuarioService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wsAlquiler\AlquilerService.wsdl" />
     <None Include="Service References\wsAlquiler\AlquilerService.xsd">
       <SubType>Designer</SubType>

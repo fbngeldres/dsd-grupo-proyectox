@@ -85,7 +85,6 @@
   <xs:element name="AutenticarUsuario">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="codigo" type="xs:int" />
         <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -94,7 +93,7 @@
   <xs:element name="AutenticarUsuarioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="AutenticarUsuarioResult" nillable="true" type="xs:string" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio" minOccurs="0" name="AutenticarUsuarioResult" nillable="true" type="q5:Usuario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
