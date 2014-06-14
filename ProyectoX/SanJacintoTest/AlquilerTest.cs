@@ -62,5 +62,15 @@ namespace SanJacintoTest
           
 
         }
+
+        [TestMethod]
+        public void listarAutosDevolucion()
+        {
+            wsAlquiler.AlquilerServiceClient proxy = new wsAlquiler.AlquilerServiceClient();
+            List<wsAlquiler.Alquiler> lista = proxy.ListaAlquileresDevolucion().ToList();
+
+            Assert.IsTrue(lista.Count > 0);
+
+        }
     }
 }
