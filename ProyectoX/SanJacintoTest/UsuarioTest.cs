@@ -3,6 +3,8 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.ServiceModel;
+using System.Net;
 
 namespace SanJacintoTest
 {
@@ -12,11 +14,19 @@ namespace SanJacintoTest
         [TestMethod]
         public void Crear()
         {
-            UsuarioWS.UsuarioServiceClient proxy = new UsuarioWS.UsuarioServiceClient();
-            UsuarioWS.Usuario usuarioCreado = proxy.CrearUsuario("Urbano", "Dennis", "992842320", "123456", "46474606", 
-                                                                  1, "dennis@urbano.pe", "1234567890");
-            Assert.IsNotNull(usuarioCreado);
+            try
+            {
+                UsuarioWS.UsuarioServiceClient proxy = new UsuarioWS.UsuarioServiceClient();
+                UsuarioWS.Usuario usuarioCreado = proxy.CrearUsuario("Urbano", "Dennis", "992842320", "123456", "46474606",
+                                                                      1, "dennis@urbano.pe", "1234567890");
+                Assert.IsNotNull(usuarioCreado);
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
+
         [TestMethod]
         public void Obtener()
         {
@@ -36,10 +46,17 @@ namespace SanJacintoTest
         [TestMethod]
         public void Eliminar()
         {
+            try
+            {
             UsuarioWS.UsuarioServiceClient proxy = new UsuarioWS.UsuarioServiceClient();
             proxy.EliminarUsuario(2);
             UsuarioWS.Usuario usuarioObtenido = proxy.ObtenerUsuario(2);
             Assert.IsNull(usuarioObtenido);
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         [TestMethod]
         public void Listar()
@@ -52,8 +69,11 @@ namespace SanJacintoTest
         public void Autenticar()
         {
             UsuarioWS.UsuarioServiceClient proxy = new UsuarioWS.UsuarioServiceClient();
-            string mensaje = proxy.AutenticarUsuario(1, "dnnisurb@gmail.com", "9876543210");
-            Assert.AreEqual("", mensaje);
+            UsuarioWS.Usuario  usuario = proxy.AutenticarUsuario("dnnisurb@gmail.com", "9876543210");
+            //string mensaje = proxy.AutenticarUsuario("dnnisurb@gmail.com", "9876543210");
+            Assert.IsNotNull(usuario);
+            //string mensaje = proxy.AutenticarUsuario(1, "dnnisurb@gmail.com", "9876543210");
+            //Assert.AreEqual("", mensaje);
         }
         [TestMethod]
         public void ObtenerAuto()
