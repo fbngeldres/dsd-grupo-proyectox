@@ -88,11 +88,12 @@ namespace SanJacinto.Controllers
             }
             catch (FaultException<wsAlquiler.ValidationException> ex)
             {
-                Console.WriteLine(ex.Detail.ValidationError);
-                throw new Exception(ex.Detail.ValidationError, ex);
+               System.Diagnostics.Debug.WriteLine(ex.Detail.ValidationError);
+               ViewData["MensajeError"] = ex.Detail.ValidationError;
             }catch(Exception ex){
-                Console.WriteLine(ex.Message);
-                throw new Exception(ex.Message, ex);
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                
+                ViewData["MensajeError"] = ex.Message;
             }
 
             AutoModel autoModel = new AutoModel()
@@ -107,7 +108,7 @@ namespace SanJacinto.Controllers
                 FechaFin = objAlquiler.FechaFin,
                 Auto = autoModel
             };
-
+            
             return View(alquilerModel);
         }
 
@@ -149,8 +150,14 @@ namespace SanJacinto.Controllers
 
             wsAlquiler.Alquiler alquiler = proxy.RealizarDevolucion(Int32.Parse(idAuto));
 
-            if(alquiler.Auto.Estado.Codigo ==1   ){
+            if (alquiler.Auto.Estado.Codigo == 1)
+            {
                 //Exception no se realizo devolucion
+                TempData["MensajeExito"] = "se realizo la devolucion del vehiculo";
+            }
+            else
+            {
+                TempData["MensajeError"] = "No se realizo la devolucion del vehiculo";
             }
 
             return RedirectToAction("ListarAutosDevolucion", "Alquiler");
@@ -186,8 +193,21 @@ namespace SanJacinto.Controllers
             
             wsAlquiler.AlquilerServiceClient proxy = new wsAlquiler.AlquilerServiceClient();
 
-           List<wsAlquiler.Alquiler> listaAlquiler = proxy.listaAlquileres().ToList<wsAlquiler.Alquiler>();
+            List<wsAlquiler.Alquiler> listaAlquiler = proxy.ListaAlquileresDevolucion().ToList<wsAlquiler.Alquiler>();
 
+
+           if (TempData["MensajeExito"] != null)
+           {
+               ViewData["MensajeExito"] = TempData["MensajeExito"];
+               TempData["MensajeExito"] = "";
+           }
+
+
+           if (TempData["MensajeError"] != null)
+           {
+               ViewData["MensajeError"] = TempData["MensajeError"];
+               TempData["MensajeError"] = "";
+           }
 
 
            return View(transformarListaAlquilerToListAlquilerModel(listaAlquiler));
