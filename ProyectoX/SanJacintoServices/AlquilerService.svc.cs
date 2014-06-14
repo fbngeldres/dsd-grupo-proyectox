@@ -53,6 +53,14 @@ namespace SanJacintoServices
             try
             {
                 Auto autoObtenido = AutoDAO.Obtener(intCodigoAuto);
+                System.Diagnostics.Debug.WriteLine(autoObtenido.Estado.Descripcion); 
+                if (autoObtenido.Estado.Descripcion.Equals("Alquilado"))
+                {
+                    throw new FaultException<ValidationException>(new ValidationException { ValidationError = "El auto ya se encuentra alquilado." },
+                new FaultReason("Validation Failed"));
+                }
+
+
                 Usuario usaurioObetenido = UsuarioDAO.Obtener(intCodigoUsuario);
 
                 Estado estaAlquilado = new Estado();
@@ -61,6 +69,8 @@ namespace SanJacintoServices
                 objAlquiler.Usuario = usaurioObetenido;
                 objAlquiler.Auto = autoObtenido;
                 alquilerCreado = AlquilerDAO.Crear(objAlquiler);
+              
+                
                 AutoDAO.Modificar(autoObtenido);
                 
                 return alquilerCreado;
@@ -171,6 +181,23 @@ namespace SanJacintoServices
         {
             obtenerAlquileresColas();
             return AlquilerDAO.ListarTodos().ToList();
+        }
+
+
+        public List<Alquiler> ListaAlquileresDevolucion()
+        {
+            obtenerAlquileresColas();
+             List<Alquiler> listaAlquileres = new List<Alquiler>();
+            List<Alquiler> lista = AlquilerDAO.ListarTodos().ToList();
+
+            foreach (var item in lista)
+            {
+                if (item.Auto.Estado.Codigo == 2 )
+                {
+                    listaAlquileres.Add(item);
+                }
+            }
+            return listaAlquileres;
         }
 
         private void obtenerAlquileresColas()
