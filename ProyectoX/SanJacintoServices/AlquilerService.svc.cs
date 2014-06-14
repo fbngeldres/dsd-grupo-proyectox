@@ -7,6 +7,7 @@ using System.Text;
 using SanJacintoServices.Dominio;
 using SanJacintoServices.Persistencia;
 using SOAPServices.Dominio;
+using System.Messaging;
 
 namespace SanJacintoServices
 {
@@ -47,7 +48,8 @@ namespace SanJacintoServices
 
         public Alquiler registrarAlquiler(Alquiler objAlquiler, int intCodigoAuto, int intCodigoUsuario)
         {
-            
+
+           Alquiler alquilerCreado = null;
            try {
                 wsAuto.AutoServiceClient proxy = new wsAuto.AutoServiceClient();
                 wsAuto.Auto autoObtenido = proxy.obtenerAuto(intCodigoAuto);
@@ -85,7 +87,7 @@ namespace SanJacintoServices
                 usuarioObtenido.Licencia = objUsuObtenido.Licencia;
                 usuarioObtenido.Telefono = objUsuObtenido.Telefono;
 
-                Alquiler alquilerCreado = new Alquiler()
+                alquilerCreado = new Alquiler()
                 {
                     Costo = objAlquiler.Costo,
                     CostoAdicional = objAlquiler.CostoAdicional,
@@ -100,14 +102,37 @@ namespace SanJacintoServices
                 };
 
                 alquilerCreado = AlquilerDAO.Crear(alquilerCreado);
-
+                
                 return alquilerCreado;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                registrarAlquilerCola(alquilerCreado);
+                System.Diagnostics.Debug.WriteLine(ex.Message );
                 throw new FaultException<ValidationException>(new ValidationException 
                 { ValidationError = "Error en el servicio, no se pudo registrar su alquiler" }, 
                 new FaultReason("Validation Failed"));
+            }
+        }
+
+        private void registrarAlquilerCola(Alquiler alquiler)
+        {
+            try
+            {
+                string rutaCola2 = @".\private$\alquileres";
+                if (!MessageQueue.Exists(rutaCola2))
+                    MessageQueue.Create(rutaCola2);
+
+                MessageQueue cola = new MessageQueue(rutaCola2);
+                Message mensaje2 = new Message();
+
+                mensaje2.Label = "Alquiler";
+                mensaje2.Body = alquiler;
+                cola.Send(mensaje2);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
             }
         }
 
@@ -118,9 +143,53 @@ namespace SanJacintoServices
 
         public List<Alquiler> listaAlquileres()
         {
+            obtenerAlquileresColas();
             return AlquilerDAO.ListarTodos().ToList();
         }
 
+        private void obtenerAlquileresColas()
+        {
+            try
+            {
+                string rutaCola = @".\private$\alquileres";
+                if (MessageQueue.Exists(rutaCola))
+                {
+                    MessageQueue cola = new MessageQueue(rutaCola);
+                    cola.Formatter = new XmlMessageFormatter(new Type[] { typeof(Alquiler) });
+
+                    if (cola.GetAllMessages().Count() > 0)
+                    {
+                        Message msg;
+
+                        while ((msg = Receive(cola)) != null)
+                        {
+                            Alquiler alquiler = (Alquiler)msg.Body;
+                            AlquilerDAO.Crear(alquiler);
+                        }
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
+        }
+
+        private Message Receive(MessageQueue queue)
+        {
+            try
+            {
+                return queue.Receive(TimeSpan.Zero);
+            }
+            catch (MessageQueueException mqe)
+            {
+                if (mqe.MessageQueueErrorCode == MessageQueueErrorCode.IOTimeout)
+                    return null;
+                throw;
+            }
+        }
 
         public Alquiler RealizarDevolucion(int codigo)
         {
