@@ -113,6 +113,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <EmbeddedResource Include="UsuarioService.svc" />
+    <Content Include="ReportingServices.svc" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -140,6 +141,7 @@
     </Compile>
     <Compile Include="Dominio\Auto.cs" />
     <Compile Include="Dominio\Alquiler.cs" />
+    <Compile Include="Dominio\AutoReporte.cs" />
     <Compile Include="Dominio\Categoria.cs" />
     <Compile Include="Dominio\Estado.cs" />
     <Compile Include="Dominio\Devolucion.cs" />
@@ -149,6 +151,7 @@
     <Compile Include="Dominio\ValidationException.cs" />
     <Compile Include="IAlquilerService.cs" />
     <Compile Include="IAutoService.cs" />
+    <Compile Include="IReportingServices.cs" />
     <Compile Include="IUsuarioService.cs" />
     <Compile Include="Persistencia\AlquilerDAO.cs" />
     <Compile Include="Persistencia\AutoDAO.cs" />
@@ -157,9 +160,13 @@
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\MarcaDAO.cs" />
     <Compile Include="Persistencia\ModeloDAO.cs" />
+    <Compile Include="Persistencia\ReporteDAO.cs" />
     <Compile Include="Persistencia\UsuarioDAO.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportingServices.svc.cs">
+      <DependentUpon>ReportingServices.svc</DependentUpon>
+    </Compile>
     <Compile Include="Service References\wsAuto\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

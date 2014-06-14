@@ -254,6 +254,9 @@ namespace SanJacinto.wsUsuarioService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsuarioService/AutenticarUsuario", ReplyAction="http://tempuri.org/IUsuarioService/AutenticarUsuarioResponse")]
         SanJacinto.wsUsuarioService.Usuario AutenticarUsuario(string correo, string clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsuarioService/ObtenerUsuarioPorCorreo", ReplyAction="http://tempuri.org/IUsuarioService/ObtenerUsuarioPorCorreoResponse")]
+        SanJacinto.wsUsuarioService.Usuario ObtenerUsuarioPorCorreo(string correo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -305,6 +308,10 @@ namespace SanJacinto.wsUsuarioService {
         
         public SanJacinto.wsUsuarioService.Usuario AutenticarUsuario(string correo, string clave) {
             return base.Channel.AutenticarUsuario(correo, clave);
+        }
+        
+        public SanJacinto.wsUsuarioService.Usuario ObtenerUsuarioPorCorreo(string correo) {
+            return base.Channel.ObtenerUsuarioPorCorreo(correo);
         }
     }
 }

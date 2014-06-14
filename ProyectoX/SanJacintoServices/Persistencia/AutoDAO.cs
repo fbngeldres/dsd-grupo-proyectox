@@ -35,7 +35,7 @@ namespace SanJacintoServices.Persistencia
                 {
                     busqueda.Add(Restrictions.Between("Precio", precioMin, precioMax));
                 }
-
+                busqueda.Add(Restrictions.Eq("Estado.Codigo",1));
                 //ICriteria busqueda = sesion.CreateCriteria("from Auto a where a.precio between "+precioMin+" and "+precioMax);
                 //List<Auto> busqueda = sesion.CreateCriteria(typeof(Auto)).l;
                 return busqueda.List<Auto>().ToList();

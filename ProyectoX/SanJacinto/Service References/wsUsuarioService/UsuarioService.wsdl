@@ -50,6 +50,12 @@
   <wsdl:message name="IUsuarioService_AutenticarUsuario_OutputMessage">
     <wsdl:part name="parameters" element="tns:AutenticarUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="IUsuarioService_ObtenerUsuarioPorCorreo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUsuarioPorCorreo" />
+  </wsdl:message>
+  <wsdl:message name="IUsuarioService_ObtenerUsuarioPorCorreo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUsuarioPorCorreoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsuarioService">
     <wsdl:operation name="CrearUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuarioService/CrearUsuario" message="tns:IUsuarioService_CrearUsuario_InputMessage" />
@@ -76,6 +82,10 @@
     <wsdl:operation name="AutenticarUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuarioService/AutenticarUsuario" message="tns:IUsuarioService_AutenticarUsuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUsuarioService/AutenticarUsuarioResponse" message="tns:IUsuarioService_AutenticarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUsuarioPorCorreo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuarioService/ObtenerUsuarioPorCorreo" message="tns:IUsuarioService_ObtenerUsuarioPorCorreo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuarioService/ObtenerUsuarioPorCorreoResponse" message="tns:IUsuarioService_ObtenerUsuarioPorCorreo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUsuarioService" type="tns:IUsuarioService">
@@ -133,6 +143,15 @@
     </wsdl:operation>
     <wsdl:operation name="AutenticarUsuario">
       <soap:operation soapAction="http://tempuri.org/IUsuarioService/AutenticarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUsuarioPorCorreo">
+      <soap:operation soapAction="http://tempuri.org/IUsuarioService/ObtenerUsuarioPorCorreo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
