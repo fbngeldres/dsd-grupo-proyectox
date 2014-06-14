@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using SanJacinto.Models;
 using System.Net;
+using System.ServiceModel;
+using System.Web.Security;
 
 namespace SanJacinto.Controllers
 {
@@ -39,8 +41,17 @@ namespace SanJacinto.Controllers
         public ActionResult RegistrarAlquiler(int CantidadDias, decimal strPrecioAuto, int intCodigoAuto, int intCodigoUsuario,
             string txtFechaInicio,string txtAccesorios,string txtCostoAdicional)
         {
-            wsAlquiler.AlquilerServiceClient miAlquiler = new wsAlquiler.AlquilerServiceClient();
+            wsUsuarioService.UsuarioServiceClient proxyUsuario = new wsUsuarioService.UsuarioServiceClient();  
+            FormsIdentity id = (FormsIdentity)this.User.Identity;
+            FormsAuthenticationTicket ticket = id.Ticket;
+            wsUsuarioService.Usuario usuario = proxyUsuario.ObtenerUsuarioPorCorreo(ticket.Name);
+            intCodigoUsuario = usuario.Codigo;
+            System.Diagnostics.Debug.WriteLine("intCodigoUsuario " + intCodigoUsuario);
+            System.Diagnostics.Debug.WriteLine("ticket " + ticket.Name  );
 
+            wsAlquiler.AlquilerServiceClient miAlquiler = new wsAlquiler.AlquilerServiceClient();
+            System.Diagnostics.Debug.WriteLine("strPrecioAuto " + strPrecioAuto);
+            System.Diagnostics.Debug.WriteLine("CantidadDias " + CantidadDias);
             wsAlquiler.Alquiler objAlquiler = new wsAlquiler.Alquiler();
             objAlquiler.Costo = strPrecioAuto;
             objAlquiler.CantidadDias = CantidadDias;
@@ -48,25 +59,40 @@ namespace SanJacinto.Controllers
             if(txtCostoAdicional.Length > 0 )
                 objAlquiler.CostoAdicional = Convert.ToDecimal(txtCostoAdicional);
 
+            System.Diagnostics.Debug.WriteLine("txtAccesorios " + txtAccesorios);
+            
+
             objAlquiler.Accesorios = txtAccesorios;
+
+            System.Diagnostics.Debug.WriteLine("txtAccobjAlquiler.Costo " + objAlquiler.Costo);
+
+            System.Diagnostics.Debug.WriteLine("CantidadDias " + CantidadDias);
 
             decimal subMonto = objAlquiler.Costo * CantidadDias;
             decimal igv = Convert.ToDecimal(0.18);
             objAlquiler.Igv = igv * subMonto;
             objAlquiler.MontoTotal = subMonto + objAlquiler.Igv + objAlquiler.CostoAdicional;
-
+            System.Diagnostics.Debug.WriteLine(" objAlquiler.Igv  " + objAlquiler.Igv);
+            System.Diagnostics.Debug.WriteLine(" objAlquiler.MontoTotal  " + objAlquiler.MontoTotal);
+            System.Diagnostics.Debug.WriteLine(txtFechaInicio);
+            System.Diagnostics.Debug.WriteLine("Paso error");
             DateTime fecInicio = Convert.ToDateTime(txtFechaInicio);
             DateTime fecFin = fecInicio.AddDays(CantidadDias);
             objAlquiler.FechaInicio = fecInicio;
             objAlquiler.FechaFin = fecFin;
-
+            System.Diagnostics.Debug.WriteLine("fecInicio " + fecInicio);
+            System.Diagnostics.Debug.WriteLine("fecFin " + fecFin);
             try
             {
                 objAlquiler = miAlquiler.registrarAlquiler(objAlquiler, intCodigoAuto, intCodigoUsuario);
             }
-            catch (WebException e)
+            catch (FaultException<wsAlquiler.ValidationException> ex)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(ex.Detail.ValidationError);
+                throw new Exception(ex.Detail.ValidationError, ex);
+            }catch(Exception ex){
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message, ex);
             }
 
             AutoModel autoModel = new AutoModel()
