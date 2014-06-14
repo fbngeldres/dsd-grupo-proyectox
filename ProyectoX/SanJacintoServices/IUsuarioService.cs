@@ -31,5 +31,8 @@ namespace SanJacintoServices
 
         [OperationContract]
         Usuario AutenticarUsuario(string correo, string clave);
+
+        [OperationContract]
+        Usuario ObtenerUsuarioPorCorreo(string correo);
     }
 }

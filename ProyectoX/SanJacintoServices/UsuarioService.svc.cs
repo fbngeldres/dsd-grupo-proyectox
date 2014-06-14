@@ -108,5 +108,11 @@ namespace SanJacintoServices
         {
             return UsuarioDAO.obtenerUsuarioLogeado(correo, clave);
         }
+
+
+        public Usuario ObtenerUsuarioPorCorreo(string correo)
+        {
+            return UsuarioDAO.obtenerUsuario(correo);
+        }
     }
 }
