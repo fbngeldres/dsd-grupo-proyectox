@@ -114,7 +114,21 @@ namespace SanJacinto.Controllers
                 };
                 listaAuto.Add(auto); 
             }
-           
+            System.Diagnostics.Debug.WriteLine(TempData["MensajeExito"] + "");
+            if (TempData["MensajeExito"] != null)
+            {
+                ViewData["MensajeExito"] = TempData["MensajeExito"];
+                TempData["MensajeExito"] = "";
+            }
+
+
+            if (TempData["MensajeError"] != null)
+            {
+                ViewData["MensajeError"] = TempData["MensajeError"];
+                TempData["MensajeError"] = "";
+            }
+
+            
 
             return View(listaAuto);
         }
@@ -200,6 +214,8 @@ namespace SanJacinto.Controllers
                 throw new Exception(mensajeError);
                
             }
+            TempData["MensajeExito"] = "Vehículo registrado exitosamente";
+            
             return RedirectToAction( "MantenimientoAuto","Auto");
         }
 
@@ -236,6 +252,7 @@ namespace SanJacinto.Controllers
             AutoJson autoCreado = js.Deserialize<AutoJson>(autoJson);
 
             System.Diagnostics.Debug.WriteLine("Auto---" + autoCreado.Codigo);
+            TempData["MensajeExito"] = "Vehículo modificado exitosamente";
             }
             catch (WebException e)
             {
@@ -246,7 +263,7 @@ namespace SanJacinto.Controllers
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 string mensajeError = js.Deserialize<string>(error);
                 System.Diagnostics.Debug.WriteLine("Auto>>---" + mensajeError);
-                throw new Exception(mensajeError);
+                TempData["MensajeError"] = mensajeError;
 
             }
             return RedirectToAction("MantenimientoAuto", "Auto");
@@ -255,13 +272,28 @@ namespace SanJacinto.Controllers
 
         public ActionResult EliminarAuto(String codigoEliminar)
         {
-        
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos/" + codigoEliminar);
-            req.Method = "DELETE";
-            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
-
+            try
+            {
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:1281/AutosServices.svc/Autos/" + codigoEliminar);
+                req.Method = "DELETE";
+                HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+                TempData["MensajeExito"] = "Vehículo Eliminado exitosamente";
+            }
+            catch (WebException e)
+            {
+                HttpStatusCode code = ((HttpWebResponse)e.Response).StatusCode;
+                string mensaje = ((HttpWebResponse)e.Response).StatusDescription;
+                StreamReader reader = new StreamReader(e.Response.GetResponseStream());
+                string error = reader.ReadToEnd();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                string mensajeError = js.Deserialize<string>(error);
+                System.Diagnostics.Debug.WriteLine("Auto>>---" + mensajeError);
+                // throw new Exception(mensajeError);
+                TempData["MensajeError"] = mensajeError;
+            }
             return RedirectToAction("MantenimientoAuto", "Auto");
         }
+        
 
         
     }
