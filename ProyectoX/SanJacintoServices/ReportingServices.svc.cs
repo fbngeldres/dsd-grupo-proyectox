@@ -55,12 +55,12 @@ namespace SanJacintoServices
                 
             }
 
-
-
             foreach (KeyValuePair<int, AutoReporte> entry in contador)
             {
                 listaAutoReporte.Add(entry.Value);
             }
+
+            listaAutoReporte.OrderByDescending(o => o.veces).ToList();
 
             return listaAutoReporte;
         }
