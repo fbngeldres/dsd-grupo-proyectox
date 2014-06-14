@@ -14,12 +14,12 @@
 		</p>
         <p>
 			Colaboradores:</br>
-            <a href="url">Crisostomo Matias, Ronald (u201316047)</a></br>
-            <a href="url">Geldres del Carpio, Fabian (u201316222)</a></br>
+            <a href="https://ronaldcrisostomo.wordpress.com/">Crisostomo Matias, Ronald (u201316047)</a></br>
+            <a href="http://fgeldres.blogspot.com/">Geldres del Carpio, Fabian (u201316222)</a></br>
             <a href="http://upc-dsd-2013ii.blogspot.com/">Morales Sánchez, Ronny (u201316592)</a></br>
             <a href="http://kiarajes7.blogspot.es/">Peve Peña, Jessica Elizabeth (u201100220)</a></br>
             <a href="http://u201100227.blogspot.es/">Salazar Hinostroza, Junior Jesus (u201100227)</a></br>
-            <a href="url">Urbano Eusebio, Dennis (u201301473)</a></br>
+            <a href="http://dennisurbano.blogspot.com/">Urbano Eusebio, Dennis (u201301473)</a></br>
 		</p>
 		<p>
 			<a class="btn btn-primary btn-large" href="#">Contactenos</a>

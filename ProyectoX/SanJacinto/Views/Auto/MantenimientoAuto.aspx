@@ -107,6 +107,14 @@
                         <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
                     </ul>
                 </div>
+                <div style="color:Green">
+<%= Html.DisplayText("MensajeExito")%>
+                </div>
+
+                <div style="color:Red">
+<%= Html.DisplayText("MensajeError")%>
+                </div>
+                
             </div>
         </div>
     </div>

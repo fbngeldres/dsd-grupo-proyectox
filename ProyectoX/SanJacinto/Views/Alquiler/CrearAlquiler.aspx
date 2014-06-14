@@ -325,6 +325,9 @@
                 </table>
             </div>
         </div>
+          <div style="color:Red">
+<%= Html.DisplayText("MensajeError")%>
+                </div>
         <% } %>
         <!--fin detalle-->
     </div>
