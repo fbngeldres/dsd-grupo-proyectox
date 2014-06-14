@@ -90,5 +90,30 @@ namespace SanJacintoServices.Persistencia
                 }
             }
         }
+
+        public Usuario obtenerUsuario(string correo)
+        {
+
+            using (ISession sesion = NHibernateHelper.ObtenerSesion())
+            {
+
+                ICriteria busqueda = sesion.CreateCriteria<Usuario>();
+                busqueda.Add(Restrictions.Eq("Correo", correo));
+
+                // List<Usuario> usuarios = ;
+
+                if (busqueda.List<Usuario>().Count() == 1)
+                {
+                    return busqueda.List<Usuario>()[0];
+                }
+
+                else
+                {
+                    return null;
+                }
+
+            }
+        }
+
     }
 }
