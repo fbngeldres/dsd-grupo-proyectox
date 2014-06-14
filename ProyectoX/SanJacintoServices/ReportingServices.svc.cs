@@ -31,24 +31,28 @@ namespace SanJacintoServices
             AutoReporte autoReporte = null;
             foreach (Alquiler a in alquileres)
             {
-                if (contador.ContainsKey(a.Auto.Codigo)){
-                    contador[a.Auto.Codigo].veces = contador[a.Auto.Codigo].veces + 1;
-                } else
-                {
-                    autoReporte = new AutoReporte()
+                if(a.Auto.Estado.Codigo != 4){
+                    if (contador.ContainsKey(a.Auto.Codigo)){
+                        contador[a.Auto.Codigo].veces = contador[a.Auto.Codigo].veces + 1;
+                    } else
                     {
-                        Categoria = a.Auto.Categoria.Descripcion,
-                        Codigo = a.Auto.Codigo,
-                        Estado = a.Auto.Estado.Descripcion,
-                        Imagen = a.Auto.Imagen,
-                        Marca = a.Auto.Marca.Descripcion,
-                        Modelo = a.Auto.Modelo.Descripcion,
-                        Placa = a.Auto.Placa,
-                        Precio = a.Auto.Precio,
-                        veces = 1
-                    };
-                    contador.Add(a.Auto.Codigo, autoReporte);
+                        autoReporte = new AutoReporte()
+                        {
+                            Categoria = a.Auto.Categoria.Descripcion,
+                            Codigo = a.Auto.Codigo,
+                            Estado = a.Auto.Estado.Descripcion,
+                            Imagen = a.Auto.Imagen,
+                            Marca = a.Auto.Marca.Descripcion,
+                            Modelo = a.Auto.Modelo.Descripcion,
+                            Placa = a.Auto.Placa,
+                            Precio = a.Auto.Precio,
+                            veces = 1
+                        };
+                        contador.Add(a.Auto.Codigo, autoReporte);
+                    }
+                
                 }
+                
             }
 
 

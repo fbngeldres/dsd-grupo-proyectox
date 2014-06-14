@@ -20,7 +20,7 @@ namespace SanJacintoServices.Persistencia
                 {
                     busqueda.Add(Restrictions.Between("FechaInicio", fecIni, fecFin));
                 }
-                busqueda.Add(!Restrictions.Eq("Auto.Estado.Codigo", 4));
+                //busqueda.Add(!Restrictions.Eq("Auto.Estado.Codigo", 4));
                 return busqueda.List<Alquiler>().ToList();
             }
         }
