@@ -13,7 +13,8 @@
                 <h3 class="panel-title">
                     Registro de usuario <small>San Jaciento S.A.C.</small></h3>
             </div>
-                    
+            
+            <%: Html.ValidationMessage("Level", new { @style = "color:red !important; font-weight: bold; margin-left: 30px;" })%>
             <div class="panel-body">
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="textinput">

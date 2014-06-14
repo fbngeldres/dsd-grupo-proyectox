@@ -21,9 +21,9 @@ namespace SanJacintoTest
                                                                       1, "dennis@urbano.pe", "1234567890");
                 Assert.IsNotNull(usuarioCreado);
             }
-            catch (WebException ex)
+            catch (FaultException<UsuarioWS.ValidationException> ex)
             {
-                Console.WriteLine(ex.Message);
+                Assert.AreEqual("Error, DNI existente", ex.Detail.ValidationError);
             }
         }
 

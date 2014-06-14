@@ -3,6 +3,7 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:2714/UsuarioService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2714/UsuarioService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" />
       <xsd:import schemaLocation="http://localhost:2714/UsuarioService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:2714/UsuarioService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SanJacintoServices.Dominio" />
     </xsd:schema>
@@ -12,6 +13,9 @@
   </wsdl:message>
   <wsdl:message name="IUsuarioService_CrearUsuario_OutputMessage">
     <wsdl:part name="parameters" element="tns:CrearUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsuarioService_CrearUsuario_ValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" name="detail" element="q1:ValidationException" />
   </wsdl:message>
   <wsdl:message name="IUsuarioService_ObtenerUsuario_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerUsuario" />
@@ -31,6 +35,9 @@
   <wsdl:message name="IUsuarioService_EliminarUsuario_OutputMessage">
     <wsdl:part name="parameters" element="tns:EliminarUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="IUsuarioService_EliminarUsuario_ValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" name="detail" element="q2:ValidationException" />
+  </wsdl:message>
   <wsdl:message name="IUsuarioService_ListarUsuarios_InputMessage">
     <wsdl:part name="parameters" element="tns:ListarUsuarios" />
   </wsdl:message>
@@ -47,6 +54,7 @@
     <wsdl:operation name="CrearUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuarioService/CrearUsuario" message="tns:IUsuarioService_CrearUsuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUsuarioService/CrearUsuarioResponse" message="tns:IUsuarioService_CrearUsuario_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUsuarioService/CrearUsuarioValidationExceptionFault" name="ValidationExceptionFault" message="tns:IUsuarioService_CrearUsuario_ValidationExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="ObtenerUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuarioService/ObtenerUsuario" message="tns:IUsuarioService_ObtenerUsuario_InputMessage" />
@@ -59,6 +67,7 @@
     <wsdl:operation name="EliminarUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuarioService/EliminarUsuario" message="tns:IUsuarioService_EliminarUsuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUsuarioService/EliminarUsuarioResponse" message="tns:IUsuarioService_EliminarUsuario_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUsuarioService/EliminarUsuarioValidationExceptionFault" name="ValidationExceptionFault" message="tns:IUsuarioService_EliminarUsuario_ValidationExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="ListarUsuarios">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuarioService/ListarUsuarios" message="tns:IUsuarioService_ListarUsuarios_InputMessage" />
@@ -79,6 +88,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="ObtenerUsuario">
       <soap:operation soapAction="http://tempuri.org/IUsuarioService/ObtenerUsuario" style="document" />
@@ -106,6 +118,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="ListarUsuarios">
       <soap:operation soapAction="http://tempuri.org/IUsuarioService/ListarUsuarios" style="document" />

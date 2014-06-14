@@ -186,11 +186,57 @@ namespace SanJacinto.wsUsuarioService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ValidationException", Namespace="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class ValidationException : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ValidationErrorField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ValidationError {
+            get {
+                return this.ValidationErrorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ValidationErrorField, value) != true)) {
+                    this.ValidationErrorField = value;
+                    this.RaisePropertyChanged("ValidationError");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wsUsuarioService.IUsuarioService")]
     public interface IUsuarioService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsuarioService/CrearUsuario", ReplyAction="http://tempuri.org/IUsuarioService/CrearUsuarioResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(SanJacinto.wsUsuarioService.ValidationException), Action="http://tempuri.org/IUsuarioService/CrearUsuarioValidationExceptionFault", Name="ValidationException", Namespace="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio")]
         SanJacinto.wsUsuarioService.Usuario CrearUsuario(string apellidos, string nombres, string telefono, string licencia, string dni, int codigo_rol, string correo, string clave);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsuarioService/ObtenerUsuario", ReplyAction="http://tempuri.org/IUsuarioService/ObtenerUsuarioResponse")]
@@ -200,6 +246,7 @@ namespace SanJacinto.wsUsuarioService {
         SanJacinto.wsUsuarioService.Usuario ModificarUsuario(int codigo, string apellidos, string nombres, string telefono, string licencia, string dni, int codigo_rol, string correo, string clave);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsuarioService/EliminarUsuario", ReplyAction="http://tempuri.org/IUsuarioService/EliminarUsuarioResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(SanJacinto.wsUsuarioService.ValidationException), Action="http://tempuri.org/IUsuarioService/EliminarUsuarioValidationExceptionFault", Name="ValidationException", Namespace="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio")]
         void EliminarUsuario(int codigo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsuarioService/ListarUsuarios", ReplyAction="http://tempuri.org/IUsuarioService/ListarUsuariosResponse")]

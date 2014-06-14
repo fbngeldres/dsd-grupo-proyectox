@@ -24,5 +24,7 @@ namespace SanJacinto.Models
         public string Correo { get; set; }
         
         public string Clave { get; set; }
+
+        public string Error { get; set; }
     }
 }

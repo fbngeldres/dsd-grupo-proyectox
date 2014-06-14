@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using SanJacinto.Models;
 using System.Web.Security;
+using System.ServiceModel;
 
 namespace SanJacinto.Controllers
 {
@@ -21,19 +22,26 @@ namespace SanJacinto.Controllers
              1 = Administrador
              2 = Usuario normal*/
             int rol = 2;
-            
             wsUsuarioService.UsuarioServiceClient proxy = new wsUsuarioService.UsuarioServiceClient();
-            //CrearUsuario(string apellidos, string nombres, string telefono, string licencia, string dni, int codigo_rol, string correo, string clave)
-            wsUsuarioService.Usuario regUsu = proxy.CrearUsuario(model.Apellidos, model.Nombres, model.Telefono, model.Licencia, model.Dni, rol, model.Correo, model.Clave);
-            if (regUsu != null)
+            try
+            {                
+                //CrearUsuario(string apellidos, string nombres, string telefono, string licencia, string dni, int codigo_rol, string correo, string clave)
+                wsUsuarioService.Usuario regUsu = proxy.CrearUsuario(model.Apellidos, model.Nombres, model.Telefono, model.Licencia, model.Dni, rol, model.Correo, model.Clave);
+                if (regUsu != null)
+                {
+                    FormsAuthentication.SetAuthCookie(model.Correo, true);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            catch (FaultException<wsUsuarioService.ValidationException> ex)
             {
-                FormsAuthentication.SetAuthCookie(model.Correo, true);
-                return RedirectToAction("Index", "Home");
+                ModelState.AddModelError("Level", "- "+ex.Detail.ValidationError);
+                return View("RegistarUsuario", model);
             }
-            else {
-                return View(model);
-            }
-            
             
         }
 

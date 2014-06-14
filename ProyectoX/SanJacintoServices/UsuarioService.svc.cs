@@ -25,7 +25,6 @@ namespace SanJacintoServices
 
         public Usuario CrearUsuario(string apellidos, string nombres, string telefono, string licencia, string dni, int codigo_rol, string correo, string clave)
         {
-            //try {
                 Usuario usuarioExistente = null;
                 usuarioExistente = UsuarioDAO.ObtenerPorDni(dni);
 
@@ -44,17 +43,11 @@ namespace SanJacintoServices
                     };
                     return UsuarioDAO.Crear(usuarioACrear);
                 }
-                //else
-                //{
+                else
+                {
                     throw new FaultException<ValidationException>(new ValidationException { ValidationError = "Error, DNI existente" },
-                    new FaultReason("Validation Failed"));                    
-            //    }
-            //    }
-            //catch (Exception)
-            //    {
-            //        throw new FaultException<ValidationException>(new ValidationException { ValidationError = "Error en el servicio, no se pudo crear usuario" },
-            //        new FaultReason("Validation Failed"));
-            //    }
+                    new FaultReason("Validation Failed"));
+                }
         }
 
         public Usuario ObtenerUsuario(int codigo)
